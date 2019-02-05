@@ -1,0 +1,250 @@
+=========== ppc32multi/jhalfs/clfs-commands/final-preps/025-creatingtoolsdir
+#!/bin/bash
+set +h
+set -e
+install -dv ${CLFS}/tools
+ln -sv ${CLFS}/tools /
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/final-preps/026-creatingcrossdir
+#!/bin/bash
+set +h
+set -e
+install -dv ${CLFS}/cross-tools
+ln -sv ${CLFS}/cross-tools /
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/final-preps/027-addinguser
+#!/bin/bash
+set +h
+set -e
+groupadd clfs
+useradd -s /bin/bash -g clfs -d /home/clfs clfs
+mkdir -pv /home/clfs
+chown -v clfs:clfs /home/clfs
+passwd clfs
+chown -v clfs ${CLFS}/tools
+chown -v clfs ${CLFS}/cross-tools
+chown -v clfs ${CLFS}/sources
+su - clfs
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/final-preps/028-settingenvironment
+#!/bin/bash
+set +h
+set -e
+cat > ~/.bash_profile << "EOF"
+exec env -i HOME=${HOME} TERM=${TERM} PS1='\u:\w\$ ' /bin/bash
+EOF
+cat > ~/.bashrc << "EOF"
+set +h
+umask 022
+CLFS=/mnt/clfs
+LC_ALL=POSIX
+PATH=/cross-tools/bin:/bin:/usr/bin
+export CLFS LC_ALL PATH
+unset CFLAGS CXXFLAGS PKG_CONFIG_PATH
+EOF
+source ~/.bash_profile
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/final-preps/029-variables
+#!/bin/bash
+set +h
+set -e
+export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+export BUILD32="-m32"
+export BUILD64="-m64"
+cat >> ~/.bashrc << EOF
+export CLFS_HOST="${CLFS_HOST}"
+export CLFS_TARGET="${CLFS_TARGET}"
+export CLFS_TARGET32="${CLFS_TARGET32}"
+export BUILD32="${BUILD32}"
+export BUILD64="${BUILD64}"
+EOF
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit
+
+================================================== DIFFS
+========================= creatingtoolsdir
+XXXXXX mips32/jhalfs/clfs-commands/final-preps
+XXXXXX mips64/jhalfs/clfs-commands/final-preps
+XXXXXX mipsmulti/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32multi/jhalfs/clfs-commands/final-preps
+XXXXXX ppc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparc32/jhalfs/clfs-commands/final-preps
+XXXXXX sparc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparcmulti/jhalfs/clfs-commands/final-preps
+XXXXXX x64/jhalfs/clfs-commands/final-preps
+XXXXXX x86/jhalfs/clfs-commands/final-preps
+XXXXXX x86multi/jhalfs/clfs-commands/final-preps
+========================= creatingcrossdir
+XXXXXX mips32/jhalfs/clfs-commands/final-preps
+XXXXXX mips64/jhalfs/clfs-commands/final-preps
+XXXXXX mipsmulti/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32multi/jhalfs/clfs-commands/final-preps
+XXXXXX ppc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparc32/jhalfs/clfs-commands/final-preps
+XXXXXX sparc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparcmulti/jhalfs/clfs-commands/final-preps
+XXXXXX x64/jhalfs/clfs-commands/final-preps
+XXXXXX x86/jhalfs/clfs-commands/final-preps
+XXXXXX x86multi/jhalfs/clfs-commands/final-preps
+========================= addinguser
+XXXXXX mips32/jhalfs/clfs-commands/final-preps
+XXXXXX mips64/jhalfs/clfs-commands/final-preps
+XXXXXX mipsmulti/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32multi/jhalfs/clfs-commands/final-preps
+XXXXXX ppc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparc32/jhalfs/clfs-commands/final-preps
+XXXXXX sparc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparcmulti/jhalfs/clfs-commands/final-preps
+XXXXXX x64/jhalfs/clfs-commands/final-preps
+XXXXXX x86/jhalfs/clfs-commands/final-preps
+XXXXXX x86multi/jhalfs/clfs-commands/final-preps
+========================= settingenvironment
+XXXXXX mips32/jhalfs/clfs-commands/final-preps
+XXXXXX mips64/jhalfs/clfs-commands/final-preps
+XXXXXX mipsmulti/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32/jhalfs/clfs-commands/final-preps
+XXXXXX ppc32multi/jhalfs/clfs-commands/final-preps
+XXXXXX ppc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparc32/jhalfs/clfs-commands/final-preps
+XXXXXX sparc64/jhalfs/clfs-commands/final-preps
+XXXXXX sparcmulti/jhalfs/clfs-commands/final-preps
+XXXXXX x64/jhalfs/clfs-commands/final-preps
+XXXXXX x86/jhalfs/clfs-commands/final-preps
+XXXXXX x86multi/jhalfs/clfs-commands/final-preps
+========================= variables
+XXXXXX mips32/jhalfs/clfs-commands/final-preps
+5,8c5,6
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="mipsel-unknown-linux-gnu"
+> export CLFS_TARGET="mipsel-unknown-linux-gnu"
+12,14d9
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+< export BUILD64="${BUILD64}"
+XXXXXX mips64/jhalfs/clfs-commands/final-preps
+5,8c5,7
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="mips64el-unknown-linux-gnu"
+> export CLFS_TARGET="mips64el-unknown-linux-gnu"
+> export BUILD64="-mabi=64"
+12,13d10
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+XXXXXX mipsmulti/jhalfs/clfs-commands/final-preps
+5,8c5,10
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="mips64el-unknown-linux-gnu"
+> export CLFS_TARGET="mips64el-unknown-linux-gnu"
+> export CLFS_TARGET32="$(echo ${CLFS_TARGET}| sed -e 's/64//g')"
+> export BUILD32="-mabi=32"
+> export BUILDN32="-mabi=n32"
+> export BUILD64="-mabi=64"
+13a16
+> export BUILDN32="${BUILDN32}"
+XXXXXX ppc32/jhalfs/clfs-commands/final-preps
+5,8c5
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="powerpc-unknown-linux-gnu"
+12,14d8
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+< export BUILD64="${BUILD64}"
+XXXXXX ppc32multi/jhalfs/clfs-commands/final-preps
+XXXXXX ppc64/jhalfs/clfs-commands/final-preps
+6,7d5
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+12,13d9
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+XXXXXX sparc32/jhalfs/clfs-commands/final-preps
+5,8c5
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="sparc-unknown-linux-gnu"
+12,14d8
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+< export BUILD64="${BUILD64}"
+XXXXXX sparc64/jhalfs/clfs-commands/final-preps
+5,8c5,7
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="sparc64-unknown-linux-gnu"
+> export BUILD64="-m64 -mcpu=ultrasparc -mtune=ultrasparc"
+> export GCCTARGET="-mcpu=ultrasparc -mtune=ultrasparc"
+12,13d10
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+14a12
+> export GCCTARGET="${GCCTARGET}"
+XXXXXX sparcmulti/jhalfs/clfs-commands/final-preps
+5,8c5,9
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="sparc64-unknown-linux-gnu"
+> export CLFS_TARGET32="sparcv9-unknown-linux-gnu"
+> export BUILD32="-m32 -mcpu=ultrasparc -mtune=ultrasparc"
+> export BUILD64="-m64 -mcpu=ultrasparc -mtune=ultrasparc"
+> export GCCTARGET="-mcpu=ultrasparc -mtune=ultrasparc"
+14a16
+> export GCCTARGET="${GCCTARGET}"
+XXXXXX x64/jhalfs/clfs-commands/final-preps
+5,7c5
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+---
+> export CLFS_TARGET="x86_64-unknown-linux-gnu"
+12,13d9
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+XXXXXX x86/jhalfs/clfs-commands/final-preps
+5,8c5
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+< export BUILD32="-m32"
+< export BUILD64="-m64"
+---
+> export CLFS_TARGET="i486-pc-linux-gnu"
+12,14d8
+< export CLFS_TARGET32="${CLFS_TARGET32}"
+< export BUILD32="${BUILD32}"
+< export BUILD64="${BUILD64}"
+XXXXXX x86multi/jhalfs/clfs-commands/final-preps
+5,6c5,6
+< export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+< export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+---
+> export CLFS_TARGET="x86_64-unknown-linux-gnu"
+> export CLFS_TARGET32="i686-pc-linux-gnu"

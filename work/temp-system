@@ -1,0 +1,1530 @@
+=========== ppc32multi/jhalfs/clfs-commands/temp-system/046-introduction
+#!/bin/bash
+set +h
+set -e
+echo ${CLFS}
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/047-variables
+#!/bin/bash
+set +h
+set -e
+export CC="${CLFS_TARGET}-gcc ${BUILD64}"
+export CXX="${CLFS_TARGET}-g++ ${BUILD64}"
+export AR="${CLFS_TARGET}-ar"
+export AS="${CLFS_TARGET}-as"
+export RANLIB="${CLFS_TARGET}-ranlib"
+export LD="${CLFS_TARGET}-ld"
+export STRIP="${CLFS_TARGET}-strip"
+echo export CC=\""${CC}\"" >> ~/.bashrc
+echo export CXX=\""${CXX}\"" >> ~/.bashrc
+echo export AR=\""${AR}\"" >> ~/.bashrc
+echo export AS=\""${AS}\"" >> ~/.bashrc
+echo export RANLIB=\""${RANLIB}\"" >> ~/.bashrc
+echo export LD=\""${LD}\"" >> ~/.bashrc
+echo export STRIP=\""${STRIP}\"" >> ~/.bashrc
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/048-gmp
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+CC_FOR_BUILD=gcc \
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --libdir=/tools/lib64 \
+    --enable-cxx
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/049-mpfr
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+patch -Np1 -i ../mpfr-3.1.5-fixes-1.patch
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --libdir=/tools/lib64
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/050-mpc
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --libdir=/tools/lib64
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/051-isl
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --libdir=/tools/lib64
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/052-zlib
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --libdir=/tools/lib64
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/053-binutils
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+mkdir -v ../binutils-build
+cd ../binutils-build
+../binutils-2.28/configure \
+    --prefix=/tools \
+    --libdir=/tools/lib64 \
+    --with-lib-path=/tools/lib64:/tools/lib \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --target=${CLFS_TARGET} \
+    --disable-nls \
+    --enable-shared \
+    --enable-64-bit-bfd \
+    --enable-gold=yes \
+    --enable-plugins \
+    --with-system-zlib \
+    --enable-threads
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/054-gcc
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+cp -v gcc/Makefile.in{,.orig}
+sed 's@\./fixinc\.sh@-c true@' gcc/Makefile.in.orig > gcc/Makefile.in
+mkdir -v ../gcc-build
+cd ../gcc-build
+../gcc-7.1.0/configure \
+    --prefix=/tools \
+    --libdir=/tools/lib64 \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --target=${CLFS_TARGET} \
+    --with-local-prefix=/tools \
+    --enable-languages=c,c++ \
+    --with-system-zlib \
+    --with-native-system-header-dir=/tools/include \
+    --disable-libssp \
+    --enable-install-libiberty
+make AS_FOR_TARGET="${AS}" \
+    LD_FOR_TARGET="${LD}"
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/055-ncurses
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --with-shared \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --without-debug \
+    --without-ada \
+    --enable-overwrite \
+    --with-build-cc=gcc \
+    --libdir=/tools/lib64
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/056-bash
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+patch -Np1 -i ../bash-4.4-branch_update-1.patch
+cat > config.cache << "EOF"
+ac_cv_func_mmap_fixed_mapped=yes
+ac_cv_func_strcoll_works=yes
+ac_cv_func_working_mktime=yes
+bash_cv_func_sigsetjmp=present
+bash_cv_getcwd_malloc=yes
+bash_cv_job_control_missing=present
+bash_cv_printf_a_format=yes
+bash_cv_sys_named_pipes=present
+bash_cv_ulimit_maxfds=yes
+bash_cv_under_sys_siglist=yes
+bash_cv_unusable_rtsigs=no
+gt_cv_int_divbyzero_sigfpe=yes
+EOF
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --without-bash-malloc \
+    --cache-file=config.cache
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/057-bzip2
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+cp -v Makefile{,.orig}
+sed -e 's@^\(all:.*\) test@\1@g' \
+    -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+make CC="${CC}" AR="${AR}" RANLIB="${RANLIB}"
+make -j1 PREFIX=/tools install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/058-check
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --libdir=/tools/lib64
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/059-coreutils
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --enable-install-program=hostname \
+    --cache-file=config.cache
+sed -i -e 's/^man1_MANS/#man1_MANS/' Makefile
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/060-diffutils
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/061-file
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --libdir=/tools/lib64 \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/062-findutils
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+echo "gl_cv_func_wcwidth_works=yes" > config.cache
+echo "ac_cv_func_fnmatch_gnu=yes" >> config.cache
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --cache-file=config.cache
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/063-gawk
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/064-gettext
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+cd gettext-tools
+EMACS="no" \
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --disable-shared
+make -C gnulib-lib
+make -C intl pluralx.c
+make -C src msgfmt msgmerge xgettext
+cp -v src/{msgfmt,msgmerge,xgettext} /tools/bin
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/065-grep
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --without-included-regex
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/066-gzip
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/067-make
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/068-patch
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/069-sed
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/070-tar
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+cat > config.cache << EOF
+gl_cv_func_wcwidth_works=yes
+gl_cv_func_btowc_eof=yes
+ac_cv_func_malloc_0_nonnull=yes
+gl_cv_func_mbrtowc_incomplete_state=yes
+gl_cv_func_mbrtowc_nul_retval=yes
+gl_cv_func_mbrtowc_null_arg1=yes
+gl_cv_func_mbrtowc_null_arg2=yes
+gl_cv_func_mbrtowc_retval=yes
+gl_cv_func_wcrtomb_retval=yes
+EOF
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --cache-file=config.cache
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/071-texinfo
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+PERL=/usr/bin/perl \
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET}
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/072-util-linux
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+PKG_CONFIG_PATH="" ./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --libdir='${prefix}'/lib64 \
+    --disable-makeinstall-chown \
+    --disable-makeinstall-setuid \
+    --disable-nologin \
+    --without-python
+sed -i 's/-lncursesw -ltinfo/-lncurses/' Makefile
+sed -i 's/LIBNCURSESW/LIBNCURSES/' config.h
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/073-vim
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+patch -Np1 -i ../vim-8.0-branch_update-1.patch
+cat > src/auto/config.cache << "EOF"
+vim_cv_getcwd_broken=no
+vim_cv_memmove_handles_overlap=yes
+vim_cv_stat_ignores_slash=no
+vim_cv_terminfo=yes
+vim_cv_toupper_broken=no
+vim_cv_tty_group=world
+vim_cv_tgent=zero
+EOF
+echo '#define SYS_VIMRC_FILE "/tools/etc/vimrc"' >> src/feature.h
+./configure \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --prefix=/tools \
+    --enable-gui=no \
+    --disable-gtktest \
+    --disable-xim \
+    --disable-gpm \
+    --without-x \
+    --disable-netbeans \
+    --with-tlib=ncurses
+make
+make -j1 -j1 install
+ln -sv vim /tools/bin/vi
+cat > /tools/etc/vimrc << "EOF"
+" Begin /tools/etc/vimrc
+
+set nocompatible
+set backspace=2
+set ruler
+syntax on
+
+" End /tools/etc/vimrc
+EOF
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/074-xz
+#!/bin/bash
+set +h
+set -e
+cd $PKGDIR
+./configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --libdir=/tools/lib64
+make
+make -j1 install
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit=========== ppc32multi/jhalfs/clfs-commands/temp-system/075-choose
+#!/bin/bash
+set +h
+set -e
+uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+    echo "ok to chroot" || echo "you must boot"
+echo -e "\n\nTotalseconds: $SECONDS\n"
+exit
+================================================== DIFFS
+========================= introduction
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= variables
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< export CC="${CLFS_TARGET}-gcc ${BUILD64}"
+< export CXX="${CLFS_TARGET}-g++ ${BUILD64}"
+---
+> export CC="${CLFS_TARGET}-gcc"
+> export CXX="${CLFS_TARGET}-g++"
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< export CC="${CLFS_TARGET}-gcc ${BUILD64}"
+< export CXX="${CLFS_TARGET}-g++ ${BUILD64}"
+---
+> export CC="${CLFS_TARGET}-gcc"
+> export CXX="${CLFS_TARGET}-g++"
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< export CC="${CLFS_TARGET}-gcc ${BUILD64}"
+< export CXX="${CLFS_TARGET}-g++ ${BUILD64}"
+---
+> export CC="${CLFS_TARGET}-gcc"
+> export CXX="${CLFS_TARGET}-g++"
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< export CC="${CLFS_TARGET}-gcc ${BUILD64}"
+< export CXX="${CLFS_TARGET}-g++ ${BUILD64}"
+---
+> export CC="${CLFS_TARGET}-gcc"
+> export CXX="${CLFS_TARGET}-g++"
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= gmp
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+10d9
+<     --libdir=/tools/lib64 \
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= mpfr
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+9,10c9
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= mpc
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= isl
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= zlib
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+6,7c6
+<     --prefix=/tools \
+<     --libdir=/tools/lib64
+---
+>     --prefix=/tools
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= binutils
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16c15
+<     --enable-64-bit-bfd \
+---
+>     --disable-multilib \
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16a16
+>     --disable-multilib \
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16c15
+<     --enable-64-bit-bfd \
+---
+>     --disable-multilib \
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16a16
+>     --disable-multilib \
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16c15
+<     --enable-64-bit-bfd \
+---
+>     --disable-multilib \
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16a16
+>     --disable-multilib \
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16a16
+>     --disable-multilib \
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+9,10d8
+<     --libdir=/tools/lib64 \
+<     --with-lib-path=/tools/lib64:/tools/lib \
+13a12
+>     --with-lib-path=/tools/lib \
+16c15
+<     --enable-64-bit-bfd \
+---
+>     --disable-multilib \
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= gcc
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+6,7c6,7
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+14d13
+<     --libdir=/tools/lib64 \
+18a18
+>     --disable-multilib \
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+5,7c5,7
+< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+14c14
+<     --libdir=/tools/lib64 \
+---
+>     --disable-multilib \
+22d21
+<     --disable-libssp \
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+6,7c6,7
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+19a20
+>     --with-abi=64 \
+22d22
+<     --disable-libssp \
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+14d13
+<     --libdir=/tools/lib64 \
+18a18
+>     --disable-multilib \
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+5c5
+< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+---
+> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
+14c14
+<     --libdir=/tools/lib64 \
+---
+>     --disable-multilib \
+22d21
+<     --disable-libssp \
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+6,7c6,7
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+14d13
+<     --libdir=/tools/lib64 \
+18a18
+>     --disable-multilib \
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+5,7c5,7
+< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+14d13
+<     --libdir=/tools/lib64 \
+18a18
+>     --disable-multilib \
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+6,7c6,7
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+5,7c5,7
+< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+14d13
+<     --libdir=/tools/lib64 \
+18a18
+>     --disable-multilib \
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+6,7c6,7
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+14d13
+<     --libdir=/tools/lib64 \
+18a18
+>     --disable-multilib \
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+6,7c6,7
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+---
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+========================= ncurses
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+13,14c13
+<     --with-build-cc=gcc \
+<     --libdir=/tools/lib64
+---
+>     --with-build-cc=gcc
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= bash
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= bzip2
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+6,7c6
+< sed -e 's@^\(all:.*\) test@\1@g' \
+<     -e 's@/lib\(/\| \|$\)@/lib64\1@g' Makefile.orig > Makefile
+---
+> sed -e '/^all/s/ test$//' Makefile.orig > Makefile
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= check
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= coreutils
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= diffutils
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= file
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+7d6
+<     --libdir=/tools/lib64 \
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= findutils
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= gawk
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= gettext
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= grep
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= gzip
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= make
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= patch
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= sed
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= tar
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= texinfo
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= util-linux
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+5c5
+< PKG_CONFIG_PATH="" ./configure \
+---
+> ./configure \
+9d8
+<     --libdir='${prefix}'/lib64 \
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= vim
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= xz
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+8,9c8
+<     --host=${CLFS_TARGET} \
+<     --libdir=/tools/lib64
+---
+>     --host=${CLFS_TARGET}
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+========================= choose
+XXXXXX mips32/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX mips64/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX mipsmulti/jhalfs/clfs-commands/temp-system
+4,5c4,7
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/lib32/libc.so.6
+> /tools/lib64/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX ppc32/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX ppc32multi/jhalfs/clfs-commands/temp-system
+XXXXXX ppc64/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX sparc32/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX sparc64/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX sparcmulti/jhalfs/clfs-commands/temp-system
+4,5c4,6
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/lib64/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX x64/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX x86/jhalfs/clfs-commands/temp-system
+4,5c4,5
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/bin/gcc -v
+XXXXXX x86multi/jhalfs/clfs-commands/temp-system
+4,5c4,6
+< uname -a | grep '^Linux.*2\.6\..*ppc64' && \
+<     echo "ok to chroot" || echo "you must boot"
+---
+> /tools/lib/libc.so.6
+> /tools/lib64/libc.so.6
+> /tools/bin/gcc -v
