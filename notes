@@ -8,7 +8,7 @@
 7) --enable-isl location not consistent
 
 
-ppc64 ok with workaround fixes
+ppc64 fails due to screwed up library locations
 ppc32 ok with fixes
 ppcmulti failed in cross-tools
 x86_64 ok until chroot
