@@ -3,4 +3,12 @@
 2) gold should be disabled in temp and cross
 3) systemd script has messed up # after make
 4) glibc should back down to 3.2.0 from 3.12.0
-5) :
+5) yaboot build fails
+6) ppc64 create files failed
+
+
+ppc64 ok with workaround fixes
+ppc32 ok with fixes
+ppcmulti failed in cross-tools
+x86_64 ok until chroot
+
