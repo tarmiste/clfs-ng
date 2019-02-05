@@ -1,0 +1,6 @@
+
+1) eudev-1.7 needs an extra #include
+2) gold should be disabled in temp and cross
+3) systemd script has messed up # after make
+4) glibc should back down to 3.2.0 from 3.12.0
+5) :
