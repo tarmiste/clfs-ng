@@ -3,24 +3,51 @@ exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/042-gcc-static
 set +h
 set -e
 cd $PKGDIR
-#all pure64 do this instead: patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
-patch -Np1 -i ../gcc-7.1.0-specs-1.patch
-#
+case `echo $CLFS_LIB` in
+    32)
+        patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+        MULTILIB="--disable-multilib"
+    ;;
+    64
+        patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
+        MULTILIB="--disable-multilib"
+    ;;
+    MULTI)
+        patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+        MULTILIB="--enable-multilib"
+    ;;
+esac
+
+# not for ppc but benign.
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+# for ppc but benign.
+echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+
 touch /tools/include/limits.h
 mkdir -v ../gcc-build
 cd ../gcc-build
+
+
+##
+#XXXXXX mips64/jhalfs/clfs-commands/cross-tools
+#<     --disable-libstdc++-v3 \
+#---
+#>     --disable-libcilkrts \
+#39a41
+#>     --with-abi=64 \
+##
+
 AR=ar \
 LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
-#  Some moved but probably don't matter: --with-isl=/cross-tools \
-#  ALl non-multi add: >     --disable-multilib \
 ../gcc-7.1.0/configure \
     --prefix=/cross-tools \
     --build=${CLFS_HOST} \
     --host=${CLFS_HOST} \
     --target=${CLFS_TARGET} \
     --with-sysroot=${CLFS} \
+    ${MULTILIB} \
     --with-local-prefix=/tools \
     --with-native-system-header-dir=/tools/include \
     --disable-shared \
@@ -45,37 +72,4 @@ LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
     --with-glibc-version=2.25
 make all-gcc all-target-libgcc
 make -j1 install-gcc install-target-libgcc
-XXXXXX mips32/jhalfs/clfs-commands/cross-tools
-XXXXXX mips64/jhalfs/clfs-commands/cross-tools
-<     --disable-libstdc++-v3 \
----
->     --disable-libcilkrts \
-39a41
->     --with-abi=64 \
-XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
-XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
-6,7c6,7
-< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
-< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
----
-> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
-> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
-XXXXXX ppc32multi/jhalfs/clfs-commands/cross-tools
-XXXXXX ppc64/jhalfs/clfs-commands/cross-tools
-5,7c5,7
-< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
-< echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
----
-> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
-> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
----
-XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
----
-XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
-XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
-XXXXXX x64/jhalfs/clfs-commands/cross-tools
----
-XXXXXX x86/jhalfs/clfs-commands/cross-tools
----
-XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
 echo -e "\n\nTotalseconds: $SECONDS\n"

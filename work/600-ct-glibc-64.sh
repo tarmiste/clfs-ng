@@ -29,23 +29,4 @@ AR="${CLFS_TARGET}-ar" RANLIB="${CLFS_TARGET}-ranlib" \
     --cache-file=config.cache
 make
 make -j1 install
-XXXXXX mips32/jhalfs/clfs-commands/cross-tools
-diff: mips32/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX mips64/jhalfs/clfs-commands/cross-tools
-diff: mips64/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
-XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
-diff: ppc32/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX ppc32multi/jhalfs/clfs-commands/cross-tools
-XXXXXX ppc64/jhalfs/clfs-commands/cross-tools
-diff: ppc64/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
-diff: sparc32/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
-diff: sparc64/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX x64/jhalfs/clfs-commands/cross-tools
-diff: x64/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX x86/jhalfs/clfs-commands/cross-tools
-diff: x86/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
 echo -e "\n\nTotalseconds: $SECONDS\n"

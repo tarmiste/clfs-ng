@@ -45,111 +45,111 @@ case `echo $CLFS_ARCH` in
 MIPS)
    case `echo $CLFS_LIB` in
    32)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="mipsel-unknown-linux-gnu"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="mipsel-unknown-linux-gnu"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
 EOF
 ;;
    64)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="mips64el-unknown-linux-gnu"
-export BUILD64="-mabi=64"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export BUILD64="${BUILD64}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="mips64el-unknown-linux-gnu"
+            export BUILD64="-mabi=64"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export BUILD64="${BUILD64}"
 EOF
 ;;
    MULTI)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="mips64el-unknown-linux-gnu"
-export CLFS_TARGET32="$(echo ${CLFS_TARGET}| sed -e 's/64//g')"
-export BUILD32="-mabi=32"
-export BUILDN32="-mabi=n32"
-export BUILD64="-mabi=64"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export CLFS_TARGET32="${CLFS_TARGET32}"
-export BUILD32="${BUILD32}"
-export BUILDN32="${BUILDN32}"
-export BUILD64="${BUILD64}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="mips64el-unknown-linux-gnu"
+            export CLFS_TARGET32="$(echo ${CLFS_TARGET}| sed -e 's/64//g')"
+            export BUILD32="-mabi=32"
+            export BUILDN32="-mabi=n32"
+            export BUILD64="-mabi=64"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_TARGET32="${CLFS_TARGET32}"
+            export BUILD32="${BUILD32}"
+            export BUILDN32="${BUILDN32}"
+            export BUILD64="${BUILD64}"
 EOF
 ;;
    esac ;;
 POWERPC)
    case `echo $CLFS_LIB` in
    32)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="powerpc-unknown-linux-gnu"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="powerpc-unknown-linux-gnu"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
 EOF
 ;;
    64)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="powerpc64-unknown-linux-gnu"
-export BUILD64="-m64"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export BUILD64="${BUILD64}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+            export BUILD64="-m64"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export BUILD64="${BUILD64}"
 EOF
 ;;
    MULTI)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="powerpc64-unknown-linux-gnu"
-export CLFS_TARGET32="powerpc-unknown-linux-gnu"
-export BUILD32="-m32"
-export BUILD64="-m64"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export CLFS_TARGET32="${CLFS_TARGET32}"
-export BUILD32="${BUILD32}"
-export BUILD64="${BUILD64}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="powerpc64-unknown-linux-gnu"
+            export CLFS_TARGET32="powerpc-unknown-linux-gnu"
+            export BUILD32="-m32"
+            export BUILD64="-m64"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_TARGET32="${CLFS_TARGET32}"
+            export BUILD32="${BUILD32}"
+            export BUILD64="${BUILD64}"
 EOF
 ;;
    esac ;;
 SPARC)
    case `echo $CLFS_LIB` in
    32)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="sparc-unknown-linux-gnu"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="sparc-unknown-linux-gnu"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
 EOF
 ;;
    64)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="sparc64-unknown-linux-gnu"
-export BUILD64="-m64 -mcpu=ultrasparc -mtune=ultrasparc"
-export GCCTARGET="-mcpu=ultrasparc -mtune=ultrasparc"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export BUILD64="${BUILD64}"
-export GCCTARGET="${GCCTARGET}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="sparc64-unknown-linux-gnu"
+            export BUILD64="-m64 -mcpu=ultrasparc -mtune=ultrasparc"
+            export GCCTARGET="-mcpu=ultrasparc -mtune=ultrasparc"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export BUILD64="${BUILD64}"
+            export GCCTARGET="${GCCTARGET}"
 EOF
 ;;
    MULTI)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="sparc64-unknown-linux-gnu"
-export CLFS_TARGET32="sparcv9-unknown-linux-gnu"
-export BUILD32="-m32 -mcpu=ultrasparc -mtune=ultrasparc"
-export BUILD64="-m64 -mcpu=ultrasparc -mtune=ultrasparc"
-export GCCTARGET="-mcpu=ultrasparc -mtune=ultrasparc"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export CLFS_TARGET32="${CLFS_TARGET32}"
-export BUILD32="${BUILD32}"
-export BUILD64="${BUILD64}"
-export GCCTARGET="${GCCTARGET}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="sparc64-unknown-linux-gnu"
+            export CLFS_TARGET32="sparcv9-unknown-linux-gnu"
+            export BUILD32="-m32 -mcpu=ultrasparc -mtune=ultrasparc"
+            export BUILD64="-m64 -mcpu=ultrasparc -mtune=ultrasparc"
+            export GCCTARGET="-mcpu=ultrasparc -mtune=ultrasparc"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_TARGET32="${CLFS_TARGET32}"
+            export BUILD32="${BUILD32}"
+            export BUILD64="${BUILD64}"
+            export GCCTARGET="${GCCTARGET}"
 EOF
 ;;
    esac ;;
@@ -157,35 +157,35 @@ EOF
 INTEL)
    case `echo $CLFS_LIB` in
    32)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="i486-pc-linux-gnu"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="i486-pc-linux-gnu"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
 EOF
 ;;
    64)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="x86_64-unknown-linux-gnu"
-export BUILD64="-m64"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export BUILD64="${BUILD64}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="x86_64-unknown-linux-gnu"
+            export BUILD64="-m64"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export BUILD64="${BUILD64}"
 EOF
 ;;
    MULTI)
-export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
-export CLFS_TARGET="x86_64-unknown-linux-gnu"
-export CLFS_TARGET32="i686-pc-linux-gnu"
-export BUILD32="-m32"
-export BUILD64="-m64"
-cat >> ~/.bashrc << EOF
-export CLFS_HOST="${CLFS_HOST}"
-export CLFS_TARGET="${CLFS_TARGET}"
-export CLFS_TARGET32="${CLFS_TARGET32}"
-export BUILD32="${BUILD32}"
-export BUILD64="${BUILD64}"
+            export CLFS_HOST=$(echo ${MACHTYPE} | sed -e 's/-[^-]*/-cross/')
+            export CLFS_TARGET="x86_64-unknown-linux-gnu"
+            export CLFS_TARGET32="i686-pc-linux-gnu"
+            export BUILD32="-m32"
+            export BUILD64="-m64"
+            cat >> ~/.bashrc << EOF
+            export CLFS_HOST="${CLFS_HOST}"
+            export CLFS_TARGET="${CLFS_TARGET}"
+            export CLFS_TARGET32="${CLFS_TARGET32}"
+            export BUILD32="${BUILD32}"
+            export BUILD64="${BUILD64}"
 EOF
 ;;
 
