@@ -16,44 +16,33 @@ set -e
 cd $PKGDIR
 xzcat ../patch-4.9.21.xz | patch -Np1 -i -
 make -j1 mrproper
+ALL power pc   (double check)
 make ARCH=powerpc headers_check
 make ARCH=powerpc INSTALL_HDR_PATH=/tools headers_install
 echo -e "\n\nTotalseconds: $SECONDS\n"
 XXXXXX mips32/jhalfs/clfs-commands/cross-tools
-7,8c7,8
-> make ARCH=mips headers_check
-> make ARCH=mips INSTALL_HDR_PATH=/tools headers_install
-XXXXXX mips64/jhalfs/clfs-commands/cross-tools
-7,8c7,8
-> make ARCH=mips headers_check
-> make ARCH=mips INSTALL_HDR_PATH=/tools headers_install
-XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
-7,8c7,8
+# all mips
 > make ARCH=mips headers_check
 > make ARCH=mips INSTALL_HDR_PATH=/tools headers_install
 XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
-7,8c7,8
+SPARC32
 > make ARCH=sparc headers_check
 > make ARCH=sparc INSTALL_HDR_PATH=/tools headers_install
 XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
-7,8c7,8
-> make ARCH=sparc64 headers_check
-> make ARCH=sparc64 INSTALL_HDR_PATH=/tools headers_install
-XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
-7,8c7,8
+SPARC64 and MULTI
 > make ARCH=sparc64 headers_check
 > make ARCH=sparc64 INSTALL_HDR_PATH=/tools headers_install
 XXXXXX x64/jhalfs/clfs-commands/cross-tools
 7,8c7,8
+x86 64 and MULTI
 > make ARCH=x86_64 headers_check
 > make ARCH=x86_64 INSTALL_HDR_PATH=/tools headers_install
 XXXXXX x86/jhalfs/clfs-commands/cross-tools
 7,8c7,8
+X86 32
 > make ARCH=i386 headers_check
 > make ARCH=i386 INSTALL_HDR_PATH=/tools headers_install
-XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
-> make ARCH=x86_64 headers_check
-> make ARCH=x86_64 INSTALL_HDR_PATH=/tools headers_install
+
 exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/034-m4
 #!/bin/bash
 #same
@@ -86,54 +75,31 @@ cd $PKGDIR
 ./configure \
     --prefix=/cross-tools \
     --host=${CLFS_TARGET} \
+#all multi:
     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
+XXXXXX mips32/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX mips64/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
+XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX ppc32multi/jhalfs/clfs-commands/cross-tools
+XXXXXX ppc64/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
+XXXXXX x64/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX x86/jhalfs/clfs-commands/cross-tools
+    --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
+XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
 make
 make -j1 install
 
-XXXXXX mips32/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX mips64/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
-XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX ppc32multi/jhalfs/clfs-commands/cross-tools
-XXXXXX ppc64/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
-XXXXXX x64/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX x86/jhalfs/clfs-commands/cross-tools
-8c8
-<     --with-pc-path=/tools/lib64/pkgconfig:/tools/share/pkgconfig
----
->     --with-pc-path=/tools/lib/pkgconfig:/tools/share/pkgconfig
-XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
 echo -e "\n\nTotalseconds: $SECONDS\n"
 exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/037-gmp
 #!/bin/bash
@@ -200,6 +166,10 @@ cd $PKGDIR
 mkdir -v ../binutils-build
 cd ../binutils-build
 AR=ar AS=as \
+#all multi same as original
+#all non-multi add: >     --disable-multilib \
+#all non-multi chg: >     --with-lib-path=/tools/lib \
+#all 32bit builds remove: <     --enable-64-bit-bfd \
 ../binutils-2.28/configure \
     --prefix=/cross-tools \
     --host=${CLFS_HOST} \
@@ -216,56 +186,20 @@ AR=ar AS=as \
 make
 make -j1 install
 XXXXXX mips32/jhalfs/clfs-commands/cross-tools
----
->     --with-lib-path=/tools/lib \
-16c16
 <     --enable-64-bit-bfd \
----
->     --disable-multilib \
 XXXXXX mips64/jhalfs/clfs-commands/cross-tools
----
->     --with-lib-path=/tools/lib \
-16a17
->     --disable-multilib \
 XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
 XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
----
->     --with-lib-path=/tools/lib \
-16c16
 <     --enable-64-bit-bfd \
----
->     --disable-multilib \
-XXXXXX ppc32multi/jhalfs/clfs-commands/cross-tools
 XXXXXX ppc64/jhalfs/clfs-commands/cross-tools
----
->     --with-lib-path=/tools/lib \
-16a17
->     --disable-multilib \
 XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
----
->     --with-lib-path=/tools/lib \
-16c16
 <     --enable-64-bit-bfd \
----
->     --disable-multilib \
 XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
 ---
->     --with-lib-path=/tools/lib \
-16a17
->     --disable-multilib \
 XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
 XXXXXX x64/jhalfs/clfs-commands/cross-tools
----
->     --with-lib-path=/tools/lib \
-16a17
->     --disable-multilib \
 XXXXXX x86/jhalfs/clfs-commands/cross-tools
----
->     --with-lib-path=/tools/lib \
-16c16
 <     --enable-64-bit-bfd \
----
->     --disable-multilib \
 XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
 echo -e "\n\nTotalseconds: $SECONDS\n"
 exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/042-gcc-static
@@ -273,7 +207,9 @@ exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/042-gcc-static
 set +h
 set -e
 cd $PKGDIR
+#all pure64 do this instead: patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
 patch -Np1 -i ../gcc-7.1.0-specs-1.patch
+#
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
 touch /tools/include/limits.h
@@ -281,6 +217,8 @@ mkdir -v ../gcc-build
 cd ../gcc-build
 AR=ar \
 LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
+#  Some moved but probably don't matter: --with-isl=/cross-tools \
+#  ALl non-multi add: >     --disable-multilib \
 ../gcc-7.1.0/configure \
     --prefix=/cross-tools \
     --build=${CLFS_HOST} \
@@ -312,27 +250,10 @@ LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
 make all-gcc all-target-libgcc
 make -j1 install-gcc install-target-libgcc
 XXXXXX mips32/jhalfs/clfs-commands/cross-tools
-23a24
->     --with-isl=/cross-tools \
-38c39
-<     --with-isl=/cross-tools \
----
->     --disable-multilib \
 XXXXXX mips64/jhalfs/clfs-commands/cross-tools
-5c5
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
----
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
-23a24
->     --with-isl=/cross-tools \
-36c37
 <     --disable-libstdc++-v3 \
 ---
 >     --disable-libcilkrts \
-38c39
-<     --with-isl=/cross-tools \
----
->     --disable-multilib \
 39a41
 >     --with-abi=64 \
 XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
@@ -343,69 +264,28 @@ XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
 ---
 > echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
 > echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
-23a24
->     --with-isl=/cross-tools \
-38c39
-<     --with-isl=/cross-tools \
----
->     --disable-multilib \
 XXXXXX ppc32multi/jhalfs/clfs-commands/cross-tools
 XXXXXX ppc64/jhalfs/clfs-commands/cross-tools
 5,7c5,7
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
 < echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
 < echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
 ---
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
 > echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
 > echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
-23a24
->     --with-isl=/cross-tools \
-38c39
-<     --with-isl=/cross-tools \
 ---
->     --disable-multilib \
 XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
-23a24
->     --with-isl=/cross-tools \
-38c39
-<     --with-isl=/cross-tools \
 ---
->     --disable-multilib \
 XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
-5c5
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
----
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
-23a24
->     --with-isl=/cross-tools \
-38c39
-<     --with-isl=/cross-tools \
----
->     --disable-multilib \
 XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
 XXXXXX x64/jhalfs/clfs-commands/cross-tools
-5c5
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
 ---
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
-23a24
->     --with-isl=/cross-tools \
-38c39
-<     --with-isl=/cross-tools \
----
->     --disable-multilib \
 XXXXXX x86/jhalfs/clfs-commands/cross-tools
-23a24
->     --with-isl=/cross-tools \
-38c39
-<     --with-isl=/cross-tools \
 ---
->     --disable-multilib \
 XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
 echo -e "\n\nTotalseconds: $SECONDS\n"
 exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/043-glibc
 #!/bin/bash
+#all multi are same
 set +h
 set -e
 cd $PKGDIR
@@ -540,6 +420,15 @@ cd $PKGDIR
 mkdir -v ../glibc-build
 cd ../glibc-build
 echo "libc_cv_slibdir=/tools/lib64" >> config.cache
+#all same except for:
+XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
+6a7,12
+> cat > config.cache << "EOF"
+> libc_cv_forced_unwind=yes
+> libc_cv_c_cleanup=yes
+> libc_cv_sparc64_tls=yes
+> libc_cv_gnu89_inline=yes
+> EOF
 BUILD_CC="gcc" CC="${CLFS_TARGET}-gcc ${BUILD64}" \
 AR="${CLFS_TARGET}-ar" RANLIB="${CLFS_TARGET}-ranlib" \
 ../glibc-2.25/configure \
@@ -568,14 +457,6 @@ XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
 diff: sparc32/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
 XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
 diff: sparc64/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
-XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
-6a7,12
-> cat > config.cache << "EOF"
-> libc_cv_forced_unwind=yes
-> libc_cv_c_cleanup=yes
-> libc_cv_sparc64_tls=yes
-> libc_cv_gnu89_inline=yes
-> EOF
 XXXXXX x64/jhalfs/clfs-commands/cross-tools
 diff: x64/jhalfs/clfs-commands/cross-tools/*glibc-64: No such file or directory
 XXXXXX x86/jhalfs/clfs-commands/cross-tools
@@ -587,13 +468,21 @@ exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/045-gcc-final
 set +h
 set -e
 cd $PKGDIR
+#all pure64 do this instead: > patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
 patch -Np1 -i ../gcc-7.1.0-specs-1.patch
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+# ppc32 and ppc64 do this instead of above:
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
+> echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
+#
 mkdir -v ../gcc-build
 cd ../gcc-build
 AR=ar \
 LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
+# some move this but probably don't matter: <     --with-isl=/cross-tools
+# all non-multi add: >     --disable-multilib \
+# most non-multi add: >     --disable-nls \
 ../gcc-7.1.0/configure \
     --prefix=/cross-tools \
     --build=${CLFS_HOST} \
@@ -614,19 +503,8 @@ make -j1 install
 XXXXXX mips32/jhalfs/clfs-commands/cross-tools
 19a20
 >     --disable-nls \
-21a23
->     --disable-multilib \
 XXXXXX mips64/jhalfs/clfs-commands/cross-tools
-5c5
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
----
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
-21a22
->     --disable-multilib \
 25c26,27
-<     --with-isl=/cross-tools
----
->     --with-isl=/cross-tools \
 >     --with-abi=64
 XXXXXX mipsmulti/jhalfs/clfs-commands/cross-tools
 XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
@@ -638,51 +516,28 @@ XXXXXX ppc32/jhalfs/clfs-commands/cross-tools
 > echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
 19a20
 >     --disable-nls \
-21a23
->     --disable-multilib \
 XXXXXX ppc32multi/jhalfs/clfs-commands/cross-tools
 XXXXXX ppc64/jhalfs/clfs-commands/cross-tools
 5,7c5,7
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
 < echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
 < echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
 ---
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
 > echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
 > echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
 19a20
 >     --disable-nls \
-21a23
->     --disable-multilib \
 XXXXXX sparc32/jhalfs/clfs-commands/cross-tools
 19a20
 >     --disable-nls \
-21a23
->     --disable-multilib \
 XXXXXX sparc64/jhalfs/clfs-commands/cross-tools
-5c5
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
----
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
 19a20
 >     --disable-nls \
-21a23
->     --disable-multilib \
 XXXXXX sparcmulti/jhalfs/clfs-commands/cross-tools
 XXXXXX x64/jhalfs/clfs-commands/cross-tools
-5c5
-< patch -Np1 -i ../gcc-7.1.0-specs-1.patch
----
-> patch -Np1 -i ../gcc-7.1.0-pure64_specs-1.patch
-19a20
 >     --disable-nls \
-21a23
->     --disable-multilib \
 XXXXXX x86/jhalfs/clfs-commands/cross-tools
 19a20
 >     --disable-nls \
-21a23
->     --disable-multilib \
 XXXXXX x86multi/jhalfs/clfs-commands/cross-tools
 echo -e "\n\nTotalseconds: $SECONDS\n"
 exit
