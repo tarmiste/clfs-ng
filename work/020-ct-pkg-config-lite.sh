@@ -1,4 +1,3 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/036-pkg-config-lite
 #!/bin/bash
 set +h
 set -e
@@ -18,7 +17,6 @@ esac
     --host=${CLFS_TARGET} \
     --with-pc-path=${PC_PATH}
 
-esac
 make
 make -j1 install
 

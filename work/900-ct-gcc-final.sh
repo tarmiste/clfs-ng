@@ -1,4 +1,3 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/045-gcc-final
 #!/bin/bash
 set +h
 set -e
@@ -21,19 +20,22 @@ esac
 
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/linux.h
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/linux.h
+# PPC
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_1\n#define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"\n' >> gcc/config/rs6000/sysv4.h
 echo -en '\n#undef STANDARD_STARTFILE_PREFIX_2\n#define STANDARD_STARTFILE_PREFIX_2 ""\n' >> gcc/config/rs6000/sysv4.h
 
 #
 mkdir -v ../gcc-build
 cd ../gcc-build
-AR=ar \
-LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
+
 ##
 # most non-multi added: >     --disable-nls \
 #XXXXXX mips64/jhalfs/clfs-commands/cross-tools
 #>     --with-abi=64
 ##
+
+AR=ar \
+LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
 ../gcc-7.1.0/configure \
     --prefix=/cross-tools \
     --build=${CLFS_HOST} \

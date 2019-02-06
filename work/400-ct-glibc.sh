@@ -1,9 +1,8 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/043-glibc
 #!/bin/bash
-#all multi are same
 set +h
 set -e
 cd $PKGDIR
+
 mkdir -v ../glibc-build
 cd ../glibc-build
 
@@ -18,7 +17,7 @@ case `echo $CLFS_LIB` in
             --prefix=/tools \
             --host=${CLFS_TARGET} \
             --build=${CLFS_HOST} \
-            --enable-kernel=3.12.0 \
+            --enable-kernel=3.2.0 \
             --with-binutils=/cross-tools/bin \
             --with-headers=/tools/include \
             --enable-obsolete-rpc
@@ -30,7 +29,7 @@ case `echo $CLFS_LIB` in
             --prefix=/tools \
             --host=${CLFS_TARGET} \
             --build=${CLFS_HOST} \
-            --enable-kernel=3.12.0 \
+            --enable-kernel=3.2.0 \
             --with-binutils=/cross-tools/bin \
             --with-headers=/tools/include \
             --enable-obsolete-rpc
@@ -42,7 +41,7 @@ case `echo $CLFS_LIB` in
             --prefix=/tools \
             --host=${CLFS_TARGET32} \
             --build=${CLFS_HOST} \
-            --enable-kernel=3.12.0 \
+            --enable-kernel=3.2.0 \
             --with-binutils=/cross-tools/bin \
             --with-headers=/tools/include \
             --enable-obsolete-rpc

@@ -1,6 +1,4 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/039-mpc
 #!/bin/bash
-#same
 set +h
 set -e
 cd $PKGDIR

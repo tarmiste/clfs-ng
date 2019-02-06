@@ -1,5 +1,3 @@
-=========== ppc32multi/jhalfs/clfs-commands/cross-tools/032-file
-#same
 #!/bin/bash
 set +h
 set -e

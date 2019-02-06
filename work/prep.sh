@@ -1,12 +1,11 @@
-#=========== ppc32multi/jhalfs/clfs-commands/final-preps/025-creatingtoolsdir
+#=========== ppc32multi/jhalfs/clfs-commands/final-preps/start
 #same
+
 install -dv ${CLFS}/tools
 ln -sv ${CLFS}/tools /
-
-#=========== ppc32multi/jhalfs/clfs-commands/final-preps/026-creatingcrossdir
-#same
 install -dv ${CLFS}/cross-tools
 ln -sv ${CLFS}/cross-tools /
+mkdir -pv ${CLFS}/sources
 
 #=========== ppc32multi/jhalfs/clfs-commands/final-preps/027-addinguser
 #same

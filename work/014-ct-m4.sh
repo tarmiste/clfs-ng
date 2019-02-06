@@ -1,4 +1,3 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/034-m4
 #!/bin/bash
 #same
 set +h

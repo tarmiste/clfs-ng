@@ -1,6 +1,4 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/037-gmp
 #!/bin/bash
-#same
 set +h
 set -e
 cd $PKGDIR

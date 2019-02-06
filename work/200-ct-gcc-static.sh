@@ -1,4 +1,3 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/042-gcc-static
 #!/bin/bash
 set +h
 set -e
@@ -70,6 +69,7 @@ LDFLAGS="-Wl,-rpath,/cross-tools/lib" \
     --with-isl=/cross-tools \
     --enable-languages=c \
     --with-glibc-version=2.25
+
 make all-gcc all-target-libgcc
 make -j1 install-gcc install-target-libgcc
 echo -e "\n\nTotalseconds: $SECONDS\n"

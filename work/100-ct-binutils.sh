@@ -1,4 +1,3 @@
-exit=========== ppc32multi/jhalfs/clfs-commands/cross-tools/041-binutils
 #!/bin/bash
 set +h
 set -e

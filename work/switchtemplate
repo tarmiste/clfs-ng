@@ -1,0 +1,46 @@
+case `echo $CLFS_ARCH` in
+    MIPS)
+        case `echo $CLFS_LIB` in
+        32)
+        ;;
+        64)
+        ;;
+        MULTI)
+        ;;
+        esac
+    ;;
+    
+    POWERPC)
+        case `echo $CLFS_LIB` in
+        32)
+        ;;
+        64)
+        ;;
+        MULTI)
+        ;;
+        esac
+    ;;
+    
+    SPARC)
+        case `echo $CLFS_LIB` in
+        32)
+        ;;
+        64)
+        ;;
+        MULTI)
+        ;;
+        esac
+    ;;
+    
+    INTEL)
+        case `echo $CLFS_LIB` in
+        32)
+        ;;
+        64)
+        ;;
+        MULTI)
+        ;;
+        esac
+    ;;
+    
+esac
