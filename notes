@@ -10,6 +10,9 @@
 
 ppc64 fails due to screwed up library locations
 ppc32 ok with fixes
-ppcmulti failed in cross-tools
-x86_64 ok until chroot
+ppcmulti failed in cross-tools  maybe fixed now...  Bad PREFIX goo.
+x86_64 ok until chroot.  fixed Failed bc, failed gettext, systemd never stopped building.??
+
+
+
 
