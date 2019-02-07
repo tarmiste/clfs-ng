@@ -207,7 +207,7 @@
 <!ENTITY glibc-md5 "1496c3bf41adf9db0ebd0af01f202eed">
 <!ENTITY glibc-home "&gnu-software;libc/">
 <!ENTITY glibc-ld-name "ld-&glibc-version;.so">
-<!ENTITY glibc-kernel-version "3.12.0">
+<!ENTITY glibc-kernel-version "3.2.0">
 
 <!ENTITY gmp-version "6.1.2">
 <!ENTITY gmp-size "1,946 KB">

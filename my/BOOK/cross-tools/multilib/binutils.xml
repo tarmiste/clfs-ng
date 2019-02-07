@@ -57,7 +57,6 @@
     --disable-nls \
     --disable-static \
     --enable-64-bit-bfd \
-    --enable-gold=yes \
     --enable-plugins \
     --enable-threads \
     --disable-werror</userinput></screen>

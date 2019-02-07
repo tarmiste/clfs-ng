@@ -6,6 +6,9 @@
 5) yaboot build fails
 6) ppc64 create files failed
 7) --enable-isl location not consistent
+8) gcc pure64 specs patch broken i think.   puts stuff in /tools/lib64 for powerpc.
+9) need to disable stack protector in powerpc glibc 32 bit build
+10) jhalfs puts weird make -k command in gcc build
 
 
 ppc64 fails due to screwed up library locations

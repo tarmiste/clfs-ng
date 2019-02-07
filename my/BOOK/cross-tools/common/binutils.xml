@@ -58,7 +58,6 @@
     --disable-nls \
     --disable-static \
     --disable-multilib \
-    --enable-gold=yes \
     --enable-plugins \
     --enable-threads \
     --disable-werror</userinput></screen>

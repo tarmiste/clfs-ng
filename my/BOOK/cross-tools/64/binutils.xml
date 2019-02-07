@@ -59,7 +59,6 @@
     --disable-static \
     --enable-64-bit-bfd \
     --disable-multilib \
-    --enable-gold=yes \
     --enable-plugins \
     --enable-threads \
     --disable-werror</userinput></screen>
