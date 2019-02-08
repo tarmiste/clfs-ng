@@ -85,12 +85,12 @@
 
 <!-- Start of Pure64 patches -->
 
-<!ENTITY gcc-pure64-patch "gcc-&gcc-version;-pure64-1.patch">
-<!ENTITY gcc-pure64-patch-md5 "5dd40881cfdc18efecb70a8e024b5fc0">
+<!ENTITY gcc-pure64-patch "gcc-&gcc-version;-pure64-2.patch">
+<!ENTITY gcc-pure64-patch-md5 "7d6e3f9419fe2fc032da4c5878fbec13">
 <!ENTITY gcc-pure64-patch-size "9.124 KB">
 
-<!ENTITY gcc-specs_pure64-patch "gcc-&gcc-version;-pure64_specs-1.patch">
-<!ENTITY gcc-specs_pure64-patch-md5 "4450a0fa28ec9454df8c229d4c194720">
+<!ENTITY gcc-specs_pure64-patch "gcc-&gcc-version;-pure64_specs-2.patch">
+<!ENTITY gcc-specs_pure64-patch-md5 "4c6866da93add51341c042eb6b321ef1">
 <!ENTITY gcc-specs_pure64-patch-size "20 KB">
 
 <!-- Start of mips/mips64 patches -->
