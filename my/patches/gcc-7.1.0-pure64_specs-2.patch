@@ -1,17 +1,6 @@
-Submitted By: William Harrington <kb0iic at cross-lfs dot org>
-Date: 05-13-2017
-Initial Package Version: 6.1.0
-Origin: Idea originally developed by Ryan Oliver and Greg Schafer for
-        the Pure LFS project with help from
-        Martin Ward and Chris Staub
-Upstream Status: Not Applied - CLFS Specific
-Description: This patch makes changes to the paths for pure64, eg 64bit libs
-             in /usr/lib, 32bit in /usr/lib32.
-Comment: Rediffed for 7.1.0
-
-diff -Naur gcc-7.1.0.orig/gcc/config/aarch64/aarch64-linux.h gcc-7.1.0/gcc/config/aarch64/aarch64-linux.h
---- gcc-7.1.0.orig/gcc/config/aarch64/aarch64-linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/aarch64/aarch64-linux.h	2017-05-14 03:36:52.526644991 +0000
+diff -Naur a/gcc/config/aarch64/aarch64-linux.h b/gcc/config/aarch64/aarch64-linux.h
+--- a/gcc/config/aarch64/aarch64-linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/aarch64/aarch64-linux.h	2019-02-08 09:44:24.424753819 -0700
 @@ -21,7 +21,7 @@
  #ifndef GCC_AARCH64_LINUX_H
  #define GCC_AARCH64_LINUX_H
@@ -21,9 +10,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/aarch64/aarch64-linux.h gcc-7.1.0/gcc/confi
  
  #undef MUSL_DYNAMIC_LINKER
  #define MUSL_DYNAMIC_LINKER "/lib/ld-musl-aarch64%{mbig-endian:_be}%{mabi=ilp32:_ilp32}.so.1"
-diff -Naur gcc-7.1.0.orig/gcc/config/alpha/linux-elf.h gcc-7.1.0/gcc/config/alpha/linux-elf.h
---- gcc-7.1.0.orig/gcc/config/alpha/linux-elf.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/alpha/linux-elf.h	2017-05-14 03:36:52.526644991 +0000
+diff -Naur a/gcc/config/alpha/linux-elf.h b/gcc/config/alpha/linux-elf.h
+--- a/gcc/config/alpha/linux-elf.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/alpha/linux-elf.h	2019-02-08 09:44:24.425753819 -0700
 @@ -23,8 +23,8 @@
  #define EXTRA_SPECS \
  { "elf_dynamic_linker", ELF_DYNAMIC_LINKER },
@@ -35,9 +24,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/alpha/linux-elf.h gcc-7.1.0/gcc/config/alph
  #if DEFAULT_LIBC == LIBC_UCLIBC
  #define CHOOSE_DYNAMIC_LINKER(G, U) "%{mglibc:" G ";:" U "}"
  #elif DEFAULT_LIBC == LIBC_GLIBC
-diff -Naur gcc-7.1.0.orig/gcc/config/arm/linux-eabi.h gcc-7.1.0/gcc/config/arm/linux-eabi.h
---- gcc-7.1.0.orig/gcc/config/arm/linux-eabi.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/arm/linux-eabi.h	2017-05-14 03:36:52.527645006 +0000
+diff -Naur a/gcc/config/arm/linux-eabi.h b/gcc/config/arm/linux-eabi.h
+--- a/gcc/config/arm/linux-eabi.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/arm/linux-eabi.h	2019-02-08 09:44:24.426753819 -0700
 @@ -62,8 +62,8 @@
     GLIBC_DYNAMIC_LINKER_DEFAULT and TARGET_DEFAULT_FLOAT_ABI.  */
  
@@ -49,9 +38,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/arm/linux-eabi.h gcc-7.1.0/gcc/config/arm/l
  #define GLIBC_DYNAMIC_LINKER_DEFAULT GLIBC_DYNAMIC_LINKER_SOFT_FLOAT
  
  #define GLIBC_DYNAMIC_LINKER \
-diff -Naur gcc-7.1.0.orig/gcc/config/arm/linux-elf.h gcc-7.1.0/gcc/config/arm/linux-elf.h
---- gcc-7.1.0.orig/gcc/config/arm/linux-elf.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/arm/linux-elf.h	2017-05-14 03:36:52.527645006 +0000
+diff -Naur a/gcc/config/arm/linux-elf.h b/gcc/config/arm/linux-elf.h
+--- a/gcc/config/arm/linux-elf.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/arm/linux-elf.h	2019-02-08 09:44:24.427753819 -0700
 @@ -60,7 +60,7 @@
  
  #define LIBGCC_SPEC "%{mfloat-abi=soft*:-lfloat} -lgcc"
@@ -61,9 +50,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/arm/linux-elf.h gcc-7.1.0/gcc/config/arm/li
  
  #define LINUX_TARGET_LINK_SPEC  "%{h*} \
     %{static:-Bstatic} \
-diff -Naur gcc-7.1.0.orig/gcc/config/bfin/linux.h gcc-7.1.0/gcc/config/bfin/linux.h
---- gcc-7.1.0.orig/gcc/config/bfin/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/bfin/linux.h	2017-05-14 03:36:52.528645020 +0000
+diff -Naur a/gcc/config/bfin/linux.h b/gcc/config/bfin/linux.h
+--- a/gcc/config/bfin/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/bfin/linux.h	2019-02-08 09:44:24.427753819 -0700
 @@ -48,7 +48,7 @@
    %{shared:-G -Bdynamic} \
    %{!shared: %{!static: \
@@ -73,9 +62,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/bfin/linux.h gcc-7.1.0/gcc/config/bfin/linu
     %{static}} -init __init -fini __fini"
  
  #undef TARGET_SUPPORTS_SYNC_CALLS
-diff -Naur gcc-7.1.0.orig/gcc/config/c6x/uclinux-elf.h gcc-7.1.0/gcc/config/c6x/uclinux-elf.h
---- gcc-7.1.0.orig/gcc/config/c6x/uclinux-elf.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/c6x/uclinux-elf.h	2017-05-14 03:36:52.528645020 +0000
+diff -Naur a/gcc/config/c6x/uclinux-elf.h b/gcc/config/c6x/uclinux-elf.h
+--- a/gcc/config/c6x/uclinux-elf.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/c6x/uclinux-elf.h	2019-02-08 09:44:24.428753819 -0700
 @@ -36,7 +36,7 @@
  #define STARTFILE_SPEC \
    "%{!shared:crt1%O%s} crti%O%s %{shared|pie:crtbeginS.o%s;:crtbegin.o%s}"
@@ -85,9 +74,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/c6x/uclinux-elf.h gcc-7.1.0/gcc/config/c6x/
  
  #undef LINK_SPEC
  #define LINK_SPEC ENDIAN_LINK_SPEC \
-diff -Naur gcc-7.1.0.orig/gcc/config/cris/linux.h gcc-7.1.0/gcc/config/cris/linux.h
---- gcc-7.1.0.orig/gcc/config/cris/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/cris/linux.h	2017-05-14 03:36:52.528645020 +0000
+diff -Naur a/gcc/config/cris/linux.h b/gcc/config/cris/linux.h
+--- a/gcc/config/cris/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/cris/linux.h	2019-02-08 09:44:24.429753819 -0700
 @@ -102,7 +102,7 @@
  #undef CRIS_DEFAULT_CPU_VERSION
  #define CRIS_DEFAULT_CPU_VERSION CRIS_CPU_NG
@@ -97,9 +86,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/cris/linux.h gcc-7.1.0/gcc/config/cris/linu
  
  #undef CRIS_LINK_SUBTARGET_SPEC
  #define CRIS_LINK_SUBTARGET_SPEC \
-diff -Naur gcc-7.1.0.orig/gcc/config/freebsd-spec.h gcc-7.1.0/gcc/config/freebsd-spec.h
---- gcc-7.1.0.orig/gcc/config/freebsd-spec.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/freebsd-spec.h	2017-05-14 03:36:52.529645035 +0000
+diff -Naur a/gcc/config/freebsd-spec.h b/gcc/config/freebsd-spec.h
+--- a/gcc/config/freebsd-spec.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/freebsd-spec.h	2019-02-08 09:44:24.429753819 -0700
 @@ -131,7 +131,7 @@
  #if FBSD_MAJOR < 6
  #define FBSD_DYNAMIC_LINKER "/usr/libexec/ld-elf.so.1"
@@ -109,9 +98,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/freebsd-spec.h gcc-7.1.0/gcc/config/freebsd
  #endif
  
  /* NOTE: The freebsd-spec.h header is included also for various
-diff -Naur gcc-7.1.0.orig/gcc/config/frv/linux.h gcc-7.1.0/gcc/config/frv/linux.h
---- gcc-7.1.0.orig/gcc/config/frv/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/frv/linux.h	2017-05-14 03:36:52.529645035 +0000
+diff -Naur a/gcc/config/frv/linux.h b/gcc/config/frv/linux.h
+--- a/gcc/config/frv/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/frv/linux.h	2019-02-08 09:44:24.430753819 -0700
 @@ -34,7 +34,7 @@
  #define ENDFILE_SPEC \
    "%{shared|pie:crtendS.o%s;:crtend.o%s} crtn.o%s"
@@ -121,9 +110,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/frv/linux.h gcc-7.1.0/gcc/config/frv/linux.
  
  #undef LINK_SPEC
  #define LINK_SPEC "\
-diff -Naur gcc-7.1.0.orig/gcc/config/i386/gnu.h gcc-7.1.0/gcc/config/i386/gnu.h
---- gcc-7.1.0.orig/gcc/config/i386/gnu.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/i386/gnu.h	2017-05-14 03:36:52.529645035 +0000
+diff -Naur a/gcc/config/i386/gnu.h b/gcc/config/i386/gnu.h
+--- a/gcc/config/i386/gnu.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/i386/gnu.h	2019-02-08 09:44:24.431753819 -0700
 @@ -22,7 +22,7 @@
  #define GNU_USER_LINK_EMULATION "elf_i386"
  
@@ -133,18 +122,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/i386/gnu.h gcc-7.1.0/gcc/config/i386/gnu.h
  
  #undef	STARTFILE_SPEC
  #if defined HAVE_LD_PIE
-diff -Naur gcc-7.1.0.orig/gcc/config/i386/kfreebsd-gnu.h gcc-7.1.0/gcc/config/i386/kfreebsd-gnu.h
---- gcc-7.1.0.orig/gcc/config/i386/kfreebsd-gnu.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/i386/kfreebsd-gnu.h	2017-05-14 03:36:52.529645035 +0000
-@@ -19,4 +19,4 @@
- <http://www.gnu.org/licenses/>.  */
- 
- #define GNU_USER_LINK_EMULATION "elf_i386_fbsd"
--#define GLIBC_DYNAMIC_LINKER "/lib/ld.so.1"
-+#define GLIBC_DYNAMIC_LINKER "/tools/lib/ld.so.1"
-diff -Naur gcc-7.1.0.orig/gcc/config/i386/kfreebsd-gnu64.h gcc-7.1.0/gcc/config/i386/kfreebsd-gnu64.h
---- gcc-7.1.0.orig/gcc/config/i386/kfreebsd-gnu64.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/i386/kfreebsd-gnu64.h	2017-05-14 03:36:52.529645035 +0000
+diff -Naur a/gcc/config/i386/kfreebsd-gnu64.h b/gcc/config/i386/kfreebsd-gnu64.h
+--- a/gcc/config/i386/kfreebsd-gnu64.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/i386/kfreebsd-gnu64.h	2019-02-08 09:44:24.433753819 -0700
 @@ -22,6 +22,6 @@
  #define GNU_USER_LINK_EMULATION64 "elf_x86_64_fbsd"
  #define GNU_USER_LINK_EMULATIONX32 "elf32_x86_64_fbsd"
@@ -155,21 +135,18 @@ diff -Naur gcc-7.1.0.orig/gcc/config/i386/kfreebsd-gnu64.h gcc-7.1.0/gcc/config/
 +#define GLIBC_DYNAMIC_LINKER32 "/tools/lib/ld.so.1"
 +#define GLIBC_DYNAMIC_LINKER64 "/tools/lib/ld-kfreebsd-x86-64.so.1"
 +#define GLIBC_DYNAMIC_LINKERX32 "/tools/lib/ld-kfreebsd-x32.so.1"
-diff -Naur gcc-7.1.0.orig/gcc/config/i386/linux.h gcc-7.1.0/gcc/config/i386/linux.h
---- gcc-7.1.0.orig/gcc/config/i386/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/i386/linux.h	2017-05-14 03:36:52.529645035 +0000
-@@ -20,7 +20,7 @@
+diff -Naur a/gcc/config/i386/kfreebsd-gnu.h b/gcc/config/i386/kfreebsd-gnu.h
+--- a/gcc/config/i386/kfreebsd-gnu.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/i386/kfreebsd-gnu.h	2019-02-08 09:44:24.432753819 -0700
+@@ -19,4 +19,4 @@
  <http://www.gnu.org/licenses/>.  */
  
- #define GNU_USER_LINK_EMULATION "elf_i386"
--#define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.2"
-+#define GLIBC_DYNAMIC_LINKER "/tools/lib/ld-linux.so.2"
- 
- #undef MUSL_DYNAMIC_LINKER
- #define MUSL_DYNAMIC_LINKER "/lib/ld-musl-i386.so.1"
-diff -Naur gcc-7.1.0.orig/gcc/config/i386/linux64.h gcc-7.1.0/gcc/config/i386/linux64.h
---- gcc-7.1.0.orig/gcc/config/i386/linux64.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/i386/linux64.h	2017-05-14 03:36:52.530645050 +0000
+ #define GNU_USER_LINK_EMULATION "elf_i386_fbsd"
+-#define GLIBC_DYNAMIC_LINKER "/lib/ld.so.1"
++#define GLIBC_DYNAMIC_LINKER "/tools/lib/ld.so.1"
+diff -Naur a/gcc/config/i386/linux64.h b/gcc/config/i386/linux64.h
+--- a/gcc/config/i386/linux64.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/i386/linux64.h	2019-02-08 09:44:24.435753819 -0700
 @@ -27,9 +27,9 @@
  #define GNU_USER_LINK_EMULATION64 "elf_x86_64"
  #define GNU_USER_LINK_EMULATIONX32 "elf32_x86_64"
@@ -183,9 +160,21 @@ diff -Naur gcc-7.1.0.orig/gcc/config/i386/linux64.h gcc-7.1.0/gcc/config/i386/li
  
  #undef MUSL_DYNAMIC_LINKER32
  #define MUSL_DYNAMIC_LINKER32 "/lib/ld-musl-i386.so.1"
-diff -Naur gcc-7.1.0.orig/gcc/config/i386/t-linux64 gcc-7.1.0/gcc/config/i386/t-linux64
---- gcc-7.1.0.orig/gcc/config/i386/t-linux64	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/i386/t-linux64	2017-05-14 03:36:52.530645050 +0000
+diff -Naur a/gcc/config/i386/linux.h b/gcc/config/i386/linux.h
+--- a/gcc/config/i386/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/i386/linux.h	2019-02-08 09:44:24.434753819 -0700
+@@ -20,7 +20,7 @@
+ <http://www.gnu.org/licenses/>.  */
+ 
+ #define GNU_USER_LINK_EMULATION "elf_i386"
+-#define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER "/tools/lib/ld-linux.so.2"
+ 
+ #undef MUSL_DYNAMIC_LINKER
+ #define MUSL_DYNAMIC_LINKER "/lib/ld-musl-i386.so.1"
+diff -Naur a/gcc/config/i386/t-linux64 b/gcc/config/i386/t-linux64
+--- a/gcc/config/i386/t-linux64	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/i386/t-linux64	2019-02-08 09:44:24.436753819 -0700
 @@ -33,6 +33,6 @@
  comma=,
  MULTILIB_OPTIONS    = $(subst $(comma),/,$(TM_MULTILIB_CONFIG))
@@ -195,9 +184,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/i386/t-linux64 gcc-7.1.0/gcc/config/i386/t-
 +MULTILIB_OSDIRNAMES = m64=../lib$(call if_multiarch,:x86_64-linux-gnu)
 +MULTILIB_OSDIRNAMES+= m32=$(if $(wildcard $(shell echo $(SYSTEM_HEADER_DIR))/../../usr/lib32),../lib32,../lib32)$(call if_multiarch,:i386-linux-gnu)
  MULTILIB_OSDIRNAMES+= mx32=../libx32$(call if_multiarch,:x86_64-linux-gnux32)
-diff -Naur gcc-7.1.0.orig/gcc/config/ia64/linux.h gcc-7.1.0/gcc/config/ia64/linux.h
---- gcc-7.1.0.orig/gcc/config/ia64/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/ia64/linux.h	2017-05-14 03:36:52.531645064 +0000
+diff -Naur a/gcc/config/ia64/linux.h b/gcc/config/ia64/linux.h
+--- a/gcc/config/ia64/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/ia64/linux.h	2019-02-08 09:44:24.437753819 -0700
 @@ -55,7 +55,7 @@
  /* Define this for shared library support because it isn't in the main
     linux.h file.  */
@@ -207,18 +196,18 @@ diff -Naur gcc-7.1.0.orig/gcc/config/ia64/linux.h gcc-7.1.0/gcc/config/ia64/linu
  
  #undef LINK_SPEC
  #define LINK_SPEC "\
-diff -Naur gcc-7.1.0.orig/gcc/config/kopensolaris-gnu.h gcc-7.1.0/gcc/config/kopensolaris-gnu.h
---- gcc-7.1.0.orig/gcc/config/kopensolaris-gnu.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/kopensolaris-gnu.h	2017-05-14 03:36:52.531645064 +0000
+diff -Naur a/gcc/config/kopensolaris-gnu.h b/gcc/config/kopensolaris-gnu.h
+--- a/gcc/config/kopensolaris-gnu.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/kopensolaris-gnu.h	2019-02-08 09:44:24.437753819 -0700
 @@ -31,4 +31,4 @@
    while (0)
  
  #undef GNU_USER_DYNAMIC_LINKER
 -#define GNU_USER_DYNAMIC_LINKER "/lib/ld.so.1"
 +#define GNU_USER_DYNAMIC_LINKER "/tools/lib/ld.so.1"
-diff -Naur gcc-7.1.0.orig/gcc/config/linux.h gcc-7.1.0/gcc/config/linux.h
---- gcc-7.1.0.orig/gcc/config/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/linux.h	2017-05-14 03:36:52.531645064 +0000
+diff -Naur a/gcc/config/linux.h b/gcc/config/linux.h
+--- a/gcc/config/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/linux.h	2019-02-08 09:44:24.438753819 -0700
 @@ -81,10 +81,10 @@
     GLIBC_DYNAMIC_LINKER must be defined for each target using them, or
     GLIBC_DYNAMIC_LINKER32 and GLIBC_DYNAMIC_LINKER64 for targets
@@ -234,9 +223,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/linux.h gcc-7.1.0/gcc/config/linux.h
  #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER32 "/system/bin/linker"
  #define BIONIC_DYNAMIC_LINKER64 "/system/bin/linker64"
-diff -Naur gcc-7.1.0.orig/gcc/config/lm32/uclinux-elf.h gcc-7.1.0/gcc/config/lm32/uclinux-elf.h
---- gcc-7.1.0.orig/gcc/config/lm32/uclinux-elf.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/lm32/uclinux-elf.h	2017-05-14 03:36:52.531645064 +0000
+diff -Naur a/gcc/config/lm32/uclinux-elf.h b/gcc/config/lm32/uclinux-elf.h
+--- a/gcc/config/lm32/uclinux-elf.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/lm32/uclinux-elf.h	2019-02-08 09:44:24.439753819 -0700
 @@ -67,7 +67,7 @@
     %{shared:-shared} \
     %{symbolic:-Bsymbolic} \
@@ -246,9 +235,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/lm32/uclinux-elf.h gcc-7.1.0/gcc/config/lm3
  
  #define TARGET_OS_CPP_BUILTINS() GNU_USER_TARGET_OS_CPP_BUILTINS()
  
-diff -Naur gcc-7.1.0.orig/gcc/config/m32r/linux.h gcc-7.1.0/gcc/config/m32r/linux.h
---- gcc-7.1.0.orig/gcc/config/m32r/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/m32r/linux.h	2017-05-14 03:36:52.532645079 +0000
+diff -Naur a/gcc/config/m32r/linux.h b/gcc/config/m32r/linux.h
+--- a/gcc/config/m32r/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/m32r/linux.h	2019-02-08 09:44:24.440753819 -0700
 @@ -37,7 +37,7 @@
     When the -shared link option is used a final link is not being
     done.  */
@@ -258,9 +247,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/m32r/linux.h gcc-7.1.0/gcc/config/m32r/linu
  
  #undef	LINK_SPEC
  #if TARGET_LITTLE_ENDIAN
-diff -Naur gcc-7.1.0.orig/gcc/config/m68k/linux.h gcc-7.1.0/gcc/config/m68k/linux.h
---- gcc-7.1.0.orig/gcc/config/m68k/linux.h	2017-01-06 21:21:02.000000000 +0000
-+++ gcc-7.1.0/gcc/config/m68k/linux.h	2017-05-14 03:36:52.532645079 +0000
+diff -Naur a/gcc/config/m68k/linux.h b/gcc/config/m68k/linux.h
+--- a/gcc/config/m68k/linux.h	2017-01-06 14:21:02.000000000 -0700
++++ b/gcc/config/m68k/linux.h	2019-02-08 09:44:24.440753819 -0700
 @@ -71,7 +71,7 @@
     When the -shared link option is used a final link is not being
     done.  */
@@ -270,9 +259,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/m68k/linux.h gcc-7.1.0/gcc/config/m68k/linu
  
  #undef LINK_SPEC
  #define LINK_SPEC "-m m68kelf %{shared} \
-diff -Naur gcc-7.1.0.orig/gcc/config/microblaze/linux.h gcc-7.1.0/gcc/config/microblaze/linux.h
---- gcc-7.1.0.orig/gcc/config/microblaze/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/microblaze/linux.h	2017-05-14 03:36:52.532645079 +0000
+diff -Naur a/gcc/config/microblaze/linux.h b/gcc/config/microblaze/linux.h
+--- a/gcc/config/microblaze/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/microblaze/linux.h	2019-02-08 09:44:24.441753819 -0700
 @@ -28,7 +28,7 @@
  #undef TLS_NEEDS_GOT
  #define TLS_NEEDS_GOT 1
@@ -282,9 +271,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/microblaze/linux.h gcc-7.1.0/gcc/config/mic
  #define UCLIBC_DYNAMIC_LINKER "/lib/ld-uClibc.so.0"
  
  #if TARGET_BIG_ENDIAN_DEFAULT == 0 /* LE */
-diff -Naur gcc-7.1.0.orig/gcc/config/mn10300/linux.h gcc-7.1.0/gcc/config/mn10300/linux.h
---- gcc-7.1.0.orig/gcc/config/mn10300/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/mn10300/linux.h	2017-05-14 03:36:52.532645079 +0000
+diff -Naur a/gcc/config/mn10300/linux.h b/gcc/config/mn10300/linux.h
+--- a/gcc/config/mn10300/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/mn10300/linux.h	2019-02-08 09:44:24.442753819 -0700
 @@ -32,7 +32,7 @@
  #undef  ASM_SPEC
  #define ASM_SPEC ""
@@ -294,9 +283,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/mn10300/linux.h gcc-7.1.0/gcc/config/mn1030
  
  #undef  LINK_SPEC
  #define LINK_SPEC "%{mrelax:--relax} %{shared:-shared} \
-diff -Naur gcc-7.1.0.orig/gcc/config/nios2/linux.h gcc-7.1.0/gcc/config/nios2/linux.h
---- gcc-7.1.0.orig/gcc/config/nios2/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/nios2/linux.h	2017-05-14 03:36:52.532645079 +0000
+diff -Naur a/gcc/config/nios2/linux.h b/gcc/config/nios2/linux.h
+--- a/gcc/config/nios2/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/nios2/linux.h	2019-02-08 09:44:24.442753819 -0700
 @@ -29,7 +29,7 @@
  #undef CPP_SPEC
  #define CPP_SPEC "%{posix:-D_POSIX_SOURCE} %{pthread:-D_REENTRANT}"
@@ -306,9 +295,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/nios2/linux.h gcc-7.1.0/gcc/config/nios2/li
  
  #undef LINK_SPEC
  #define LINK_SPEC LINK_SPEC_ENDIAN \
-diff -Naur gcc-7.1.0.orig/gcc/config/pa/pa-linux.h gcc-7.1.0/gcc/config/pa/pa-linux.h
---- gcc-7.1.0.orig/gcc/config/pa/pa-linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/pa/pa-linux.h	2017-05-14 03:36:52.533645094 +0000
+diff -Naur a/gcc/config/pa/pa-linux.h b/gcc/config/pa/pa-linux.h
+--- a/gcc/config/pa/pa-linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/pa/pa-linux.h	2019-02-08 09:44:24.443753819 -0700
 @@ -37,7 +37,7 @@
  /* Define this for shared library support because it isn't in the main
     linux.h file.  */
@@ -318,9 +307,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/pa/pa-linux.h gcc-7.1.0/gcc/config/pa/pa-li
  
  #undef LINK_SPEC
  #define LINK_SPEC "\
-diff -Naur gcc-7.1.0.orig/gcc/config/rs6000/linux64.h gcc-7.1.0/gcc/config/rs6000/linux64.h
---- gcc-7.1.0.orig/gcc/config/rs6000/linux64.h	2017-02-07 11:29:06.000000000 +0000
-+++ gcc-7.1.0/gcc/config/rs6000/linux64.h	2017-05-14 03:36:52.533645094 +0000
+diff -Naur a/gcc/config/rs6000/linux64.h b/gcc/config/rs6000/linux64.h
+--- a/gcc/config/rs6000/linux64.h	2017-02-07 04:29:06.000000000 -0700
++++ b/gcc/config/rs6000/linux64.h	2019-02-08 09:46:32.120750609 -0700
 @@ -412,16 +412,16 @@
  #undef	LINK_OS_DEFAULT_SPEC
  #define LINK_OS_DEFAULT_SPEC "%(link_os_linux)"
@@ -349,14 +338,14 @@ diff -Naur gcc-7.1.0.orig/gcc/config/rs6000/linux64.h gcc-7.1.0/gcc/config/rs600
  
 -#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
 -#define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
-+#define UCLIBC_DYNAMIC_LINKER32 "/tools/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "/tools/lib32/ld-uClibc.so.0"
 +#define UCLIBC_DYNAMIC_LINKER64 "/tools/lib/ld64-uClibc.so.0"
  #if DEFAULT_LIBC == LIBC_UCLIBC
  #define CHOOSE_DYNAMIC_LINKER(G, U, M) \
    "%{mglibc:" G ";:%{mmusl:" M ";:" U "}}"
-diff -Naur gcc-7.1.0.orig/gcc/config/rs6000/sysv4.h gcc-7.1.0/gcc/config/rs6000/sysv4.h
---- gcc-7.1.0.orig/gcc/config/rs6000/sysv4.h	2017-02-07 11:29:06.000000000 +0000
-+++ gcc-7.1.0/gcc/config/rs6000/sysv4.h	2017-05-14 03:36:52.533645094 +0000
+diff -Naur a/gcc/config/rs6000/sysv4.h b/gcc/config/rs6000/sysv4.h
+--- a/gcc/config/rs6000/sysv4.h	2017-02-07 04:29:06.000000000 -0700
++++ b/gcc/config/rs6000/sysv4.h	2019-02-08 09:44:24.445753819 -0700
 @@ -780,8 +780,8 @@
  
  #define MUSL_DYNAMIC_LINKER_E ENDIAN_SELECT("","le","")
@@ -368,9 +357,23 @@ diff -Naur gcc-7.1.0.orig/gcc/config/rs6000/sysv4.h gcc-7.1.0/gcc/config/rs6000/
  #define MUSL_DYNAMIC_LINKER \
    "/lib/ld-musl-powerpc" MUSL_DYNAMIC_LINKER_E "%{msoft-float:-sf}.so.1"
  #if DEFAULT_LIBC == LIBC_UCLIBC
-diff -Naur gcc-7.1.0.orig/gcc/config/s390/linux.h gcc-7.1.0/gcc/config/s390/linux.h
---- gcc-7.1.0.orig/gcc/config/s390/linux.h	2017-02-06 10:25:05.000000000 +0000
-+++ gcc-7.1.0/gcc/config/s390/linux.h	2017-05-14 03:36:52.534645109 +0000
+diff -Naur a/gcc/config/rs6000/t-linux64 b/gcc/config/rs6000/t-linux64
+--- a/gcc/config/rs6000/t-linux64	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/rs6000/t-linux64	2019-02-08 09:52:02.609742301 -0700
+@@ -28,8 +28,8 @@
+ MULTILIB_OPTIONS    := m64/m32
+ MULTILIB_DIRNAMES   := 64 32
+ MULTILIB_EXTRA_OPTS := 
+-MULTILIB_OSDIRNAMES := m64=../lib64$(call if_multiarch,:powerpc64-linux-gnu)
+-MULTILIB_OSDIRNAMES += m32=$(if $(wildcard $(shell echo $(SYSTEM_HEADER_DIR))/../../usr/lib32),../lib32,../lib)$(call if_multiarch,:powerpc-linux-gnu)
++MULTILIB_OSDIRNAMES := m64=../lib$(call if_multiarch,:powerpc64-linux-gnu)
++MULTILIB_OSDIRNAMES += m32=$(if $(wildcard $(shell echo $(SYSTEM_HEADER_DIR))/../../usr/lib32),../lib,../lib32)$(call if_multiarch,:powerpc-linux-gnu)
+ 
+ rs6000-linux.o: $(srcdir)/config/rs6000/rs6000-linux.c
+ 	$(COMPILE) $<
+diff -Naur a/gcc/config/s390/linux.h b/gcc/config/s390/linux.h
+--- a/gcc/config/s390/linux.h	2017-02-06 03:25:05.000000000 -0700
++++ b/gcc/config/s390/linux.h	2019-02-08 09:44:24.446753819 -0700
 @@ -73,8 +73,8 @@
  #define MULTILIB_DEFAULTS { "m31" }
  #endif
@@ -382,9 +385,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/s390/linux.h gcc-7.1.0/gcc/config/s390/linu
  
  #undef  LINK_SPEC
  #define LINK_SPEC \
-diff -Naur gcc-7.1.0.orig/gcc/config/sh/linux.h gcc-7.1.0/gcc/config/sh/linux.h
---- gcc-7.1.0.orig/gcc/config/sh/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/sh/linux.h	2017-05-14 03:36:52.534645109 +0000
+diff -Naur a/gcc/config/sh/linux.h b/gcc/config/sh/linux.h
+--- a/gcc/config/sh/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/sh/linux.h	2019-02-08 09:44:24.447753819 -0700
 @@ -64,7 +64,7 @@
    "/lib/ld-musl-sh" MUSL_DYNAMIC_LINKER_E MUSL_DYNAMIC_LINKER_FP \
    "%{mfdpic:-fdpic}.so.1"
@@ -394,21 +397,9 @@ diff -Naur gcc-7.1.0.orig/gcc/config/sh/linux.h gcc-7.1.0/gcc/config/sh/linux.h
  
  #undef SUBTARGET_LINK_EMUL_SUFFIX
  #define SUBTARGET_LINK_EMUL_SUFFIX "%{mfdpic:_fd;:_linux}"
-diff -Naur gcc-7.1.0.orig/gcc/config/sparc/linux.h gcc-7.1.0/gcc/config/sparc/linux.h
---- gcc-7.1.0.orig/gcc/config/sparc/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/sparc/linux.h	2017-05-14 03:36:52.534645109 +0000
-@@ -83,7 +83,7 @@
-    When the -shared link option is used a final link is not being
-    done.  */
- 
--#define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.2"
-+#define GLIBC_DYNAMIC_LINKER "/tools/lib/ld-linux.so.2"
- 
- #undef  LINK_SPEC
- #define LINK_SPEC "-m elf32_sparc %{shared:-shared} \
-diff -Naur gcc-7.1.0.orig/gcc/config/sparc/linux64.h gcc-7.1.0/gcc/config/sparc/linux64.h
---- gcc-7.1.0.orig/gcc/config/sparc/linux64.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/sparc/linux64.h	2017-05-14 03:36:52.535645123 +0000
+diff -Naur a/gcc/config/sparc/linux64.h b/gcc/config/sparc/linux64.h
+--- a/gcc/config/sparc/linux64.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/sparc/linux64.h	2019-02-08 09:44:24.449753819 -0700
 @@ -84,8 +84,8 @@
     When the -shared link option is used a final link is not being
     done.  */
@@ -429,9 +420,21 @@ diff -Naur gcc-7.1.0.orig/gcc/config/sparc/linux64.h gcc-7.1.0/gcc/config/sparc/
    %{!shared: \
      %{!static: \
        %{rdynamic:-export-dynamic} \
-diff -Naur gcc-7.1.0.orig/gcc/config/xtensa/linux.h gcc-7.1.0/gcc/config/xtensa/linux.h
---- gcc-7.1.0.orig/gcc/config/xtensa/linux.h	2017-01-01 12:07:43.000000000 +0000
-+++ gcc-7.1.0/gcc/config/xtensa/linux.h	2017-05-14 03:36:52.535645123 +0000
+diff -Naur a/gcc/config/sparc/linux.h b/gcc/config/sparc/linux.h
+--- a/gcc/config/sparc/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/sparc/linux.h	2019-02-08 09:44:24.448753819 -0700
+@@ -83,7 +83,7 @@
+    When the -shared link option is used a final link is not being
+    done.  */
+ 
+-#define GLIBC_DYNAMIC_LINKER "/lib/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER "/tools/lib/ld-linux.so.2"
+ 
+ #undef  LINK_SPEC
+ #define LINK_SPEC "-m elf32_sparc %{shared:-shared} \
+diff -Naur a/gcc/config/xtensa/linux.h b/gcc/config/xtensa/linux.h
+--- a/gcc/config/xtensa/linux.h	2017-01-01 05:07:43.000000000 -0700
++++ b/gcc/config/xtensa/linux.h	2019-02-08 09:44:24.449753819 -0700
 @@ -46,7 +46,7 @@
    %{mauto-litpools:--auto-litpools} \
    %{mno-auto-litpools:--no-auto-litpools}"
