@@ -160,9 +160,7 @@ EOF</userinput></screen>
 
     <para os="f">Prevent a broken test case from running:</para>
 
-<screen os="g"><userinput remap="test">sed -e 's@test/udev-test.pl @@'  \
-        -e 's@test-copy$(EXEEXT) @@' \
-        -i Makefile.in
+<screen os="g"><userinput remap="test">sed -e 's@test/udev-test.pl @@' -e 's@test-copy$(EXEEXT) @@' -i Makefile.in
 </userinput></screen>
 
     <para os="h">To test the results, issue:</para>
