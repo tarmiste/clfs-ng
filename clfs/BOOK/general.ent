@@ -47,8 +47,10 @@
 <!ENTITY alpha-gnu "ftp://alpha.gnu.org/gnu/">
 <!ENTITY redhat "ftp://sources.redhat.com/pub/">
 <!ENTITY kernel "http://www.kernel.org/pub/">
-<!ENTITY savannah "http://download.savannah.gnu.org">
 <!ENTITY sourceforge "http://downloads.sourceforge.net/">
+<!ENTITY savannah "http://download.savannah.gnu.org">
+<!ENTITY savannah-nongnu "https://savannah.nongnu.org">
+<!ENTITY github          "https://github.com">
 
 <!ENTITY dependencies "Installation depends on">
 <!ENTITY testsuites "Test suite depends on">
