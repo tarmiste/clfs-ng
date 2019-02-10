@@ -26,7 +26,7 @@
 
     <para os="p1">Apply the following patch for man-pages and build edits:</para>
 
-<screen os="p2"><userinput>patch -Np1 -i ../&iputils-build-patch;</userinput></screen>
+<screen os="p2"><userinput>#patch -Np1 -i ../&iputils-build-patch;</userinput></screen>
 
     <para os="a">Compile the package:</para>
 
