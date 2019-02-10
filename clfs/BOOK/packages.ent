@@ -133,6 +133,12 @@
 <!ENTITY e2fsprogs-md5 "8d78b11d04d26c0b2dd149529441fa80">
 <!ENTITY e2fsprogs-home "http://e2fsprogs.sourceforge.net/">
 
+<!ENTITY elfutils-version "0.175">
+<!ENTITY elfutils-size "8,588 KB">
+<!ENTITY elfutils-url "https://sourceware.org/ftp/elfutils/&elfutils-version;/elfutils-&elfutils-version;.tar.bz2">
+<!ENTITY elfutils-md5 "9a02b0382b78cc2d515fb950275d4c02">
+<!ENTITY elfutils-home "https://sourceware.org/ftp/elfutils/">
+
 <!ENTITY elftoaout-version "2.3">
 <!ENTITY elftoaout-size "16 KB">
 <!ENTITY elftoaout-url "http://gd.tuwien.ac.at/opsys/linux/Owl/pool/sources/elftoaout/elftoaout-&elftoaout-version;.tgz">
@@ -304,6 +310,12 @@
 <!ENTITY libcap-md5 "968ac4d42a1a71754313527be2ab5df3">
 <!ENTITY libcap-home "https://sites.google.com/site/fullycapable/">
 
+<!ENTITY libffi-version "3.2.1">
+<!ENTITY libffi-size "920 KB">
+<!ENTITY libffi-url "ftp://sourceware.org/pub/libffi/libffi-&libffi-version;.tar.gz">
+<!ENTITY libffi-md5 "83b89587607e3eb65c70d361f13bab43">
+<!ENTITY libffi-home "https://sourceware.org/libffi/">
+
 <!ENTITY libpipeline-version "1.5.1">
 <!ENTITY libpipeline-size "965 KB">
 <!ENTITY libpipeline-url "&savannah;/releases/libpipeline/libpipeline-&libpipeline-version;.tar.gz">
@@ -348,6 +360,12 @@
 <!ENTITY man-pages-md5 "ad9f1ff81276fe8d90d077484d6d4b5e">
 <!ENTITY man-pages-home "https://www.kernel.org/doc/man-pages/">
 
+<!ENTITY meson-version "0.49.2">
+<!ENTITY meson-size "1,310 KB">
+<!ENTITY meson-url "&github;/mesonbuild/meson/releases/download/&meson-version;/meson-&meson-version;.tar.gz">
+<!ENTITY meson-md5 "0267b0871266056184c484792572c682">
+<!ENTITY meson-home "https://mesonbuild.com">
+
 <!ENTITY mpc-version "1.1.0">
 <!ENTITY mpc-size "685 KB">
 <!ENTITY mpc-url "https://ftp.gnu.org/gnu/mpc/mpc-&mpc-version;.tar.gz">
@@ -366,6 +384,18 @@
 <!ENTITY ncurses-url "&gnu;ncurses/ncurses-&ncurses-version;.tar.gz">
 <!ENTITY ncurses-md5 "98c889aaf8d23910d2b92d65be2e737a">
 <!ENTITY ncurses-home "&gnu-software;ncurses/">
+
+<!ENTITY ninja-version "1.9.0">
+<!ENTITY ninja-size "187 KB">
+<!ENTITY ninja-url "&github;/ninja-build/ninja/archive/v&ninja-version;/ninja-&ninja-version;.tar.gz">
+<!ENTITY ninja-md5 "f340be768a76724b83e6daab69009902">
+<!ENTITY ninja-home "https://ninja-build.org/">
+
+<!ENTITY openssl-version "1.1.1a">
+<!ENTITY openssl-size "8,160 KB">
+<!ENTITY openssl-url "https://openssl.org/source/openssl-&openssl-version;.tar.gz">
+<!ENTITY openssl-md5 "963deb2272d6be7d4c2458afd2517b73">
+<!ENTITY openssl-home "https://www.openssl.org/">
 
 <!ENTITY parted-version "3.1">
 <!ENTITY parted-size "1,492 KB">
@@ -445,6 +475,12 @@
 <!ENTITY silo-url "&packages-root;silo-&silo-version;.tar.bz2">
 <!ENTITY silo-md5 "168182dfa0025914ceecac9591a6674c">
 <!ENTITY silo-home "">
+
+<!ENTITY sysklogd-version "1.5.1">
+<!ENTITY sysklogd-size "88 KB">
+<!ENTITY sysklogd-url "http://www.infodrom.org/projects/sysklogd/download/sysklogd-&sysklogd-version;.tar.gz">
+<!ENTITY sysklogd-md5 "c70599ab0d037fde724f7210c2c8d7f8">
+<!ENTITY sysklogd-home "http://www.infodrom.org/projects/sysklogd/">
 
 <!ENTITY sysvinit-version "2.93">
 <!ENTITY sysvinit-size "115 KB">
