@@ -23,7 +23,7 @@
 <!ENTITY coreutils-uname-patch-size "5.020 KB">
 
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
-<!ENTITY gcc-specs-patch-md5 "9f4efe1ae2cb46e6ad41b2ba2a24e5d8">
+<!ENTITY gcc-specs-patch-md5 "2768e3770df9adc63fa8d09218f55026">
 <!ENTITY gcc-specs-patch-size "21 KB">
 
 <!--GCC Branch Update Area
@@ -86,11 +86,11 @@
 <!-- Start of Pure64 patches -->
 
 <!ENTITY gcc-pure64-patch "gcc-&gcc-version;-pure64-2.patch">
-<!ENTITY gcc-pure64-patch-md5 "7d6e3f9419fe2fc032da4c5878fbec13">
+<!ENTITY gcc-pure64-patch-md5 "97038db1feff56123e40c46026baf2d3">
 <!ENTITY gcc-pure64-patch-size "9.124 KB">
 
 <!ENTITY gcc-specs_pure64-patch "gcc-&gcc-version;-pure64_specs-2.patch">
-<!ENTITY gcc-specs_pure64-patch-md5 "4c6866da93add51341c042eb6b321ef1">
+<!ENTITY gcc-specs_pure64-patch-md5 "10eb9935d3b516a9613b2291e5483307">
 <!ENTITY gcc-specs_pure64-patch-size "20 KB">
 
 <!-- Start of mips/mips64 patches -->
