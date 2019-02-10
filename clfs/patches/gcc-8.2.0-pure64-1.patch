@@ -1,0 +1,98 @@
+Submitted By: Jim Gifford (jim at cross-lfs dot org)
+Date: 02-10-2019
+Initial Package Version: 8.2.0
+Origin: Idea originally developed by Ryan Oliver and Greg Schafer for
+        the Pure LFS project.
+Upstream Status: Not Applied
+Description: This patch modifies the location of the dynamic linker for gcc-8.2.0.
+
+diff -Naur gcc-8.2.0.orig/gcc/config/i386/linux64.h gcc-8.2.0/gcc/config/i386/linux64.h
+--- gcc-8.2.0.orig/gcc/config/i386/linux64.h	2018-01-03 03:03:58.000000000 -0700
++++ gcc-8.2.0/gcc/config/i386/linux64.h	2019-02-10 15:48:49.705104057 -0700
+@@ -27,12 +27,12 @@
+ #define GNU_USER_LINK_EMULATION64 "elf_x86_64"
+ #define GNU_USER_LINK_EMULATIONX32 "elf32_x86_64"
+ 
+-#define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
+-#define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux-x86-64.so.2"
++#define GLIBC_DYNAMIC_LINKER32 "/lib32/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER64 "/lib/ld-linux-x86-64.so.2"
+ #define GLIBC_DYNAMIC_LINKERX32 "/libx32/ld-linux-x32.so.2"
+ 
+ #undef MUSL_DYNAMIC_LINKER32
+-#define MUSL_DYNAMIC_LINKER32 "/lib/ld-musl-i386.so.1"
++#define MUSL_DYNAMIC_LINKER32 "/lib32/ld-musl-i386.so.1"
+ #undef MUSL_DYNAMIC_LINKER64
+ #define MUSL_DYNAMIC_LINKER64 "/lib/ld-musl-x86_64.so.1"
+ #undef MUSL_DYNAMIC_LINKERX32
+diff -Naur gcc-8.2.0.orig/gcc/config/linux.h gcc-8.2.0/gcc/config/linux.h
+--- gcc-8.2.0.orig/gcc/config/linux.h	2018-01-03 03:03:58.000000000 -0700
++++ gcc-8.2.0/gcc/config/linux.h	2019-02-10 15:48:30.295104545 -0700
+@@ -82,7 +82,7 @@
+    GLIBC_DYNAMIC_LINKER32 and GLIBC_DYNAMIC_LINKER64 for targets
+    supporting both 32-bit and 64-bit compilation.  */
+ #define UCLIBC_DYNAMIC_LINKER "/lib/ld-uClibc.so.0"
+-#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "/lib32/ld-uClibc.so.0"
+ #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
+ #define UCLIBC_DYNAMIC_LINKERX32 "/lib/ldx32-uClibc.so.0"
+ #define BIONIC_DYNAMIC_LINKER "/system/bin/linker"
+diff -Naur gcc-8.2.0.orig/gcc/config/powerpcspe/linux64.h gcc-8.2.0/gcc/config/powerpcspe/linux64.h
+--- gcc-8.2.0.orig/gcc/config/powerpcspe/linux64.h	2018-01-03 03:03:58.000000000 -0700
++++ gcc-8.2.0/gcc/config/powerpcspe/linux64.h	2019-02-10 15:48:37.524104364 -0700
+@@ -429,7 +429,7 @@
+ #define MUSL_DYNAMIC_LINKER64 \
+   "/lib/ld-musl-powerpc64" MUSL_DYNAMIC_LINKER_E "%{msoft-float:-sf}.so.1"
+ 
+-#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "/lib32/ld-uClibc.so.0"
+ #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
+ #if DEFAULT_LIBC == LIBC_UCLIBC
+ #define CHOOSE_DYNAMIC_LINKER(G, U, M) \
+diff -Naur gcc-8.2.0.orig/gcc/config/rs6000/linux64.h gcc-8.2.0/gcc/config/rs6000/linux64.h
+--- gcc-8.2.0.orig/gcc/config/rs6000/linux64.h	2018-06-25 12:34:01.000000000 -0700
++++ gcc-8.2.0/gcc/config/rs6000/linux64.h	2019-02-10 15:48:43.515104213 -0700
+@@ -430,7 +430,7 @@
+ #define MUSL_DYNAMIC_LINKER64 \
+   "/lib/ld-musl-powerpc64" MUSL_DYNAMIC_LINKER_E "%{msoft-float:-sf}.so.1"
+ 
+-#define UCLIBC_DYNAMIC_LINKER32 "/lib/ld-uClibc.so.0"
++#define UCLIBC_DYNAMIC_LINKER32 "/lib32/ld-uClibc.so.0"
+ #define UCLIBC_DYNAMIC_LINKER64 "/lib/ld64-uClibc.so.0"
+ #if DEFAULT_LIBC == LIBC_UCLIBC
+ #define CHOOSE_DYNAMIC_LINKER(G, U, M) \
+diff -Naur gcc-8.2.0.orig/gcc/config/s390/linux.h gcc-8.2.0/gcc/config/s390/linux.h
+--- gcc-8.2.0.orig/gcc/config/s390/linux.h	2018-01-03 03:03:58.000000000 -0700
++++ gcc-8.2.0/gcc/config/s390/linux.h	2019-02-10 15:48:51.390104015 -0700
+@@ -73,7 +73,7 @@
+ #define MULTILIB_DEFAULTS { "m31" }
+ #endif
+ 
+-#define GLIBC_DYNAMIC_LINKER32 "/lib/ld.so.1"
++#define GLIBC_DYNAMIC_LINKER32 "/lib32/ld.so.1"
+ #define GLIBC_DYNAMIC_LINKER64 "/lib/ld64.so.1"
+ 
+ #undef  LINK_SPEC
+diff -Naur gcc-8.2.0.orig/gcc/config/sparc/linux64.h gcc-8.2.0/gcc/config/sparc/linux64.h
+--- gcc-8.2.0.orig/gcc/config/sparc/linux64.h	2018-01-03 03:03:58.000000000 -0700
++++ gcc-8.2.0/gcc/config/sparc/linux64.h	2019-02-10 15:48:28.490104591 -0700
+@@ -84,8 +84,8 @@
+    When the -shared link option is used a final link is not being
+    done.  */
+ 
+-#define GLIBC_DYNAMIC_LINKER32 "/lib/ld-linux.so.2"
+-#define GLIBC_DYNAMIC_LINKER64 "/lib64/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER32 "/lib32/ld-linux.so.2"
++#define GLIBC_DYNAMIC_LINKER64 "/lib/ld-linux.so.2"
+ 
+ #ifdef SPARC_BI_ARCH
+ 
+@@ -213,7 +213,7 @@
+ #else /* !SPARC_BI_ARCH */
+ 
+ #undef LINK_SPEC
+-#define LINK_SPEC "-m elf64_sparc -Y P,%R/usr/lib64 %{shared:-shared} \
++#define LINK_SPEC "-m elf64_sparc -Y P,%R/usr/lib %{shared:-shared} \
+   %{!shared: \
+     %{!static: \
+       %{rdynamic:-export-dynamic} \
