@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-temp-system-libstdcpp" role="wrap">
+  <?dbhtml filename="libstdcpp.html"?>
+
+  <title>GCC-&libstdcpp-version;</title>
+
+  <indexterm zone="ch-temp-system-libstdcpp">
+    <primary sortas="a-GCC">GCC</primary>
+    <secondary>temporary system</secondary>
+  </indexterm>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../../final-system/common/libstdcpp.xml"
+  xpointer="xpointer(//*[@role='package'])"/>
+
+  <sect2 role="installation">
+    <title>Installation of GCC</title>
+
+<!--GCC Branch Update Area
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../final-system/common/libstdcpp.xml"
+    xpointer="xpointer(//*[@os='p1'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../final-system/common/libstdcpp.xml"
+    xpointer="xpointer(//*[@os='p2'])"/>
+-->
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../cross-tools/common/libstdcpp-static.xml"
+    xpointer="xpointer(//*[@os='aa'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../cross-tools/common/libstdcpp-static.xml"
+    xpointer="xpointer(//*[@os='ab'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../cross-tools/common/libstdcpp-static.xml"
+    xpointer="xpointer(//*[@os='ag'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../cross-tools/common/libstdcpp-static.xml"
+    xpointer="xpointer(//*[@os='ah'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../final-system/common/libstdcpp.xml"
+    xpointer="xpointer(//*[@os='fix1'])"/>
+
+<screen os="fix2"><userinput>cp -v libstdcpp/Makefile.in{,.orig}
+sed 's@\./fixinc\.sh@-c true@' libstdcpp/Makefile.in.orig &gt; libstdcpp/Makefile.in</userinput></screen>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../final-system/common/libstdcpp.xml"
+    xpointer="xpointer(//*[@os='f'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../final-system/common/libstdcpp.xml"
+    xpointer="xpointer(//*[@os='g'])"/>
+
+    <para os="cj">Before starting to build GCC, remember to unset any environment
+    variables that override the default optimization flags.</para>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../../final-system/common/libstdcpp.xml"
+    xpointer="xpointer(//*[@os='h'])"/>
+
+<screen os="ck"><userinput>../libstdcpp-&libstdcpp-version;/configure \
+    --prefix=/tools \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --target=${CLFS_TARGET} \
+    --with-local-prefix=/tools \
+    --disable-multilib \
+    --enable-languages=c,c++ \
+    --with-system-zlib \
+    --with-native-system-header-dir=/tools/include \
+    --disable-libssp \
+    --enable-install-libiberty</userinput></screen>
+
+<screen><userinput remap="configure">../libstdc++-v3/configure           \
+    --prefix=/tools                 \
+    --build=${CLFS_HOST} \
+    --host=${CLFS_TARGET} \
+    --target=${CLFS_TARGET} \
+    --disable-multilib              \
+    --disable-nls                   \
+    --disable-libstdcxx-threads     \
+    --disable-libstdcxx-pch         \
+    --with-gxx-include-dir=/tools/$CFS_TARGET/include/c++/&gcc-version;</userinput></screen>
+
+
+    <variablelist os="cl">
+      <title>The meaning of the new configure option:</title>
+
+      <varlistentry os="cl1">
+        <term><parameter>--enable-install-libiberty</parameter></term>
+        <listitem>
+          <para>Allows GCC to build and install
+          <filename class="libraryfile">libiberty.a</filename>
+          and its associated headers. This library is needed for some packages
+          to compile.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para os="cm">Compile the package:</para>
+
+<screen os="cn"><userinput>make AS_FOR_TARGET="${AS}" \
+    LD_FOR_TARGET="${LD}"</userinput></screen>
+
+    <para os="co">Install the package:</para>
+
+<screen os="cp"><userinput>make install</userinput></screen>
+
+  </sect2>
+
+  <sect2 role="content">
+    <title/>
+
+    <para>Details on this package are located in <xref
+    linkend="contents-libstdcpp" role="."/></para>
+
+  </sect2>
+
+</sect1>
