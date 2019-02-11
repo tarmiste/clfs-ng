@@ -280,10 +280,10 @@
 <!ENTITY iputils-md5 "d184faea97095265452dce19ef98daf6">
 <!ENTITY iputils-home "http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils">
 
-<!ENTITY isl-version "0.20">
+<!ENTITY isl-version "0.19">
 <!ENTITY isl-size "1,502 KB">
 <!ENTITY isl-url "http://isl.gforge.inria.fr/isl-&isl-version;.tar.xz">
-<!ENTITY isl-md5 "2ee25141b7d1688afb63e5bf3ac12999">
+<!ENTITY isl-md5 "1ae893020fa078531e6158cb243880a5">
 <!ENTITY isl-home "http://isl.gforge.inria.fr">
 
 <!ENTITY kbd-version "2.0.4">
