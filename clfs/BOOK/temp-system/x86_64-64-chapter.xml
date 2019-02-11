@@ -20,6 +20,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/zlib.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="64/binutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="64/gcc.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/libstdc++.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/m4.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/ncurses.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/bash.xml"/>
@@ -36,6 +37,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/gzip.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/make.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/patch.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/python.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/sed.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/tar.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/texinfo.xml"/>
