@@ -6,9 +6,9 @@
 ]>
 
 <sect1 id="ch-temp-system-libstdcpp" role="wrap">
-  <?dbhtml filename="libstdcpp.html"?>
+  <?dbhtml filename="gcc-libstdc++.html"?>
 
-  <title>GCC-&libstdcpp-version;</title>
+  <title>Libstdc++ from GCC-&gcc-version;</title>
 
   <indexterm zone="ch-temp-system-libstdcpp">
     <primary sortas="a-GCC">GCC</primary>
