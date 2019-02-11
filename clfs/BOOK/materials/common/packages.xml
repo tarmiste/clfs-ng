@@ -177,6 +177,15 @@
     </varlistentry>
 
     <varlistentry>
+      <term>Elfutils (&elfutils-version;) - <token>&elfutils-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&elfutils-home;"/></para>
+        <para>Download: <ulink url="&elfutils-url;"/></para>
+        <para>MD5 sum: <literal>&elfutils-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Eudev (&eudev-version;) - <token>&eudev-size;</token>:</term>
       <listitem>
         <para>Home page: <ulink url="&eudev-home;"/></para>
@@ -411,6 +420,15 @@
     </varlistentry>
 
     <varlistentry>
+      <term>Libffi (&libffi-version;) - <token>&libffi-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&libffi-home;"/></para>
+        <para>Download: <ulink url="&libffi-url;"/></para>
+        <para>MD5 sum: <literal>&libffi-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Libpipeline (&libpipeline-version;) - <token>&libpipeline-size;</token>:</term>
       <listitem>
         <para>Home page: <ulink url="&libpipeline-home;"/></para>
@@ -474,6 +492,15 @@
     </varlistentry>
 
     <varlistentry>
+      <term>Meson (&meson-version;) - <token>&meson-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&meson-home;"/></para>
+        <para>Download: <ulink url="&meson-url;"/></para>
+        <para>MD5 sum: <literal>&meson-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>MPC (&mpc-version;) - <token>&mpc-size;</token>:</term>
       <listitem>
         <para>Home page: <ulink url="&mpc-home;"/></para>
@@ -488,6 +515,15 @@
         <para>Home page: <ulink url="&mpfr-home;"/></para>
         <para>Download: <ulink url="&mpfr-url;"/></para>
         <para>MD5 sum: <literal>&mpfr-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Ninja (&ninja-version;) - <token>&ninja-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&ninja-home;"/></para>
+        <para>Download: <ulink url="&ninja-url;"/></para>
+        <para>MD5 sum: <literal>&ninja-md5;</literal></para>
       </listitem>
     </varlistentry>
 
@@ -546,6 +582,23 @@
     </varlistentry>
 
     <varlistentry>
+      <term>Python (&python-version;) - <token>&python-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&python-home;"/></para>
+        <para>Download: <ulink url="&python-url;"/></para>
+        <para>MD5 sum: <literal>&python-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Python Documentation (&python-version;) - <token>&python-docs-size;</token>:</term>
+      <listitem>
+        <para>Download: <ulink url="&python-docs-url;"/></para>
+        <para>MD5 sum: <literal>&python-docs-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Readline (&readline-version;) - <token>&readline-size;</token>:</term>
       <listitem>
         <para>Home page: <ulink url="&readline-home;"/></para>
@@ -573,11 +626,11 @@
     </varlistentry>
 
     <varlistentry>
-      <term>Sysvinit (&sysvinit-version;) - <token>&sysvinit-size;</token>:</term>
+      <term>Sysklogd (&sysklogd-version;) - <token>&sysklogd-size;</token>:</term>
       <listitem>
-        <para>Home page: <ulink url="&sysvinit-home;"/></para>
-        <para>Download: <ulink url="&sysvinit-url;"/></para>
-        <para>MD5 sum: <literal>&sysvinit-md5;</literal></para>
+        <para>Home page: <ulink url="&sysklogd-home;"/></para>
+        <para>Download: <ulink url="&sysklogd-url;"/></para>
+        <para>MD5 sum: <literal>&sysklogd-md5;</literal></para>
       </listitem>
     </varlistentry>
 
@@ -605,6 +658,15 @@
         <para>Home page: <ulink url="&tcl-home;"/></para>
         <para>Download: <ulink url="&tcl-url;"/></para>
         <para>MD5 sum: <literal>&tcl-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Sysvinit (&sysvinit-version;) - <token>&sysvinit-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&sysvinit-home;"/></para>
+        <para>Download: <ulink url="&sysvinit-url;"/></para>
+        <para>MD5 sum: <literal>&sysvinit-md5;</literal></para>
       </listitem>
     </varlistentry>
 
