@@ -193,6 +193,12 @@
 <!ENTITY gcc-url "&gnu;gcc/gcc-&gcc-version;/gcc-&gcc-version;.tar.xz">
 <!ENTITY gcc-md5 "4ab282f414676496483b3e1793d07862">
 <!ENTITY gcc-home "https://gcc.gnu.org/">
+<!ENTITY libquadmath-version "0.0.0">
+<!ENTITY libstdcpp-version   "6.0.25">
+<!ENTITY libitm-version      "1.0.0">
+<!ENTITY libatomic-version   "1.2.0">
+<!ENTITY libmpx-version      "2.0.1">
+<!ENTITY libmpxwrap-version  "2.0.1">
 
 <!ENTITY gdbm-version "1.18.1">
 <!ENTITY gdbm-size "920 KB">

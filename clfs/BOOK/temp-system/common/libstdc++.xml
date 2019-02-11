@@ -15,9 +15,11 @@
     <secondary>temporary system</secondary>
   </indexterm>
 
+<!--
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
   href="../../final-system/common/libstdcpp.xml"
   xpointer="xpointer(//*[@role='package'])"/>
+-->
 
   <sect2 role="installation">
     <title>Installation of GCC</title>
@@ -32,6 +34,7 @@
     xpointer="xpointer(//*[@os='p2'])"/>
 -->
 
+<!--
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../../cross-tools/common/libstdcpp-static.xml"
     xpointer="xpointer(//*[@os='aa'])"/>
@@ -51,10 +54,12 @@
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../../final-system/common/libstdcpp.xml"
     xpointer="xpointer(//*[@os='fix1'])"/>
+-->
 
-<screen os="fix2"><userinput>cp -v libstdcpp/Makefile.in{,.orig}
+<screen os="fix2"><userinput>exit 1; #fixme cp -v libstdcpp/Makefile.in{,.orig}
 sed 's@\./fixinc\.sh@-c true@' libstdcpp/Makefile.in.orig &gt; libstdcpp/Makefile.in</userinput></screen>
 
+<!--
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../../final-system/common/libstdcpp.xml"
     xpointer="xpointer(//*[@os='f'])"/>
@@ -69,21 +74,9 @@ sed 's@\./fixinc\.sh@-c true@' libstdcpp/Makefile.in.orig &gt; libstdcpp/Makefil
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../../final-system/common/libstdcpp.xml"
     xpointer="xpointer(//*[@os='h'])"/>
+-->
 
 <screen os="ck"><userinput>../libstdcpp-&libstdcpp-version;/configure \
-    --prefix=/tools \
-    --build=${CLFS_HOST} \
-    --host=${CLFS_TARGET} \
-    --target=${CLFS_TARGET} \
-    --with-local-prefix=/tools \
-    --disable-multilib \
-    --enable-languages=c,c++ \
-    --with-system-zlib \
-    --with-native-system-header-dir=/tools/include \
-    --disable-libssp \
-    --enable-install-libiberty</userinput></screen>
-
-<screen><userinput remap="configure">../libstdc++-v3/configure           \
     --prefix=/tools                 \
     --build=${CLFS_HOST} \
     --host=${CLFS_TARGET} \
@@ -92,7 +85,7 @@ sed 's@\./fixinc\.sh@-c true@' libstdcpp/Makefile.in.orig &gt; libstdcpp/Makefil
     --disable-nls                   \
     --disable-libstdcxx-threads     \
     --disable-libstdcxx-pch         \
-    --with-gxx-include-dir=/tools/$CFS_TARGET/include/c++/&gcc-version;</userinput></screen>
+    --with-gxx-include-dir=/tools/$CLFS_TARGET/include/c++/&gcc-version;</userinput></screen>
 
 
     <variablelist os="cl">
@@ -124,8 +117,8 @@ sed 's@\./fixinc\.sh@-c true@' libstdcpp/Makefile.in.orig &gt; libstdcpp/Makefil
   <sect2 role="content">
     <title/>
 
-    <para>Details on this package are located in <xref
-    linkend="contents-libstdcpp" role="."/></para>
+    <para>Details on this package are TBA
+    </para>
 
   </sect2>
 
