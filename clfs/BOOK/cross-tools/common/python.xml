@@ -32,7 +32,7 @@
 
 <screen os="b"><userinput>./configure \
     --prefix=/cross-tools \
-    --with-enable-pip=no </userinput></screen>
+    --with-ensurepip=no </userinput></screen>
 
     <para os="c">Compile the package:</para>
 
