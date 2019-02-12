@@ -56,7 +56,7 @@
     xpointer="xpointer(//*[@os='fix1'])"/>
 -->
 
-<screen os="fix2"><userinput>exit 1; #fixme cp -v libstdcpp/Makefile.in{,.orig}
+<screen os="fix2"><userinput>exit 0; #fixme cp -v libstdcpp/Makefile.in{,.orig}
 sed 's@\./fixinc\.sh@-c true@' libstdcpp/Makefile.in.orig &gt; libstdcpp/Makefile.in</userinput></screen>
 
 <!--

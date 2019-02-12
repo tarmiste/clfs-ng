@@ -44,7 +44,7 @@
     setting the cached values of several tests with the following
     command:</para>
 
-<screen os="c2"><userinput>cat &gt; src/auto/config.cache &lt;&lt; "EOF"
+<screen os="c2"><userinput>exit 0; cat &gt; src/auto/config.cache &lt;&lt; "EOF"
 vim_cv_getcwd_broken=no
 vim_cv_memmove_handles_overlap=yes
 vim_cv_stat_ignores_slash=no
