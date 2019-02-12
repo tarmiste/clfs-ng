@@ -31,7 +31,10 @@
     <para os="a">Prepare M4 for compilation:</para>
 
 <screen os="b"><userinput>./configure \
-    --prefix=/cross-tools</userinput></screen>
+    --prefix=/cross-tools
+sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c
+echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
+</userinput></screen>
 
     <para os="c">Compile the package:</para>
 
