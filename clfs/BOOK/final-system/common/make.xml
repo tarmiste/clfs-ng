@@ -28,8 +28,6 @@
 
 <screen os="az"><userinput>sed -i '211,217 d; 219,229 d; 232 d' glob/glob.c</userinput></screen>
 
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     <para os="a">Prepare Make for compilation:</para>
 
 <screen os="b"><userinput>./configure \
