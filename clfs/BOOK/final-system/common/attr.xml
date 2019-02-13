@@ -62,7 +62,7 @@ ln -sfv ../../lib/$(readlink /usr/lib/libattr.so) /usr/lib/libattr.so</userinput
 
     <para os="m">Set the proper permissions on the shared library:</para>
 
-<screen os="n"><userinput>chmod 755 -v /lib/libattr.so.1.1.0</userinput></screen>
+<screen os="n"><userinput>#chmod 755 -v /lib/libattr.so.1</userinput></screen>
 
   </sect2>
 
