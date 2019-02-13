@@ -46,7 +46,7 @@
 
     <para os="h">Install the documentation:</para>
 
-<screen os="i"><userinput>make -C doc install-html docdir=/usr/share/doc/tar-&tar-version;</userinput></screen>
+<screen os="i"><userinput>#make -C doc install-html docdir=/usr/share/doc/tar-&tar-version;</userinput></screen>
 
   </sect2>
 
