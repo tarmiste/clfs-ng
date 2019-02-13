@@ -20,7 +20,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/binutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gcc.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/libstdc++.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/m4.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/bash.xml"/>
