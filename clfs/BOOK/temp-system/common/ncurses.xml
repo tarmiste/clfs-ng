@@ -42,7 +42,6 @@
     --host=${CLFS_TARGET} \
     --without-debug \
     --without-ada \
-    --enable-widec \
     --enable-overwrite \
     --with-build-cc=gcc</userinput></screen>
 
