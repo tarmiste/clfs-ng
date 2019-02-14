@@ -590,6 +590,7 @@
       </listitem>
     </varlistentry>
 
+<!--
     <varlistentry>
       <term>Python Documentation (&python-version;) - <token>&python-docs-size;</token>:</term>
       <listitem>
@@ -597,6 +598,7 @@
         <para>MD5 sum: <literal>&python-docs-md5;</literal></para>
       </listitem>
     </varlistentry>
+-->
 
     <varlistentry>
       <term>Readline (&readline-version;) - <token>&readline-size;</token>:</term>
