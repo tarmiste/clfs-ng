@@ -11,7 +11,7 @@
   <title>Python-&python-version;</title>
 
   <indexterm zone="ch-cross-tools-python">
-    <primary sortas="a-PYTHON">PYTHON</primary>
+    <primary sortas="a-Python">Python</primary>
     <secondary>cross tools</secondary>
   </indexterm>
 
@@ -22,13 +22,13 @@
 -->
 
   <sect2 role="installation">
-    <title>Installation of PYTHON</title>
+    <title>Installation of Python</title>
 
-    <para>We will install PYTHON to enable extra functionality for GCC.
+    <para>We will install Python to enable extra functionality for GCC.
     It is not strictly required, but GCC can link to it to enable its
     new loop generation feature called Graphite.</para>
 
-    <para os="a">Prepare PYTHON for compilation:</para>
+    <para os="a">Prepare Python for compilation:</para>
 
 <screen os="b"><userinput>./configure \
     --prefix=/cross-tools \

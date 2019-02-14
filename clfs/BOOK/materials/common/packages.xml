@@ -582,6 +582,14 @@
     </varlistentry>
 
     <varlistentry>
+      <term>Python Documentation (&python-version;) - <token>&python-docs-size;</token>:</term>
+      <listitem>
+        <para>Download: <ulink url="&python-docs-url;"/></para>
+        <para>MD5 sum: <literal>&python-docs-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Python (&python-version;) - <token>&python-size;</token>:</term>
       <listitem>
         <para>Home page: <ulink url="&python-home;"/></para>
@@ -589,16 +597,6 @@
         <para>MD5 sum: <literal>&python-md5;</literal></para>
       </listitem>
     </varlistentry>
-
-<!--
-    <varlistentry>
-      <term>Python Documentation (&python-version;) - <token>&python-docs-size;</token>:</term>
-      <listitem>
-        <para>Download: <ulink url="&python-docs-url;"/></para>
-        <para>MD5 sum: <literal>&python-docs-md5;</literal></para>
-      </listitem>
-    </varlistentry>
--->
 
     <varlistentry>
       <term>Readline (&readline-version;) - <token>&readline-size;</token>:</term>
