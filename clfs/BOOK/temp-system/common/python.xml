@@ -5,12 +5,12 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-temp-system-python" role="wrap">
-  <?dbhtml filename="python.html"?>
+<sect1 id="ch-temp-system-Python" role="wrap">
+  <?dbhtml filename="Python.html"?>
 
   <title>Python-&python-version;</title>
 
-  <indexterm zone="ch-temp-system-python">
+  <indexterm zone="ch-temp-system-Python">
     <primary sortas="a-Python">Python</primary>
     <secondary>temporary system</secondary>
   </indexterm>

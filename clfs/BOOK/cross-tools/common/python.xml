@@ -10,7 +10,7 @@
 
   <title>Python-&python-version;</title>
 
-  <indexterm zone="ch-cross-tools-python">
+  <indexterm zone="ch-cross-tools-Python">
     <primary sortas="a-Python">Python</primary>
     <secondary>cross tools</secondary>
   </indexterm>
