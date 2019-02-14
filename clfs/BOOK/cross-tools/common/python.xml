@@ -5,8 +5,8 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-cross-tools-python" role="wrap">
-  <?dbhtml filename="python.html"?>
+<sect1 id="ch-cross-tools-Python" role="wrap">
+  <?dbhtml filename="Python.html"?>
 
   <title>Python-&python-version;</title>
 
