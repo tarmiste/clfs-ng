@@ -5,12 +5,12 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-boot-bc">
+<sect1 id="ch-cross-tools-bc">
   <?dbhtml filename="bc.html"?>
 
   <title>Bc-&bc-version;</title>
 
-  <indexterm zone="ch-boot-bc">
+  <indexterm zone="ch-cross-tools-bc">
     <primary sortas="a-Bc">Bc</primary>
     <secondary>boot</secondary>
   </indexterm>
