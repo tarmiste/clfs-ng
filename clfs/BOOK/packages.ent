@@ -455,9 +455,12 @@
 <!ENTITY python-url "https://www.python.org/ftp/python/&python-version;/Python-&python-version;.tar.xz">
 <!ENTITY python-md5 "df6ec36011808205beda239c72f947cb">
 <!ENTITY python-home "https://www.python.org/">
+
+<!--
 <!ENTITY python-docs-url "https://docs.python.org/ftp/python/doc/&python-version;/python-&python-version;-docs-html.tar.bz2">
 <!ENTITY python-docs-md5 "107ade7bb17efd104a22b2d457f4cb67">
 <!ENTITY python-docs-size "6,072 KB">
+-->
 
 <!ENTITY readline-version "8.0">
 <!ENTITY readline-size "2,907 KB">
