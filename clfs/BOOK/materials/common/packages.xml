@@ -537,6 +537,15 @@
     </varlistentry>
 
     <varlistentry>
+      <term>OpenSSL (&openssl-version;) - <token>&openssl-size;</token>:</term>
+      <listitem>
+        <para>Home page: <ulink url="&openssl-home;"/></para>
+        <para>Download: <ulink url="&openssl-url;"/></para>
+        <para>MD5 sum: <literal>&openssl-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>Patch (&patch-version;) - <token>&patch-size;</token>:</term>
       <listitem>
         <para>Home page: <ulink url="&patch-home;"/></para>
@@ -582,19 +591,19 @@
     </varlistentry>
 
     <varlistentry>
-      <term>Python Documentation (&python-version;) - <token>&python-docs-size;</token>:</term>
-      <listitem>
-        <para>Download: <ulink url="&python-docs-url;"/></para>
-        <para>MD5 sum: <literal>&python-docs-md5;</literal></para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
       <term>Python (&python-version;) - <token>&python-size;</token>:</term>
       <listitem>
         <para>Home page: <ulink url="&python-home;"/></para>
         <para>Download: <ulink url="&python-url;"/></para>
         <para>MD5 sum: <literal>&python-md5;</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Python Documentation (&python-version;) - <token>&python-docs-size;</token>:</term>
+      <listitem>
+        <para>Download: <ulink url="&python-docs-url;"/></para>
+        <para>MD5 sum: <literal>&python-docs-md5;</literal></para>
       </listitem>
     </varlistentry>
 
