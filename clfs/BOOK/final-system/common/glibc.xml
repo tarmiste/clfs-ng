@@ -183,7 +183,9 @@ install -v -Dm644 ../glibc-&glibc-version;/nscd/nscd.service /lib/systemd/system
     language were not installed by the above command. Install them
     with:</para>
 
-<screen><userinput remap="locale-full">make localedata/install-locales</userinput></screen>
+<screen><userinput remap="locale-full">#restore this later make localedata/install-locales</userinput></screen>
+<screen role="nodump"><userinput remap="locale-test">mkdir -pv /usr/lib/locale
+localedef -i zh_HK -f BIG5-HKSCS zh_HK.BIG5-HKSCS</userinput></screen>
 
     <para>To save time, an alternative to running the previous command (which
     generates and installs every locale listed in the
