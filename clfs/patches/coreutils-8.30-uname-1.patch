@@ -1,25 +1,6 @@
-Submitted By: Jim Gifford <jim at cross-lfs dot org>
-Date: 2010-07-26
-Initial Package Version: 5.97
-Upstream Status: Not Accepted
-Origin: Gentoo - http://sources.gentoo.org/viewcvs.py/gentoo/src/patchsets/coreutils
-Description: Display CPU Information from /proc/cpuinfo or /proc/sysinfo
-
-Rediffed for 7.1 by Jim Gifford
-Rediffed for 7.5 by Jim Gifford
-Rediffed for 8.4 by Joe Ciccone
-Rediffed for 8.9 by Joe Ciccone
-Rediffed for 8.16 by Jonathan Norman - 2012-06-10
-Rediffed for 8.19 by William Harrington - 2012-08-27
-Renamed for 8.20 by William Harrington - 2012-11-01
-Rediffed for 8.21 by William Harrington 2013-05-31
-Renamed for 8.22 by William Harrington - 2013-12-14
-Renamed for 8.23 by William Harrington - 2014-10-30
-Renamed for 8.27 by William Harrington - 2017-05-24
-
-diff -Naur coreutils-8.21.orig/src/uname.c coreutils-8.21/src/uname.c
---- coreutils-8.21.orig/src/uname.c	2013-01-31 00:46:24.000000000 +0000
-+++ coreutils-8.21/src/uname.c	2013-05-31 13:41:32.683326834 +0000
+diff -Naur coreutils-8.30.orig/src/uname.c coreutils-8.30/src/uname.c
+--- coreutils-8.30.orig/src/uname.c	2018-05-14 04:20:24.000000000 +0000
++++ coreutils-8.30/src/uname.c	2019-02-15 12:08:38.078652319 +0000
 @@ -49,6 +49,11 @@
  # include <mach-o/arch.h>
  #endif
@@ -30,9 +11,9 @@ diff -Naur coreutils-8.21.orig/src/uname.c coreutils-8.21/src/uname.c
 +#endif
 +
  #include "system.h"
+ #include "die.h"
  #include "error.h"
- #include "quote.h"
-@@ -153,6 +158,117 @@
+@@ -154,6 +159,117 @@
    exit (status);
  }
  
@@ -150,7 +131,7 @@ diff -Naur coreutils-8.21.orig/src/uname.c coreutils-8.21/src/uname.c
  /* Print ELEMENT, preceded by a space if something has already been
     printed.  */
  
-@@ -300,10 +416,14 @@
+@@ -301,10 +417,14 @@
    if (toprint & PRINT_PROCESSOR)
      {
        char const *element = unknown;
@@ -166,7 +147,7 @@ diff -Naur coreutils-8.21.orig/src/uname.c coreutils-8.21/src/uname.c
            element = processor;
        }
  #endif
-@@ -356,9 +476,13 @@
+@@ -357,9 +477,13 @@
        if (element == unknown)
          {
            static char hardware_platform[257];
