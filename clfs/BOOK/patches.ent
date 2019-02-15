@@ -68,7 +68,7 @@
 <!ENTITY readline-branch_update-patch-size "3.049 KB">
 
 <!ENTITY sysvinit-tools_updates-patch "sysvinit-&sysvinit-version;-tools_updates-1.patch">
-<!ENTITY sysvinit-tools_updates-patch-md5 "c3f6981c46868b68bfd58921570ea51f">
+<!ENTITY sysvinit-tools_updates-patch-md5 "284c3eab44d0a892548fa20624f75441">
 <!ENTITY sysvinit-tools_updates-patch-size "2.339 KB">
 
 <!-- Vim branch update patch area -->
