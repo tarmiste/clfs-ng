@@ -1,6 +1,6 @@
-diff -Naur a/src/Makefile sysvinit-2.93/src/Makefile
---- a/src/Makefile	2018-11-24 16:38:12.000000000 +0000
-+++ sysvinit-2.93/src/Makefile	2019-02-14 22:47:59.210995410 +0000
+diff -Naur sysvinit-2.93.orig/src/Makefile sysvinit-2.93/src/Makefile
+--- sysvinit-2.93.orig/src/Makefile	2018-11-24 16:38:12.000000000 +0000
++++ sysvinit-2.93/src/Makefile	2019-02-15 01:56:28.155381939 +0000
 @@ -24,24 +24,20 @@
  # For some known distributions we do not build all programs, otherwise we do.
  BIN	=
@@ -70,9 +70,9 @@ diff -Naur a/src/Makefile sysvinit-2.93/src/Makefile
  runlevel:	LDLIBS += $(STATIC)
  runlevel:	runlevel.o runlevellog.o
  
-diff -Naur a/src/paths.h sysvinit-2.93/src/paths.h
---- a/src/paths.h	2018-11-24 16:38:12.000000000 +0000
-+++ sysvinit-2.93/src/paths.h	2019-02-14 22:40:14.879612880 +0000
+diff -Naur sysvinit-2.93.orig/src/paths.h sysvinit-2.93/src/paths.h
+--- sysvinit-2.93.orig/src/paths.h	2018-11-24 16:38:12.000000000 +0000
++++ sysvinit-2.93/src/paths.h	2019-02-15 01:56:28.155381939 +0000
 @@ -26,7 +26,7 @@
  #define CONSOLE		"/dev/console"		/* Logical system console */
  #define SECURETTY	"/etc/securetty"	/* List of root terminals */
