@@ -36,6 +36,7 @@
     --prefix=/tools \
     --build=${CLFS_HOST} \
     --host=${CLFS_TARGET} \
+    --disable-ipv6 \
     --with-ensurepip=no</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
