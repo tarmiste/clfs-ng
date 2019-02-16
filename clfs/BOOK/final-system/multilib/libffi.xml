@@ -24,6 +24,14 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
+    xpointer="xpointer(//*[@os='prea'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../common/libffi.xml"
+    xpointer="xpointer(//*[@os='preb'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='a'])"/>
 
 <screen os="b"><userinput>CC="gcc -isystem /usr/include ${BUILD32}" \
@@ -31,6 +39,9 @@ CXX="g++ -isystem /usr/include ${BUILD32}" \
 LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
 ./configure \
     --prefix=/usr --disable-static \
+    --prefix=/usr \
+    --libdir=/lib \
+    --libexecdir=/usr/lib64 \
     --with-gcc-arch=native</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"

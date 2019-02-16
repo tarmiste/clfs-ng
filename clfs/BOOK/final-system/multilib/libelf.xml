@@ -31,6 +31,8 @@ CXX="g++ -isystem /usr/include ${BUILD32}" \
 LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
 ./configure \
     --prefix=/usr --disable-static \
+    --libdir=/lib \
+    --libexecdir=/usr/lib \
     --with-gcc-arch=native</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"

@@ -40,11 +40,11 @@
       Illegal Operation Errors.</para>
     </note>
 
-    <para>Modify the Makefile to install headers into the standard
+    <para os="prea>Modify the Makefile to install headers into the standard
     <filename class="directory">/usr/include</filename> directory instead of
     <filename class="directory">/usr/lib/libffi-3.2.1/include</filename>.</para>
 
-<screen><userinput remap="pre">sed -e '/^includesdir/ s/$(libdir).*$/$(includedir)/' \
+<screen><userinput remap="preb">sed -e '/^includesdir/ s/$(libdir).*$/$(includedir)/' \
     -i include/Makefile.in
 
 sed -e '/^includedir/ s/=.*$/=@includedir@/' \
