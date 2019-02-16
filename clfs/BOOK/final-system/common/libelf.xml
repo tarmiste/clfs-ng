@@ -34,21 +34,21 @@
       <para>Libelf is part of elfutils-&elfutils-version; package. Use
       the elfutils-&elfutils-version;.tar.bz2 as the source tarball.</para>
 
-    <para>Prepare Libelf for compilation:</para>
+    <para os="a">Prepare Libelf for compilation:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
+<screen os="b"><userinput remap="configure">./configure --prefix=/usr</userinput></screen>
 
-    <para>Compile the package:</para>
+    <para os="c">Compile the package:</para>
 
-<screen><userinput remap="make">make</userinput></screen>
+<screen os="d"><userinput remap="make">make</userinput></screen>
 
-    <para>To test the results, issue:</para>
+    <para os="e">To test the results, issue:</para>
     
-<screen><userinput remap="test">make check</userinput></screen>
+<screen os="e2"><userinput remap="test">make check</userinput></screen>
 
-    <para>Install only Libelf:</para>
+    <para os="f">Install only Libelf:</para>
 
-<screen><userinput remap="install">make -C libelf install
+<screen os="g"><userinput remap="install">make -C libelf install
 install -vm644 config/libelf.pc /usr/lib/pkgconfig</userinput></screen>
 
   </sect2>
