@@ -9,6 +9,7 @@
   <?dbhtml filename="libelf.html"?>
 
   <title>Libelf from Elfutils-&elfutils-version;</title>
+  <title>Libelf from Elfutils-&elfutils-version; 32 Bit Libraries</title>
 
   <indexterm zone="ch-system-libelf-32">
     <primary sortas="a-Libelf">Libelf</primary>
