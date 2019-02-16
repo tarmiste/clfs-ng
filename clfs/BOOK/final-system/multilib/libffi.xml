@@ -41,7 +41,7 @@ LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
     --prefix=/usr --disable-static \
     --prefix=/usr \
     --libdir=/lib \
-    --libexecdir=/usr/lib64 \
+    --libexecdir=/usr/lib \
     --with-gcc-arch=native</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
