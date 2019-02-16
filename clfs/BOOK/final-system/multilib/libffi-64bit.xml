@@ -62,8 +62,7 @@ LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD64}" \
   <sect2 role="content">
     <title/>
 
-    <para>Details on this package are located in <xref
-    linkend="contents-libffi" role="."/></para>
+    <para>Details on this package are TBA </para>
 
   </sect2>
 
