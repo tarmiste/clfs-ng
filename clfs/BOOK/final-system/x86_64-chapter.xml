@@ -82,6 +82,8 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gettext-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libffi.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libffi-64bit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libelf.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libelf-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/coreutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/diffutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gawk.xml"/>
