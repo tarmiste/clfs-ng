@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-  <!ENTITY % general-entities SYSTEM "../general.ent">
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 ]>
 
@@ -27,16 +27,6 @@
     interface to various calling conventions. This allows a programmer to call
     any function specified by a call interface description at run time.</para>
 
-    <segmentedlist>
-      <segtitle>&buildtime;</segtitle>
-      <segtitle>&diskspace;</segtitle>
-
-      <seglistitem>
-        <seg>&libffi-ch6-sbu;</seg>
-        <seg>&libffi-ch6-du;</seg>
-      </seglistitem>
-    </segmentedlist>
-
   </sect2>
 
   <sect2 role="installation">
@@ -61,40 +51,21 @@ sed -e '/^includedir/ s/=.*$/=@includedir@/' \
     -e 's/^Cflags: -I${includedir}/Cflags:/' \
     -i libffi.pc.in</userinput></screen>
 
-    <para>Prepare libffi for compilation:</para>
+    <para os="a">Prepare libffi for compilation:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr --disable-static --with-gcc-arch=native</userinput></screen>
+<screen os="b"><userinput remap="configure">./configure --prefix=/usr --disable-static --with-gcc-arch=native</userinput></screen>
 
-    <variablelist>
-      <title>The meaning of the configure option:</title>
+    <para os="c">Compile the package:</para>
 
-      <varlistentry>
-        <term><parameter>--with-gcc-arch=native</parameter></term>
-        <listitem>
-          <para>Ensure gcc optimizes for the current system.  If this
-          is not specified, the system is guessed and the code generated
-          may not be correct for some systems.  If the generated code
-          will be copied from the native system to a less capable 
-          system, use the less capable system as a parameter. For details 
-          about alternative system types, see <ulink 
-          url='https://gcc.gnu.org/onlinedocs/gcc-&gcc-version;/gcc/x86-Options.html'>
-          the x86 options in the gcc manual</ulink>.</para>
-        </listitem>
-      </varlistentry>
+<screen os="d"><userinput remap="make">make</userinput></screen>
 
-    </variablelist>
+    <para os="e">To test the results, issue:</para>
 
-    <para>Compile the package:</para>
+<screen os="e2"><userinput remap="test">make check</userinput></screen>
 
-<screen><userinput remap="make">make</userinput></screen>
+    <para os="f">Install the package:</para>
 
-    <para>To test the results, issue:</para>
-
-<screen><userinput remap="test">make check</userinput></screen>
-
-    <para>Install the package:</para>
-
-<screen><userinput remap="install">make install</userinput></screen>
+<screen os="g"><userinput remap="install">make install</userinput></screen>
 
   </sect2>
 

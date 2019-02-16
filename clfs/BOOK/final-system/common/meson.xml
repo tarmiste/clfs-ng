@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
   "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-  <!ENTITY % general-entities SYSTEM "../general.ent">
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
   %general-entities;
 ]>
 
@@ -25,15 +25,6 @@
 
     <para>Meson is an open source build system meant to be both extremely fast,
     and, even more importantly, as user friendly as possible.</para>
-
-    <segmentedlist>
-      <segtitle>&buildtime;</segtitle>
-      <segtitle>&diskspace;</segtitle>
-      <seglistitem>
-        <seg>&meson-ch6-sbu;</seg>
-        <seg>&meson-ch6-du;</seg>
-      </seglistitem>
-    </segmentedlist>
 
   </sect2>
 

@@ -15,6 +15,11 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/pkgmgt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/testsuitesagain.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/temp-perl.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/libelf.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/libffi.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libffi.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/ninja.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/meson.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/linux-headers.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/man-pages.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="x86/glibc.xml"/>
