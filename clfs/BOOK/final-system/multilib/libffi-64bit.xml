@@ -6,7 +6,7 @@
 ]>
 
 <sect1 id="ch-system-libffi-64" role="wrap">
-  <?dbhtml filename="libffi.html"?>
+  <?dbhtml filename="libffi-64bit.html"?>
 
   <title>Libffi-&libffi-version; 64 Bit Libraries</title>
 
