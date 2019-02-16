@@ -24,8 +24,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/m4.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/binutils.xml"/>
@@ -45,6 +43,8 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/pkg-config-lite.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses-64bit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/attr.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/attr-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/acl.xml"/>
@@ -84,6 +84,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/diffutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gawk.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/findutils.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/texinfo.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/groff.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="x86/grub.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/less.xml"/>
@@ -96,7 +97,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/patch.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/man-db.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/tar.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/texinfo.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/vim.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/procps-ng.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/procps-ng-64bit.xml"/>
