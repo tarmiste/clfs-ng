@@ -5,7 +5,7 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-Python" role="wrap">
+<sect1 id="ch-system-Python-32" role="wrap">
   <?dbhtml filename="Python.html"?>
 
   <sect1info condition="script">
@@ -14,7 +14,7 @@
     <address>&python-url;</address>
   </sect1info>
 
-  <title>Python-&python-version;</title>
+  <title>Python-&Python-version; 32 Bit Libraries</title>
 
   <indexterm zone="ch-system-Python">
     <primary sortas="a-python">python</primary>
@@ -34,7 +34,14 @@
 
     <para>Prepare Python for compilation:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr       \
+<screen os="b"><userinput>CC="gcc -isystem /usr/include ${BUILD32}" \
+CXX="g++ -isystem /usr/include ${BUILD32}" \
+LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
+./configure \
+    --prefix=/usr \
+    --libdir=/lib \
+    --libexecdir=/usr/lib \
+    --with-gcc-arch=native</userinput></screen>
             --enable-shared     \
             --with-system-expat \
             --with-system-ffi   \
