@@ -16,7 +16,7 @@
   </indexterm>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="../../final-system/common/python.xml"
+  href="../../pool/python.xml"
   xpointer="xpointer(//*[@role='package'])"/>
 
   <sect2 role="installation">
@@ -31,7 +31,7 @@ EOF
 </userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../../final-system/common/python.xml"
+    href="../../pool/python.xml"
     xpointer="xpointer(//*[@os='a'])"/>
 
 <screen os="ca"><userinput>CONFIG_SITE=config.site \
@@ -43,19 +43,19 @@ EOF
     --without-ensurepip</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../../final-system/common/python.xml"
+    href="../../pool/python.xml"
     xpointer="xpointer(//*[@os='c'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../../final-system/common/python.xml"
+    href="../../pool/python.xml"
     xpointer="xpointer(//*[@os='d'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../../final-system/common/python.xml"
+    href="../../pool/python.xml"
     xpointer="xpointer(//*[@os='f'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../../final-system/common/python.xml"
+    href="../../pool/python.xml"
     xpointer="xpointer(//*[@os='g'])"/>
 
   </sect2>
