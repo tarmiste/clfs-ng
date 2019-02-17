@@ -36,12 +36,11 @@
 
 <screen os="b"><userinput>CC="gcc -isystem /usr/include ${BUILD64}" \
 CXX="g++ -isystem /usr/include ${BUILD64}" \
-LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD64}" \
+LDFLAGS="-Wl,-rpath-link,/usr/lib64:/lib64 ${BUILD64}" \
 ./configure \
     --prefix=/usr \
     --libdir=/lib64 \
     --libexecdir=/usr/lib64 \
-    --with-gcc-arch=native</userinput></screen>
             --enable-shared     \
             --with-system-expat \
             --with-system-ffi   \
