@@ -9,13 +9,13 @@
 <!ENTITY automake-perl-patch-size "0.685 KB">
 
 <!ENTITY bash-branch_update-patch "bash-&bash-version;-branch_update-1.patch">
-<!ENTITY bash-branch_update-patch-md5 "9f59bec94bfd1023d9c6a76b49187420">
-<!ENTITY bash-branch_update-patch-size "17 KB">
+<!ENTITY bash-branch_update-patch-md5 "f631b4444432a549943d04425d9ea2ce">
+<!ENTITY bash-branch_update-patch-size "1 KB">
 
 <!-- Binutils branch update area
 <!ENTITY binutils-branch_update-patch "binutils-&binutils-version;-branch_update-1.patch">
-<!ENTITY binutils-branch_update-patch-md5 "4fcdd8ef88fe07db8616e91a14bc5ac8">
-<!ENTITY binutils-branch_update-patch-size "5,268 KB">
+<!ENTITY binutils-branch_update-patch-md5 "f631b4444432a549943d04425d9ea2ce">
+<!ENTITY binutils-branch_update-patch-size "1 KB">
 -->
 
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-1.patch">
@@ -28,8 +28,8 @@
 
 <!--GCC Branch Update Area
 <!ENTITY gcc-branch_update-patch "gcc-&gcc-version;-branch_update-1.patch">
-<!ENTITY gcc-branch_update-patch-md5 "0ce406be87a6504a7539ab45f7abf781">
-<!ENTITY gcc-branch_update-patch-size "1,251 KB">
+<!ENTITY gcc-branch_update-patch-md5 "f631b4444432a549943d04425d9ea2ce">
+<!ENTITY gcc-branch_update-patch-size "1 KB">
 -->
 
 <!ENTITY iana-etc-numbers_update-date "20140202">
@@ -58,14 +58,14 @@
 <!ENTITY ncurses-bashfix-patch-size ".743 KB">
 
 <!--Ncurses Branch Update Area
-<!ENTITY ncurses-branch_update-patch "ncurses-&ncurses-version;-branch_update-4.patch">
-<!ENTITY ncurses-branch_update-patch-md5 "c2b2dc2d31b02c218359e6218f12a72c">
-<!ENTITY ncurses-branch_update-patch-size "2,492 KB">
+<!ENTITY ncurses-branch_update-patch "ncurses-&ncurses-version;-branch_update-1.patch">
+<!ENTITY ncurses-branch_update-patch-md5 "f631b4444432a549943d04425d9ea2ce">
+<!ENTITY ncurses-branch_update-patch-size "1 KB">
 -->
 
 <!ENTITY readline-branch_update-patch "readline-&readline-version;-branch_update-1.patch">
-<!ENTITY readline-branch_update-patch-md5 "8b429202ce52362ae927f36a48461c23">
-<!ENTITY readline-branch_update-patch-size "3.049 KB">
+<!ENTITY readline-branch_update-patch-md5 "f631b4444432a549943d04425d9ea2ce">
+<!ENTITY readline-branch_update-patch-size "1 KB">
 
 <!ENTITY sysvinit-tools_updates-patch "sysvinit-&sysvinit-version;-tools_updates-1.patch">
 <!ENTITY sysvinit-tools_updates-patch-md5 "284c3eab44d0a892548fa20624f75441">
