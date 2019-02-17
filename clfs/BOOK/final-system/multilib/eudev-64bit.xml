@@ -75,8 +75,10 @@ CC="gcc ${BUILD64}" ./configure --prefix=/usr --sysconfdir=/etc \
 
   </sect2>
 
+<!--
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="../common/eudev.xml"
+  href="../../boot/common/eudev.xml"
   xpointer="xpointer(id('contents-eudev'))"/>
+-->
 
 </sect1>
