@@ -28,7 +28,7 @@
 
 <screen os="b"><userinput>CC="gcc -isystem /usr/include ${BUILD64}" \
 CXX="g++ -isystem /usr/include ${BUILD64}" \
-LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD64}" \
+LDFLAGS="-Wl,-rpath-link,/usr/lib64:/lib ${BUILD64}" \
 ./configure \
     --prefix=/usr \
     --libdir=/lib64 \
@@ -54,9 +54,8 @@ LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD64}" \
     href="../common/libelf.xml"
     xpointer="xpointer(//*[@os='f'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
-    xpointer="xpointer(//*[@os='g'])"/>
+<screen os="g"><userinput remap="install">make -C libelf install
+install -vm644 config/libelf.pc /usr/lib64/pkgconfig</userinput></screen>
 
   </sect2>
 
