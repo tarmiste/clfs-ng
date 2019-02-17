@@ -317,6 +317,18 @@
 <!ENTITY libcap-md5 "968ac4d42a1a71754313527be2ab5df3">
 <!ENTITY libcap-home "https://sites.google.com/site/fullycapable/">
 
+<!ENTITY libee-version "0.4.1">
+<!ENTITY libee-size "352 KB">
+<!ENTITY libee-url "http://www.libee.org/download/files/download/libee-&libee-version;.tar.gz">
+<!ENTITY libee-md5 "7bbf4160876c12db6193c06e2badedb2">
+<!ENTITY libee-home "http://www.libee.org/">
+
+<!ENTITY libestr-version "0.1.10">
+<!ENTITY libestr-size "336 KB">
+<!ENTITY libestr-url "http://libestr.adiscon.com/files/download/libestr-&libestr-version;.tar.gz">
+<!ENTITY libestr-md5 "f4c9165a23587e77f7efe65d676d5e8e">
+<!ENTITY libestr-home "http://libestr.adiscon.com/">
+
 <!ENTITY libffi-version "3.2.1">
 <!ENTITY libffi-size "920 KB">
 <!ENTITY libffi-url "ftp://sourceware.org/pub/libffi/libffi-&libffi-version;.tar.gz">
