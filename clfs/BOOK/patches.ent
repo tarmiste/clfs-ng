@@ -19,7 +19,7 @@
 -->
 
 <!ENTITY coreutils-uname-patch "coreutils-&coreutils-version;-uname-1.patch">
-<!ENTITY coreutils-uname-patch-md5 "e9bc0459d313f677cebc2095c3b18818">
+<!ENTITY coreutils-uname-patch-md5 "fa477e90a5ec75528b1dda9a407b197e">
 <!ENTITY coreutils-uname-patch-size "5.020 KB">
 
 <!ENTITY gcc-specs-patch "gcc-&gcc-version;-specs-1.patch">
@@ -50,8 +50,8 @@
 <!ENTITY linux-sublevel-patch-size "465 KB">
 
 <!ENTITY mpfr-fixes-patch "mpfr-&mpfr-version;-fixes-1.patch">
-<!ENTITY mpfr-fixes-patch-md5 "c9e1bfc93ee8d90226772b628ab77f38">
-<!ENTITY mpfr-fixes-patch-size "5.101 KB">
+<!ENTITY mpfr-fixes-patch-md5 "f631b4444432a549943d04425d9ea2ce">
+<!ENTITY mpfr-fixes-patch-size "1 KB">
 
 <!ENTITY ncurses-bashfix-patch "ncurses-&ncurses-version;-bash_fix-1.patch">
 <!ENTITY ncurses-bashfix-patch-md5 "e3b6d45ce0f0b87e0df98e5bc0d09415">
