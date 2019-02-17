@@ -115,10 +115,12 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/iputils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/ninja.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/meson.xml"/>
+<!--
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/rsyslog.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/sysvinit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/eudev.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/eudev-64bit.xml"/>
+-->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/systemd.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/systemd-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/dbus.xml"/>
