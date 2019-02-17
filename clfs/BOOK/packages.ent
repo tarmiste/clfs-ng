@@ -464,6 +464,14 @@
 <!ENTITY readline-md5 "7e6c1f16aee3244a69aba6e438295ca3">
 <!ENTITY readline-home "https://tiswww.case.edu/php/chet/readline/rltop.html">
 
+<!ENTITY rsyslog-version "6.4.2">
+<!ENTITY rsyslog-size "2,519 KB">
+<!ENTITY rsyslog-url "http://www.rsyslog.com/files/download/rsyslog/rsyslog-&rsyslog-version;.tar.gz">
+<!ENTITY rsyslog-md5 "7de0124ec7d67ce2bfda0009ab1263ee">
+<!ENTITY rsyslog-home "http://www.rsyslog.com/">
+
+<!ENTITY sed-version "4.2.2">
+
 <!ENTITY sed-version "4.7">
 <!ENTITY sed-size "1,268 KB">
 <!ENTITY sed-url "&gnu;sed/sed-&sed-version;.tar.xz">
