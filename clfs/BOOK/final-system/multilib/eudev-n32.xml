@@ -72,12 +72,13 @@ CC="gcc ${BUILDN32}" \
 
   </sect2>
 
-<!--
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="../../boot/common/eudev.xml"
-  xpointer="xpointer(id('contents-eudev'))"/>
--->
+  <sect2 role="content">
+    <title/>
 
+    <para>Details on this package are located in <xref
+    linkend="contents-eudev" role="."/></para>
+
+  </sect2>
 </sect1>
 
 
