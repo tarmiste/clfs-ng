@@ -59,12 +59,11 @@ CC="gcc ${BUILD32}" ./configure --prefix=/usr --sysconfdir=/etc \
 
   </sect2>
 
-  <sect2 role="content">
-    <title/>
+<!--
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../../boot/common/eudev.xml"
+  xpointer="xpointer(id('contents-eudev'))"/>
+-->
 
-    <para>Details on this package are located in <xref
-    linkend="contents-eudev" role="."/></para>
-
-  </sect2>
 </sect1>
 
