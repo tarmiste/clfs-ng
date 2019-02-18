@@ -14,6 +14,7 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/introduction.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/pkgmgt.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/testsuitesagain.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/temp-perl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/linux-headers.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/man-pages.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ppc64/glibc.xml"/>
@@ -66,7 +67,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gperf.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/expat.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/expat-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/temp-perl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/perl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/perl-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/xml-parser.xml"/>
