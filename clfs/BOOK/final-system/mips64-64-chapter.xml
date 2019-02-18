@@ -35,8 +35,8 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/ncurses.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/readline.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/attr.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/libcap.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/acl.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/libcap.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/sed.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/psmisc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/iana-etc.xml"/>
