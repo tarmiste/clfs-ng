@@ -482,8 +482,6 @@
 <!ENTITY rsyslog-md5 "7de0124ec7d67ce2bfda0009ab1263ee">
 <!ENTITY rsyslog-home "http://www.rsyslog.com/">
 
-<!ENTITY sed-version "4.2.2">
-
 <!ENTITY sed-version "4.7">
 <!ENTITY sed-size "1,268 KB">
 <!ENTITY sed-url "&gnu;sed/sed-&sed-version;.tar.xz">
