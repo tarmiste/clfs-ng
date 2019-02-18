@@ -21,7 +21,15 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/glibc-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/glibc-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/adjusting.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib-n32.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib-64bit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file-n32.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/m4.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bc.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/binutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gmp.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gmp-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/gmp-64bit.xml"/>
@@ -34,17 +42,19 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/isl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/isl-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/isl-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib-n32.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/zlib-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/flex.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/flex-n32.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/flex-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bison.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bison-n32.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bison-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/binutils.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/shadow.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/gcc.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/multiarch_wrapper.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bzip2.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bzip2-n32.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bzip2-64bit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/pkg-config-lite.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses-n32.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses-64bit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline-n32.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/attr.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/attr-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/attr-64bit.xml"/>
@@ -55,11 +65,13 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libcap-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libcap-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/sed.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips64/pkg-config-lite.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses-n32.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ncurses-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/shadow.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/psmisc.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/flex.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/flex-n32.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/flex-64bit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bison.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bison-n32.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bison-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/util-linux.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/util-linux-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/util-linux-64bit-pass1.xml"/>
@@ -69,33 +81,22 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/e2fsprogs.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/e2fsprogs-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/e2fsprogs-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/multiarch_wrapper.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/coreutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/iana-etc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libtool.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libtool-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libtool-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/iproute2.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bzip2.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bzip2-n32.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bzip2-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gdbm.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gdbm-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gdbm-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/perl.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/perl-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/perl-64bit.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline-n32.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/readline-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/autoconf.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/automake.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bash.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/bc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/diffutils.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file-n32.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/file-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gawk.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/findutils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/gettext.xml"/>
@@ -127,7 +128,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/kmod-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/kmod-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/patch.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/psmisc.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/systemd.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/systemd-n32.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/systemd-64bit.xml"/>
