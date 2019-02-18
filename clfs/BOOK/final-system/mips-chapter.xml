@@ -80,10 +80,10 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/iputils.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/systemd.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/dbus.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/aboutdebug.xml"/>
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/stripping.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips/colo.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips/dvhtool.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mips/arcload.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/aboutdebug.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="common/stripping.xml"/>
 
 </chapter>
