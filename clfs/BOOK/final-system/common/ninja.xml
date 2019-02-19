@@ -17,129 +17,53 @@
   <sect2 role="package">
     <title/>
 
-    <para>The Ninja package contains a powerful text editor.</para>
+    <para>Ninja is a small build system with a focus on speed.</para>
 
   </sect2>
 
   <sect2 role="installation">
     <title>Installation of Ninja</title>
 
-    <tip os="t1">
-      <title>Alternatives to Ninja</title>
+<!--
+    <para>When run, ninja normally runs a maximum number of processes
+    in parallel.  By default this is the number of cores on the system 
+    plus two.  In some cases this can overheat a CPU or run a system out
+    of memory.  If run from the command line, passing a -jN parameter
+    will limit the number of parallel processes, but some packages
+    embed the execution of ninja and do not pass a -j parameter.</para>
 
-      <para>If you prefer another editor&mdash;such as Emacs, Joe, or
-      Nano&mdash;please refer to <ulink
-      url="&cblfs-root;index.php/Category:Text_Editors"/>
-      for suggested installation instructions.</para>
-    </tip>
+    <para>Using the <emphasis>optional</emphasis> patch below allows a user to
+    limit the number of parallel processes via an environment variable, 
+    NINJAJOBS.  <command>For example</command> setting:
 
-    <para os="p1">The following patch merges all updates from the &ninja-version; Branch
-    from the Ninja developers:</para>
+     <!- - Using <command> here to make the output bold.  We really don't want
+     users setting this now and experience shows that many users blindly
+     copy/paste anything in a box. - ->
 
-<screen os="p2"><userinput>#patch -Np1 -i ../danada</userinput></screen>
+    <screen>export NINJAJOBS=4</screen>
 
-    <para os="b">Change the default location of
-    the <filename>ninjarc</filename> configuration file to <filename
-    class="directory">/etc</filename>:</para>
+    will limit ninja to four parallel processes.</para>
 
-<screen os="c"><userinput>echo '#define SYS_VIMRC_FILE "/etc/ninjarc"' &gt;&gt; src/feature.h</userinput></screen>
+    <para>If desired, install the patch by running:</para>
 
-    <para os="d">Prepare Ninja for compilation:</para>
+<screen><userinput remap="pre">patch -Np1 -i ../ninja-1.8.2-add_NINJAJOBS_var-1.patch</userinput></screen>
+-->
 
-<screen os="e"><userinput>./configure \
-    --prefix=/usr</userinput></screen>
+    <para os="g">Build Ninja with:</para>
 
-    <para os="g">Compile the package:</para>
-
-<screen os="h"><userinput>make</userinput></screen>
+<screen os="h"><userinput>python3 configure.py --bootstrap</userinput></screen>
 
     <para os="i">To test the results, issue:</para>
 
-<screen os="i2"><userinput remap="test">make test</userinput></screen>
-
-    <para os="i3">However, this test suite outputs a lot of binary data to the
-    screen, which can cause issues with the settings of the current terminal.
-    This can be resolved by redirecting the output to a log file.</para>
+<screen os="i2"><userinput remap="test">python3 configure.py
+./ninja ninja_test
+./ninja_test --gtest_filter=-SubprocessTest.SetWithLots</userinput></screen>
 
     <para os="j">Install the package:</para>
 
-<screen os="k"><userinput>make -j1 install</userinput></screen>
-
-    <para os="l">Many users are accustomed to using <command>vi</command>
-    instead of <command>ninja</command>. Some programs, such as
-    <command>vigr</command> and <command>vipw</command>, also use
-    <command>vi</command>. Create a symlink to permit execution of
-    <command>ninja</command> when users habitually enter <command>vi</command>
-    and allow programs that use <command>vi</command> to work:</para>
-
-<screen os="m"><userinput>ln -sv ninja /usr/bin/vi</userinput></screen>
-
-<para os="n">By default, Ninja's documentation is installed in
-<filename class="directory">/usr/share/ninja</filename>.  The following symlink
-allows the documentation to be accessed via
-<filename class="directory">/usr/share/doc/ninja-&ninja-version;</filename>, making
-it consistent with the location of documentation for other packages:</para>
-
-<screen os="o"><userinput>ln -sv ../ninja/ninja/doc /usr/share/doc/ninja-&ninja-version;</userinput></screen>
-
-    <para os="p">If an X Window System is going to be installed on the CLFS
-    system, you may want to recompile Ninja after installing X. Ninja
-    comes with a GUI version of the editor that requires X and some
-    additional libraries to be installed. For more information, refer to the
-    Ninja documentation and the Ninja installation page in CBLFS at <ulink
-    url="&cblfs-root;index.php/Ninja"/>.</para>
-
-  </sect2>
-
-  <sect2 id="conf-ninja" role="configuration">
-    <title>Configuring Ninja</title>
-
-    <indexterm zone="conf-ninja">
-      <primary sortas="e-/etc/ninjarc">/etc/ninjarc</primary>
-    </indexterm>
-
-    <para>By default, <command>ninja</command> runs in vi-incompatible mode.
-    This may be new to users who have used other editors in the past. The
-    <quote>nocompatible</quote> setting is included below to highlight the
-    fact that a new behavior is being used. It also reminds those who would
-    change to <quote>compatible</quote> mode that it should be the first
-    setting in the configuration file. This is necessary because it changes
-    other settings, and overrides must come after this setting. Create a
-    default <command>ninja</command> configuration file by running the
-    following:</para>
-
-<screen><userinput>cat &gt; /etc/ninjarc &lt;&lt; "EOF"
-<literal>" Begin /etc/ninjarc
-
-set nocompatible
-set backspace=2
-set ruler
-syntax on
-if (&amp;term == "iterm") || (&amp;term == "putty")
-  set background=dark
-endif
-
-" End /etc/ninjarc</literal>
-EOF</userinput></screen>
-
-
-    <para>The <parameter>set nocompatible</parameter> makes
-    <command>ninja</command> behave in a more useful way (the default) than
-    the vi-compatible manner. Remove the <quote>no</quote> to keep the
-    old <command>vi</command> behavior. The <parameter>set
-    backspace=2</parameter> allows backspacing over line breaks,
-    autoindents, and the start of insert. The <parameter>syntax
-    on</parameter> enables ninja's syntax highlighting. Finally, the
-    <emphasis>if</emphasis> statement with the <parameter>set
-    background=dark</parameter> corrects <command>ninja</command>'s guess
-    about the background color of some terminal emulators. This gives the
-    highlighting a better color scheme for use on the black background of
-    these programs.</para>
-
-    <para>Documentation for other available options can be obtained by
-    running the following command:</para>
-
-<screen role="nodump"><userinput>ninja -c ':options'</userinput></screen>
+<screen os="k"><userinput remap="install">install -vm755 ninja /usr/bin/
+install -vDm644 misc/bash-completion /usr/share/bash-completion/completions/ninja
+install -vDm644 misc/zsh-completion  /usr/share/zsh/site-functions/_ninja</userinput></screen>
 
   </sect2>
 

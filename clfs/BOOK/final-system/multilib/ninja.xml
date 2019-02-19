@@ -23,34 +23,6 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='t1'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='p1'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='p2'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='b'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='c'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='d'])"/>
-
-<screen os="e"><userinput>CC="gcc ${BUILD64}" CXX="g++ ${BUILD64}" \
-./configure \
-    --prefix=/usr</userinput></screen>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
     xpointer="xpointer(//*[@os='g'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -59,15 +31,7 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='i'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
     xpointer="xpointer(//*[@os='i2'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='i3'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/ninja.xml"
@@ -77,31 +41,7 @@
     href="../common/ninja.xml"
     xpointer="xpointer(//*[@os='k'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='l'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='m'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='n'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='o'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/ninja.xml"
-    xpointer="xpointer(//*[@os='p'])"/>
-
   </sect2>
-
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="../common/ninja.xml"
-  xpointer="xpointer(id('conf-ninja'))"/>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
   href="../common/ninja.xml"

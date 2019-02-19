@@ -17,129 +17,26 @@
   <sect2 role="package">
     <title/>
 
-    <para>The Meson package contains a powerful text editor.</para>
+    <para>Meson is an open source build system meant to be both extremely fast,
+    and, even more importantly, as user friendly as possible.</para>
+
 
   </sect2>
 
   <sect2 role="installation">
     <title>Installation of Meson</title>
 
-    <tip os="t1">
-      <title>Alternatives to Meson</title>
+    <para os="g">Compile Meson with the following command:</para>
 
-      <para>If you prefer another editor&mdash;such as Emacs, Joe, or
-      Nano&mdash;please refer to <ulink
-      url="&cblfs-root;index.php/Category:Text_Editors"/>
-      for suggested installation instructions.</para>
-    </tip>
+<screen os="j"><userinput>python3 setup.py build</userinput></screen>
 
-    <para os="p1">The following patch merges all updates from the &meson-version; Branch
-    from the Meson developers:</para>
-
-<screen os="p2"><userinput>#patch -Np1 -i ../danada</userinput></screen>
-
-    <para os="b">Change the default location of
-    the <filename>mesonrc</filename> configuration file to <filename
-    class="directory">/etc</filename>:</para>
-
-<screen os="c"><userinput>echo '#define SYS_VIMRC_FILE "/etc/mesonrc"' &gt;&gt; src/feature.h</userinput></screen>
-
-    <para os="d">Prepare Meson for compilation:</para>
-
-<screen os="e"><userinput>./configure \
-    --prefix=/usr</userinput></screen>
-
-    <para os="g">Compile the package:</para>
-
-<screen os="h"><userinput>make</userinput></screen>
-
-    <para os="i">To test the results, issue:</para>
-
-<screen os="i2"><userinput remap="test">make test</userinput></screen>
-
-    <para os="i3">However, this test suite outputs a lot of binary data to the
-    screen, which can cause issues with the settings of the current terminal.
-    This can be resolved by redirecting the output to a log file.</para>
+    <para os="i">This package does not come with a test suite.</para>
 
     <para os="j">Install the package:</para>
 
 <screen os="k"><userinput>make -j1 install</userinput></screen>
-
-    <para os="l">Many users are accustomed to using <command>vi</command>
-    instead of <command>meson</command>. Some programs, such as
-    <command>vigr</command> and <command>vipw</command>, also use
-    <command>vi</command>. Create a symlink to permit execution of
-    <command>meson</command> when users habitually enter <command>vi</command>
-    and allow programs that use <command>vi</command> to work:</para>
-
-<screen os="m"><userinput>ln -sv meson /usr/bin/vi</userinput></screen>
-
-<para os="n">By default, Meson's documentation is installed in
-<filename class="directory">/usr/share/meson</filename>.  The following symlink
-allows the documentation to be accessed via
-<filename class="directory">/usr/share/doc/meson-&meson-version;</filename>, making
-it consistent with the location of documentation for other packages:</para>
-
-<screen os="o"><userinput>ln -sv ../meson/meson/doc /usr/share/doc/meson-&meson-version;</userinput></screen>
-
-    <para os="p">If an X Window System is going to be installed on the CLFS
-    system, you may want to recompile Meson after installing X. Meson
-    comes with a GUI version of the editor that requires X and some
-    additional libraries to be installed. For more information, refer to the
-    Meson documentation and the Meson installation page in CBLFS at <ulink
-    url="&cblfs-root;index.php/Meson"/>.</para>
-
-  </sect2>
-
-  <sect2 id="conf-meson" role="configuration">
-    <title>Configuring Meson</title>
-
-    <indexterm zone="conf-meson">
-      <primary sortas="e-/etc/mesonrc">/etc/mesonrc</primary>
-    </indexterm>
-
-    <para>By default, <command>meson</command> runs in vi-incompatible mode.
-    This may be new to users who have used other editors in the past. The
-    <quote>nocompatible</quote> setting is included below to highlight the
-    fact that a new behavior is being used. It also reminds those who would
-    change to <quote>compatible</quote> mode that it should be the first
-    setting in the configuration file. This is necessary because it changes
-    other settings, and overrides must come after this setting. Create a
-    default <command>meson</command> configuration file by running the
-    following:</para>
-
-<screen><userinput>cat &gt; /etc/mesonrc &lt;&lt; "EOF"
-<literal>" Begin /etc/mesonrc
-
-set nocompatible
-set backspace=2
-set ruler
-syntax on
-if (&amp;term == "iterm") || (&amp;term == "putty")
-  set background=dark
-endif
-
-" End /etc/mesonrc</literal>
-EOF</userinput></screen>
-
-
-    <para>The <parameter>set nocompatible</parameter> makes
-    <command>meson</command> behave in a more useful way (the default) than
-    the vi-compatible manner. Remove the <quote>no</quote> to keep the
-    old <command>vi</command> behavior. The <parameter>set
-    backspace=2</parameter> allows backspacing over line breaks,
-    autoindents, and the start of insert. The <parameter>syntax
-    on</parameter> enables meson's syntax highlighting. Finally, the
-    <emphasis>if</emphasis> statement with the <parameter>set
-    background=dark</parameter> corrects <command>meson</command>'s guess
-    about the background color of some terminal emulators. This gives the
-    highlighting a better color scheme for use on the black background of
-    these programs.</para>
-
-    <para>Documentation for other available options can be obtained by
-    running the following command:</para>
-
-<screen role="nodump"><userinput>meson -c ':options'</userinput></screen>
+<screen os="k"><userinput>python3 setup.py install --root=dest
+cp -rv dest/* /</userinput></screen>
 
   </sect2>
 
