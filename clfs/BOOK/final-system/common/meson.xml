@@ -28,13 +28,12 @@
 
     <para os="g">Compile Meson with the following command:</para>
 
-<screen os="j"><userinput>python3 setup.py build</userinput></screen>
+<screen os="h"><userinput>python3 setup.py build</userinput></screen>
 
     <para os="i">This package does not come with a test suite.</para>
 
     <para os="j">Install the package:</para>
 
-<screen os="k"><userinput>make -j1 install</userinput></screen>
 <screen os="k"><userinput>python3 setup.py install --root=dest
 cp -rv dest/* /</userinput></screen>
 
