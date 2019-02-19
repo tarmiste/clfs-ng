@@ -160,7 +160,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="sysv">
+    <varlistentry>
       <term>Sysvinit Consolidated Patch - <token>&sysvinit-consolidated-patch-size;</token>:</term>
       <listitem>
         <para>Download: <ulink url="&patches-root;&sysvinit-consolidated-patch;"/></para>
@@ -168,7 +168,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry revision="systemd">
+    <varlistentry>
       <term>Systemd security patch - <token>&systemd-security-patch-size;</token>:</term>
       <listitem>
         <para>Download: <ulink url="&patches-root;&systemd-security-patch;"/></para>
