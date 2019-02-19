@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY % general-entities SYSTEM "../../general.ent">
+  %general-entities;
+]>
+
+<sect1 id="ch-system-ninja" role="wrap">
+  <?dbhtml filename="ninja.html"?>
+
+  <title>Ninja-&ninja-version;</title>
+
+  <indexterm zone="ch-system-ninja">
+    <primary sortas="a-Ninja">Ninja</primary>
+  </indexterm>
+
+  <sect2 role="package">
+    <title/>
+
+    <para>The Ninja package contains a powerful text editor.</para>
+
+  </sect2>
+
+  <sect2 role="installation">
+    <title>Installation of Ninja</title>
+
+    <tip os="t1">
+      <title>Alternatives to Ninja</title>
+
+      <para>If you prefer another editor&mdash;such as Emacs, Joe, or
+      Nano&mdash;please refer to <ulink
+      url="&cblfs-root;index.php/Category:Text_Editors"/>
+      for suggested installation instructions.</para>
+    </tip>
+
+    <para os="p1">The following patch merges all updates from the &ninja-version; Branch
+    from the Ninja developers:</para>
+
+<screen os="p2"><userinput>#patch -Np1 -i ../&ninja-branch_update-patch;</userinput></screen>
+
+    <para os="b">Change the default location of
+    the <filename>ninjarc</filename> configuration file to <filename
+    class="directory">/etc</filename>:</para>
+
+<screen os="c"><userinput>echo '#define SYS_VIMRC_FILE "/etc/ninjarc"' &gt;&gt; src/feature.h</userinput></screen>
+
+    <para os="d">Prepare Ninja for compilation:</para>
+
+<screen os="e"><userinput>./configure \
+    --prefix=/usr</userinput></screen>
+
+    <para os="g">Compile the package:</para>
+
+<screen os="h"><userinput>make</userinput></screen>
+
+    <para os="i">To test the results, issue:</para>
+
+<screen os="i2"><userinput remap="test">make test</userinput></screen>
+
+    <para os="i3">However, this test suite outputs a lot of binary data to the
+    screen, which can cause issues with the settings of the current terminal.
+    This can be resolved by redirecting the output to a log file.</para>
+
+    <para os="j">Install the package:</para>
+
+<screen os="k"><userinput>make -j1 install</userinput></screen>
+
+    <para os="l">Many users are accustomed to using <command>vi</command>
+    instead of <command>ninja</command>. Some programs, such as
+    <command>vigr</command> and <command>vipw</command>, also use
+    <command>vi</command>. Create a symlink to permit execution of
+    <command>ninja</command> when users habitually enter <command>vi</command>
+    and allow programs that use <command>vi</command> to work:</para>
+
+<screen os="m"><userinput>ln -sv ninja /usr/bin/vi</userinput></screen>
+
+<para os="n">By default, Ninja's documentation is installed in
+<filename class="directory">/usr/share/ninja</filename>.  The following symlink
+allows the documentation to be accessed via
+<filename class="directory">/usr/share/doc/ninja-&ninja-version;</filename>, making
+it consistent with the location of documentation for other packages:</para>
+
+<screen os="o"><userinput>ln -sv ../ninja/ninja&ninja-version2;/doc /usr/share/doc/ninja-&ninja-version;</userinput></screen>
+
+    <para os="p">If an X Window System is going to be installed on the CLFS
+    system, you may want to recompile Ninja after installing X. Ninja
+    comes with a GUI version of the editor that requires X and some
+    additional libraries to be installed. For more information, refer to the
+    Ninja documentation and the Ninja installation page in CBLFS at <ulink
+    url="&cblfs-root;index.php/Ninja"/>.</para>
+
+  </sect2>
+
+  <sect2 id="conf-ninja" role="configuration">
+    <title>Configuring Ninja</title>
+
+    <indexterm zone="conf-ninja">
+      <primary sortas="e-/etc/ninjarc">/etc/ninjarc</primary>
+    </indexterm>
+
+    <para>By default, <command>ninja</command> runs in vi-incompatible mode.
+    This may be new to users who have used other editors in the past. The
+    <quote>nocompatible</quote> setting is included below to highlight the
+    fact that a new behavior is being used. It also reminds those who would
+    change to <quote>compatible</quote> mode that it should be the first
+    setting in the configuration file. This is necessary because it changes
+    other settings, and overrides must come after this setting. Create a
+    default <command>ninja</command> configuration file by running the
+    following:</para>
+
+<screen><userinput>cat &gt; /etc/ninjarc &lt;&lt; "EOF"
+<literal>" Begin /etc/ninjarc
+
+set nocompatible
+set backspace=2
+set ruler
+syntax on
+if (&amp;term == "iterm") || (&amp;term == "putty")
+  set background=dark
+endif
+
+" End /etc/ninjarc</literal>
+EOF</userinput></screen>
+
+
+    <para>The <parameter>set nocompatible</parameter> makes
+    <command>ninja</command> behave in a more useful way (the default) than
+    the vi-compatible manner. Remove the <quote>no</quote> to keep the
+    old <command>vi</command> behavior. The <parameter>set
+    backspace=2</parameter> allows backspacing over line breaks,
+    autoindents, and the start of insert. The <parameter>syntax
+    on</parameter> enables ninja's syntax highlighting. Finally, the
+    <emphasis>if</emphasis> statement with the <parameter>set
+    background=dark</parameter> corrects <command>ninja</command>'s guess
+    about the background color of some terminal emulators. This gives the
+    highlighting a better color scheme for use on the black background of
+    these programs.</para>
+
+    <para>Documentation for other available options can be obtained by
+    running the following command:</para>
+
+<screen role="nodump"><userinput>ninja -c ':options'</userinput></screen>
+
+  </sect2>
+
+  <sect2 id="contents-ninja" role="content">
+    <title>Contents of Ninja</title>
+
+    <segmentedlist>
+      <segtitle>Installed programs</segtitle>
+      <segtitle>Installed directory</segtitle>
+
+      <seglistitem>
+        <seg>efm_filter.pl, efm_perl.pl, ex (link to ninja), less.sh, mve.awk,
+        pltags.pl, ref, rview (link to ninja), rninja (link to ninja), shtags.pl,
+        tcltags, vi (link to ninja), view (link to ninja), ninja, ninja132, ninja2html.pl,
+        ninjadiff (link to ninja), ninjam, ninjaspell.sh, ninjatutor, xxd</seg>
+        <seg>/usr/share/ninja</seg>
+      </seglistitem>
+    </segmentedlist>
+
+    <variablelist>
+      <bridgehead renderas="sect3">Short Descriptions</bridgehead>
+      <?dbfo list-presentation="list"?>
+      <?dbhtml list-presentation="table"?>
+
+      <varlistentry id="efm_filter.pl">
+        <term><command>efm_filter.pl</command></term>
+        <listitem>
+          <para>A filter for creating an error file that can be read
+          by <command>ninja</command></para>
+          <indexterm zone="ch-system-ninja efm_filter.pl">
+            <primary sortas="b-efm_filter.pl">efm_filter.pl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="efm_perl.pl">
+        <term><command>efm_perl.pl</command></term>
+        <listitem>
+          <para>Reformats the error messages of the Perl interpreter for use
+          with the <quote>quickfix</quote> mode of <command>ninja</command></para>
+          <indexterm zone="ch-system-ninja efm_perl.pl">
+            <primary sortas="b-efm_perl.pl">efm_perl.pl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ex">
+        <term><command>ex</command></term>
+        <listitem>
+          <para>Starts <command>ninja</command> in ex mode</para>
+          <indexterm zone="ch-system-ninja ex">
+            <primary sortas="b-ex">ex</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="less.sh">
+        <term><command>less.sh</command></term>
+        <listitem>
+          <para>A script that starts <command>ninja</command> with less.ninja</para>
+          <indexterm zone="ch-system-ninja less.sh">
+            <primary sortas="b-less.sh">less.sh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="mve.awk">
+        <term><command>mve.awk</command></term>
+        <listitem>
+          <para>Processes <command>ninja</command> errors</para>
+          <indexterm zone="ch-system-ninja mve.awk">
+            <primary sortas="b-mve.awk">mve.awk</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="pltags.pl">
+        <term><command>pltags.pl</command></term>
+        <listitem>
+          <para>Creates a tags file for Perl code for use by
+          <command>ninja</command></para>
+          <indexterm zone="ch-system-ninja pltags.pl">
+            <primary sortas="b-pltags.pl">pltags.pl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ref">
+        <term><command>ref</command></term>
+        <listitem>
+          <para>Checks the spelling of arguments</para>
+          <indexterm zone="ch-system-ninja ref">
+            <primary sortas="b-ref">ref</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rview">
+        <term><command>rview</command></term>
+        <listitem>
+          <para>Is a restricted version of <command>view</command>; no shell
+          commands can be started and <command>view</command> cannot be
+          suspended</para>
+          <indexterm zone="ch-system-ninja rview">
+            <primary sortas="b-rview">rview</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="rninja">
+        <term><command>rninja</command></term>
+        <listitem>
+          <para>Is a restricted version of <command>ninja</command>; no shell
+          commands can be started and <command>ninja</command> cannot be
+          suspended</para>
+          <indexterm zone="ch-system-ninja rninja">
+            <primary sortas="b-rninja">rninja</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="shtags.pl">
+        <term><command>shtags.pl</command></term>
+        <listitem>
+          <para>Generates a tags file for Perl scripts</para>
+          <indexterm zone="ch-system-ninja shtags.pl">
+            <primary sortas="b-shtags.pl">shtags.pl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="tcltags">
+        <term><command>tcltags</command></term>
+        <listitem>
+          <para>Generates a tags file for TCL code</para>
+          <indexterm zone="ch-system-ninja tcltags">
+            <primary sortas="b-tcltags">tcltags</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="view">
+        <term><command>view</command></term>
+        <listitem>
+          <para>Starts <command>ninja</command> in read-only mode</para>
+          <indexterm zone="ch-system-ninja view">
+            <primary sortas="b-view">view</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="vi">
+        <term><command>vi</command></term>
+        <listitem>
+          <para>Link to <command>ninja</command></para>
+          <indexterm zone="ch-system-ninja vi">
+            <primary sortas="b-vi">vi</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ninja">
+        <term><command>ninja</command></term>
+        <listitem>
+          <para>Is the editor</para>
+          <indexterm zone="ch-system-ninja ninja">
+            <primary sortas="b-ninja">ninja</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ninja132">
+        <term><command>ninja132</command></term>
+        <listitem>
+          <para>Starts <command>ninja</command> with the terminal in 132-column
+          mode</para>
+          <indexterm zone="ch-system-ninja ninja132">
+            <primary sortas="b-ninja132">ninja132</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ninja2html.pl">
+        <term><command>ninja2html.pl</command></term>
+        <listitem>
+          <para>Converts Ninja documentation to HypterText Markup Language
+          (HTML)</para>
+          <indexterm zone="ch-system-ninja ninja2html.pl">
+            <primary sortas="b-ninja2html.pl">ninja2html.pl</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ninjadiff">
+        <term><command>ninjadiff</command></term>
+        <listitem>
+          <para>Edits two or three versions of a file with <command>ninja</command>
+          and show differences</para>
+          <indexterm zone="ch-system-ninja ninjadiff">
+            <primary sortas="b-ninjadiff">ninjadiff</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ninjam">
+        <term><command>ninjam</command></term>
+        <listitem>
+          <para>Enables the DEC locator input model on a remote terminal</para>
+          <indexterm zone="ch-system-ninja ninjam">
+            <primary sortas="b-ninjam">ninjam</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ninjaspell.sh">
+        <term><command>ninjaspell.sh</command></term>
+        <listitem>
+          <para>Spell checks a file and generates the syntax statements
+          necessary to highlight in <command>ninja</command>. This script
+          requires the old Unix <command>spell</command> command, which
+          is provided neither in CLFS nor in CBLFS</para>
+          <indexterm zone="ch-system-ninja ninjaspell.sh">
+            <primary sortas="b-ninjaspell.sh">ninjaspell.sh</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="ninjatutor">
+        <term><command>ninjatutor</command></term>
+        <listitem>
+          <para>Teaches the basic keys and commands of
+          <command>ninja</command></para>
+          <indexterm zone="ch-system-ninja ninjatutor">
+            <primary sortas="b-ninjatutor">ninjatutor</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry id="xxd">
+        <term><command>xxd</command></term>
+        <listitem>
+          <para>Creates a hex dump of the given file; it can
+          also do the reverse, so it can be used for binary patching</para>
+          <indexterm zone="ch-system-ninja xxd">
+            <primary sortas="b-xxd">xxd</primary>
+          </indexterm>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+  </sect2>
+
+</sect1>
