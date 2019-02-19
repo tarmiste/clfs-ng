@@ -8,16 +8,10 @@
 <sect1 id="ch-system-libffi" role="wrap">
   <?dbhtml filename="libffi.html"?>
 
-  <sect1info condition="script">
-    <productname>libffi</productname>
-    <productnumber>&libffi-version;</productnumber>
-    <address>&libffi-url;</address>
-  </sect1info>
-
   <title>Libffi-&libffi-version;</title>
 
   <indexterm zone="ch-system-libffi">
-    <primary sortas="a-libffi">libffi</primary>
+    <primary sortas="a-Libffi">Libffi</primary>
   </indexterm>
 
   <sect2 role="package">
@@ -27,37 +21,32 @@
     interface to various calling conventions. This allows a programmer to call
     any function specified by a call interface description at run time.</para>
 
+
   </sect2>
 
   <sect2 role="installation">
     <title>Installation of Libffi</title>
 
-    <note>
-      <para>Similar to GMP, libffi builds with optimizations specific
-      to the proccesor in use. If building for another system, export
-      CFLAGS and CXXFLAGS to specify a generic build for your architecture.
-      If this is not done, all applications that link to libffi will trigger
-      Illegal Operation Errors.</para>
-    </note>
-
-    <para os="prea">Modify the Makefile to install headers into the standard
+    <para os="A">Modify the Makefile to install headers into the standard
     <filename class="directory">/usr/include</filename> directory instead of
     <filename class="directory">/usr/lib/libffi-3.2.1/include</filename>.</para>
 
-<screen os="preb"><userinput remap="pre">sed -e '/^includesdir/ s/$(libdir).*$/$(includedir)/' \
+<screen os="B"><userinput remap="pre">sed -e '/^includesdir/ s/$(libdir).*$/$(includedir)/' \
     -i include/Makefile.in
 
 sed -e '/^includedir/ s/=.*$/=@includedir@/' \
     -e 's/^Cflags: -I${includedir}/Cflags:/' \
     -i libffi.pc.in</userinput></screen>
 
-    <para os="a">Prepare libffi for compilation:</para>
+
+    <para os="a">Prepare Libffi for compilation:</para>
 
 <screen os="b"><userinput remap="configure">./configure --prefix=/usr --disable-static --with-gcc-arch=native</userinput></screen>
 
+
     <para os="c">Compile the package:</para>
 
-<screen os="d"><userinput remap="make">make</userinput></screen>
+<screen os="d"><userinput>make</userinput></screen>
 
     <para os="e">To test the results, issue:</para>
 
@@ -65,7 +54,7 @@ sed -e '/^includedir/ s/=.*$/=@includedir@/' \
 
     <para os="f">Install the package:</para>
 
-<screen os="g"><userinput remap="install">make install</userinput></screen>
+<screen os="g"><userinput>make install</userinput></screen>
 
   </sect2>
 
@@ -99,3 +88,4 @@ sed -e '/^includedir/ s/=.*$/=@includedir@/' \
   </sect2>
 
 </sect1>
+

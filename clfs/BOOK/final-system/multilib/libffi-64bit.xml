@@ -5,14 +5,13 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-libffi-64" role="wrap">
+<sect1 id="ch-system-libffi" role="wrap">
   <?dbhtml filename="libffi-64bit.html"?>
 
-  <title>Libffi-&libffi-version; 64 Bit Libraries</title>
+  <title>Libffi-&libffi-version; 64 Bit</title>
 
-  <indexterm zone="ch-system-libffi-64">
+  <indexterm zone="ch-system-libffi">
     <primary sortas="a-Libffi">Libffi</primary>
-    <secondary>64 Bit</secondary>
   </indexterm>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -24,24 +23,18 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
-    xpointer="xpointer(//*[@os='prea'])"/>
+    xpointer="xpointer(//*[@os='A'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
-    xpointer="xpointer(//*[@os='preb'])"/>
+    xpointer="xpointer(//*[@os='B'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='a'])"/>
 
-<screen os="b"><userinput>CC="gcc -isystem /usr/include ${BUILD64}" \
-CXX="g++ -isystem /usr/include ${BUILD64}" \
-LDFLAGS="-Wl,-rpath-link,/usr/lib64:/lib64 ${BUILD64}" \
-./configure \
-    --prefix=/usr --disable-static \
-    --libdir=/lib64 \
-    --libexecdir=/usr/lib64 \
-    --with-gcc-arch=native</userinput></screen>
+<screen os="b"><userinput>CC="gcc ${BUILD64}" ./configure --prefix=/usr \
+    --libdir=/usr/lib64 --disable-static --with-gcc-arch=native</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
@@ -57,7 +50,7 @@ LDFLAGS="-Wl,-rpath-link,/usr/lib64:/lib64 ${BUILD64}" \
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
-    xpointer="xpointer(//*[@os='e2'])"/>
+    xpointer="xpointer(//*[@os='e1'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
@@ -69,11 +62,8 @@ LDFLAGS="-Wl,-rpath-link,/usr/lib64:/lib64 ${BUILD64}" \
 
   </sect2>
 
-  <sect2 role="content">
-    <title/>
-
-    <para>Details on this package are TBA </para>
-
-  </sect2>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+  href="../common/libffi.xml"
+  xpointer="xpointer(id('contents-libffi'))"/>
 
 </sect1>

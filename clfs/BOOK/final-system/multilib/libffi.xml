@@ -24,24 +24,19 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
-    xpointer="xpointer(//*[@os='prea'])"/>
+    xpointer="xpointer(//*[@os='A'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
-    xpointer="xpointer(//*[@os='preb'])"/>
+    xpointer="xpointer(//*[@os='B'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='a'])"/>
 
-<screen os="b"><userinput>CC="gcc -isystem /usr/include ${BUILD32}" \
-CXX="g++ -isystem /usr/include ${BUILD32}" \
-LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
-./configure \
-    --prefix=/usr --disable-static \
-    --libdir=/lib \
-    --libexecdir=/usr/lib \
-    --with-gcc-arch=native</userinput></screen>
+<screen os="b"><userinput>CC="gcc ${BUILD32}" ./configure --prefix=/usr \
+--disable-static --with-gcc-arch=native</userinput></screen>
+
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/libffi.xml"
@@ -72,7 +67,8 @@ LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
   <sect2 role="content">
     <title/>
 
-    <para>Details on this package are TBA </para>
+    <para>Details on this package are located in <xref
+    linkend="contents-libffi" role="."/></para>
 
   </sect2>
 

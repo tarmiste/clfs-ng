@@ -5,57 +5,60 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-libelf-32" role="wrap">
-  <?dbhtml filename="libelf.html"?>
+<sect1 id="ch-system-libffi-n32" role="wrap">
+  <?dbhtml filename="libffi-n32.html"?>
 
-  <title>Libelf from Elfutils-&elfutils-version; 32 Bit Libraries</title>
+  <title>Libffi-&libffi-version; N32 Libraries</title>
 
-  <indexterm zone="ch-system-libelf-32">
-    <primary sortas="a-Libelf">Libelf</primary>
-    <secondary>32 Bit</secondary>
+  <indexterm zone="ch-system-libffi-n32">
+    <primary sortas="a-Libffi">Libffi</primary>
+    <secondary>N32</secondary>
   </indexterm>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="../common/libelf.xml"
+  href="../common/libffi.xml"
   xpointer="xpointer(//*[@role='package'])"/>
 
   <sect2 role="installation">
-    <title>Installation of Libelf</title>
+    <title>Installation of Libffi</title>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
+    href="../common/libffi.xml"
+    xpointer="xpointer(//*[@os='A'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../common/libffi.xml"
+    xpointer="xpointer(//*[@os='B'])"/>
+
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='a'])"/>
 
-<screen os="b"><userinput>CC="gcc -isystem /usr/include ${BUILD32}" \
-CXX="g++ -isystem /usr/include ${BUILD32}" \
-LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
-./configure \
-    --prefix=/usr \
-    --libdir=/lib \
-    --libexecdir=/usr/lib </userinput></screen>
+<screen os="b"><userinput>CC="gcc ${BUILDN32}" ./configure --prefix=/usr \
+    --libdir=/usr/lib32 --disable-static --with-gcc-arch=native</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='c'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='d'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='e'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='e2'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='f'])"/>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/libelf.xml"
+    href="../common/libffi.xml"
     xpointer="xpointer(//*[@os='g'])"/>
 
   </sect2>
@@ -63,7 +66,8 @@ LDFLAGS="-Wl,-rpath-link,/usr/lib:/lib ${BUILD32}" \
   <sect2 role="content">
     <title/>
 
-    <para>Details on this package are TBA </para>
+    <para>Details on this package are located in <xref
+    linkend="contents-libffi" role="."/></para>
 
   </sect2>
 
