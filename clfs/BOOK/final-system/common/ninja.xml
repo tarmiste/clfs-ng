@@ -36,7 +36,7 @@
     <para os="p1">The following patch merges all updates from the &ninja-version; Branch
     from the Ninja developers:</para>
 
-<screen os="p2"><userinput>#patch -Np1 -i ../&ninja-branch_update-patch;</userinput></screen>
+<screen os="p2"><userinput>#patch -Np1 -i ../danada</userinput></screen>
 
     <para os="b">Change the default location of
     the <filename>ninjarc</filename> configuration file to <filename
@@ -80,7 +80,7 @@ allows the documentation to be accessed via
 <filename class="directory">/usr/share/doc/ninja-&ninja-version;</filename>, making
 it consistent with the location of documentation for other packages:</para>
 
-<screen os="o"><userinput>ln -sv ../ninja/ninja&ninja-version2;/doc /usr/share/doc/ninja-&ninja-version;</userinput></screen>
+<screen os="o"><userinput>ln -sv ../ninja/ninja/doc /usr/share/doc/ninja-&ninja-version;</userinput></screen>
 
     <para os="p">If an X Window System is going to be installed on the CLFS
     system, you may want to recompile Ninja after installing X. Ninja
@@ -148,243 +148,22 @@ EOF</userinput></screen>
 
     <segmentedlist>
       <segtitle>Installed programs</segtitle>
-      <segtitle>Installed directory</segtitle>
 
       <seglistitem>
-        <seg>efm_filter.pl, efm_perl.pl, ex (link to ninja), less.sh, mve.awk,
-        pltags.pl, ref, rview (link to ninja), rninja (link to ninja), shtags.pl,
-        tcltags, vi (link to ninja), view (link to ninja), ninja, ninja132, ninja2html.pl,
-        ninjadiff (link to ninja), ninjam, ninjaspell.sh, ninjatutor, xxd</seg>
-        <seg>/usr/share/ninja</seg>
+        <seg>ninja</seg>
       </seglistitem>
     </segmentedlist>
-
     <variablelist>
       <bridgehead renderas="sect3">Short Descriptions</bridgehead>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
-      <varlistentry id="efm_filter.pl">
-        <term><command>efm_filter.pl</command></term>
-        <listitem>
-          <para>A filter for creating an error file that can be read
-          by <command>ninja</command></para>
-          <indexterm zone="ch-system-ninja efm_filter.pl">
-            <primary sortas="b-efm_filter.pl">efm_filter.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="efm_perl.pl">
-        <term><command>efm_perl.pl</command></term>
-        <listitem>
-          <para>Reformats the error messages of the Perl interpreter for use
-          with the <quote>quickfix</quote> mode of <command>ninja</command></para>
-          <indexterm zone="ch-system-ninja efm_perl.pl">
-            <primary sortas="b-efm_perl.pl">efm_perl.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ex">
-        <term><command>ex</command></term>
-        <listitem>
-          <para>Starts <command>ninja</command> in ex mode</para>
-          <indexterm zone="ch-system-ninja ex">
-            <primary sortas="b-ex">ex</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="less.sh">
-        <term><command>less.sh</command></term>
-        <listitem>
-          <para>A script that starts <command>ninja</command> with less.ninja</para>
-          <indexterm zone="ch-system-ninja less.sh">
-            <primary sortas="b-less.sh">less.sh</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="mve.awk">
-        <term><command>mve.awk</command></term>
-        <listitem>
-          <para>Processes <command>ninja</command> errors</para>
-          <indexterm zone="ch-system-ninja mve.awk">
-            <primary sortas="b-mve.awk">mve.awk</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="pltags.pl">
-        <term><command>pltags.pl</command></term>
-        <listitem>
-          <para>Creates a tags file for Perl code for use by
-          <command>ninja</command></para>
-          <indexterm zone="ch-system-ninja pltags.pl">
-            <primary sortas="b-pltags.pl">pltags.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ref">
-        <term><command>ref</command></term>
-        <listitem>
-          <para>Checks the spelling of arguments</para>
-          <indexterm zone="ch-system-ninja ref">
-            <primary sortas="b-ref">ref</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="rview">
-        <term><command>rview</command></term>
-        <listitem>
-          <para>Is a restricted version of <command>view</command>; no shell
-          commands can be started and <command>view</command> cannot be
-          suspended</para>
-          <indexterm zone="ch-system-ninja rview">
-            <primary sortas="b-rview">rview</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="rninja">
-        <term><command>rninja</command></term>
-        <listitem>
-          <para>Is a restricted version of <command>ninja</command>; no shell
-          commands can be started and <command>ninja</command> cannot be
-          suspended</para>
-          <indexterm zone="ch-system-ninja rninja">
-            <primary sortas="b-rninja">rninja</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="shtags.pl">
-        <term><command>shtags.pl</command></term>
-        <listitem>
-          <para>Generates a tags file for Perl scripts</para>
-          <indexterm zone="ch-system-ninja shtags.pl">
-            <primary sortas="b-shtags.pl">shtags.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="tcltags">
-        <term><command>tcltags</command></term>
-        <listitem>
-          <para>Generates a tags file for TCL code</para>
-          <indexterm zone="ch-system-ninja tcltags">
-            <primary sortas="b-tcltags">tcltags</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="view">
-        <term><command>view</command></term>
-        <listitem>
-          <para>Starts <command>ninja</command> in read-only mode</para>
-          <indexterm zone="ch-system-ninja view">
-            <primary sortas="b-view">view</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="vi">
-        <term><command>vi</command></term>
-        <listitem>
-          <para>Link to <command>ninja</command></para>
-          <indexterm zone="ch-system-ninja vi">
-            <primary sortas="b-vi">vi</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
       <varlistentry id="ninja">
         <term><command>ninja</command></term>
         <listitem>
-          <para>Is the editor</para>
+          <para>is the Ninja build system.</para>
           <indexterm zone="ch-system-ninja ninja">
             <primary sortas="b-ninja">ninja</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ninja132">
-        <term><command>ninja132</command></term>
-        <listitem>
-          <para>Starts <command>ninja</command> with the terminal in 132-column
-          mode</para>
-          <indexterm zone="ch-system-ninja ninja132">
-            <primary sortas="b-ninja132">ninja132</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ninja2html.pl">
-        <term><command>ninja2html.pl</command></term>
-        <listitem>
-          <para>Converts Ninja documentation to HypterText Markup Language
-          (HTML)</para>
-          <indexterm zone="ch-system-ninja ninja2html.pl">
-            <primary sortas="b-ninja2html.pl">ninja2html.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ninjadiff">
-        <term><command>ninjadiff</command></term>
-        <listitem>
-          <para>Edits two or three versions of a file with <command>ninja</command>
-          and show differences</para>
-          <indexterm zone="ch-system-ninja ninjadiff">
-            <primary sortas="b-ninjadiff">ninjadiff</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ninjam">
-        <term><command>ninjam</command></term>
-        <listitem>
-          <para>Enables the DEC locator input model on a remote terminal</para>
-          <indexterm zone="ch-system-ninja ninjam">
-            <primary sortas="b-ninjam">ninjam</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ninjaspell.sh">
-        <term><command>ninjaspell.sh</command></term>
-        <listitem>
-          <para>Spell checks a file and generates the syntax statements
-          necessary to highlight in <command>ninja</command>. This script
-          requires the old Unix <command>spell</command> command, which
-          is provided neither in CLFS nor in CBLFS</para>
-          <indexterm zone="ch-system-ninja ninjaspell.sh">
-            <primary sortas="b-ninjaspell.sh">ninjaspell.sh</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ninjatutor">
-        <term><command>ninjatutor</command></term>
-        <listitem>
-          <para>Teaches the basic keys and commands of
-          <command>ninja</command></para>
-          <indexterm zone="ch-system-ninja ninjatutor">
-            <primary sortas="b-ninjatutor">ninjatutor</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="xxd">
-        <term><command>xxd</command></term>
-        <listitem>
-          <para>Creates a hex dump of the given file; it can
-          also do the reverse, so it can be used for binary patching</para>
-          <indexterm zone="ch-system-ninja xxd">
-            <primary sortas="b-xxd">xxd</primary>
           </indexterm>
         </listitem>
       </varlistentry>
@@ -394,3 +173,4 @@ EOF</userinput></screen>
   </sect2>
 
 </sect1>
+

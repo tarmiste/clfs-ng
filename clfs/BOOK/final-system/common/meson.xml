@@ -36,7 +36,7 @@
     <para os="p1">The following patch merges all updates from the &meson-version; Branch
     from the Meson developers:</para>
 
-<screen os="p2"><userinput>#patch -Np1 -i ../&meson-branch_update-patch;</userinput></screen>
+<screen os="p2"><userinput>#patch -Np1 -i ../danada</userinput></screen>
 
     <para os="b">Change the default location of
     the <filename>mesonrc</filename> configuration file to <filename
@@ -80,7 +80,7 @@ allows the documentation to be accessed via
 <filename class="directory">/usr/share/doc/meson-&meson-version;</filename>, making
 it consistent with the location of documentation for other packages:</para>
 
-<screen os="o"><userinput>ln -sv ../meson/meson&meson-version2;/doc /usr/share/doc/meson-&meson-version;</userinput></screen>
+<screen os="o"><userinput>ln -sv ../meson/meson/doc /usr/share/doc/meson-&meson-version;</userinput></screen>
 
     <para os="p">If an X Window System is going to be installed on the CLFS
     system, you may want to recompile Meson after installing X. Meson
@@ -151,11 +151,8 @@ EOF</userinput></screen>
       <segtitle>Installed directory</segtitle>
 
       <seglistitem>
-        <seg>efm_filter.pl, efm_perl.pl, ex (link to meson), less.sh, mve.awk,
-        pltags.pl, ref, rview (link to meson), rmeson (link to meson), shtags.pl,
-        tcltags, vi (link to meson), view (link to meson), meson, meson132, meson2html.pl,
-        mesondiff (link to meson), mesonm, mesonspell.sh, mesontutor, xxd</seg>
-        <seg>/usr/share/meson</seg>
+        <seg>meson, mesonconf, mesonintrospect, mesontest, and wraptool</seg>
+		<seg>/usr/lib/python&python-minor;/site-packages/meson-&meson-version;-py&python-minor;.egg</seg>
       </seglistitem>
     </segmentedlist>
 
@@ -164,233 +161,58 @@ EOF</userinput></screen>
       <?dbfo list-presentation="list"?>
       <?dbhtml list-presentation="table"?>
 
-      <varlistentry id="efm_filter.pl">
-        <term><command>efm_filter.pl</command></term>
-        <listitem>
-          <para>A filter for creating an error file that can be read
-          by <command>meson</command></para>
-          <indexterm zone="ch-system-meson efm_filter.pl">
-            <primary sortas="b-efm_filter.pl">efm_filter.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="efm_perl.pl">
-        <term><command>efm_perl.pl</command></term>
-        <listitem>
-          <para>Reformats the error messages of the Perl interpreter for use
-          with the <quote>quickfix</quote> mode of <command>meson</command></para>
-          <indexterm zone="ch-system-meson efm_perl.pl">
-            <primary sortas="b-efm_perl.pl">efm_perl.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ex">
-        <term><command>ex</command></term>
-        <listitem>
-          <para>Starts <command>meson</command> in ex mode</para>
-          <indexterm zone="ch-system-meson ex">
-            <primary sortas="b-ex">ex</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="less.sh">
-        <term><command>less.sh</command></term>
-        <listitem>
-          <para>A script that starts <command>meson</command> with less.meson</para>
-          <indexterm zone="ch-system-meson less.sh">
-            <primary sortas="b-less.sh">less.sh</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="mve.awk">
-        <term><command>mve.awk</command></term>
-        <listitem>
-          <para>Processes <command>meson</command> errors</para>
-          <indexterm zone="ch-system-meson mve.awk">
-            <primary sortas="b-mve.awk">mve.awk</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="pltags.pl">
-        <term><command>pltags.pl</command></term>
-        <listitem>
-          <para>Creates a tags file for Perl code for use by
-          <command>meson</command></para>
-          <indexterm zone="ch-system-meson pltags.pl">
-            <primary sortas="b-pltags.pl">pltags.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="ref">
-        <term><command>ref</command></term>
-        <listitem>
-          <para>Checks the spelling of arguments</para>
-          <indexterm zone="ch-system-meson ref">
-            <primary sortas="b-ref">ref</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="rview">
-        <term><command>rview</command></term>
-        <listitem>
-          <para>Is a restricted version of <command>view</command>; no shell
-          commands can be started and <command>view</command> cannot be
-          suspended</para>
-          <indexterm zone="ch-system-meson rview">
-            <primary sortas="b-rview">rview</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="rmeson">
-        <term><command>rmeson</command></term>
-        <listitem>
-          <para>Is a restricted version of <command>meson</command>; no shell
-          commands can be started and <command>meson</command> cannot be
-          suspended</para>
-          <indexterm zone="ch-system-meson rmeson">
-            <primary sortas="b-rmeson">rmeson</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="shtags.pl">
-        <term><command>shtags.pl</command></term>
-        <listitem>
-          <para>Generates a tags file for Perl scripts</para>
-          <indexterm zone="ch-system-meson shtags.pl">
-            <primary sortas="b-shtags.pl">shtags.pl</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="tcltags">
-        <term><command>tcltags</command></term>
-        <listitem>
-          <para>Generates a tags file for TCL code</para>
-          <indexterm zone="ch-system-meson tcltags">
-            <primary sortas="b-tcltags">tcltags</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="view">
-        <term><command>view</command></term>
-        <listitem>
-          <para>Starts <command>meson</command> in read-only mode</para>
-          <indexterm zone="ch-system-meson view">
-            <primary sortas="b-view">view</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="vi">
-        <term><command>vi</command></term>
-        <listitem>
-          <para>Link to <command>meson</command></para>
-          <indexterm zone="ch-system-meson vi">
-            <primary sortas="b-vi">vi</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
       <varlistentry id="meson">
-        <term><command>meson</command></term>
+		<term><command>meson</command></term>
         <listitem>
-          <para>Is the editor</para>
+          <para>A high productivity build system</para>
           <indexterm zone="ch-system-meson meson">
             <primary sortas="b-meson">meson</primary>
           </indexterm>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="meson132">
-        <term><command>meson132</command></term>
+      <varlistentry id="mesonconf">
+		<term><command>mesonconf</command></term>
         <listitem>
-          <para>Starts <command>meson</command> with the terminal in 132-column
-          mode</para>
-          <indexterm zone="ch-system-meson meson132">
-            <primary sortas="b-meson132">meson132</primary>
+          <para>A tool to configure Meson builds</para>
+          <indexterm zone="ch-system-meson mesonconf">
+            <primary sortas="b-mesonconf">mesonconf</primary>
           </indexterm>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="meson2html.pl">
-        <term><command>meson2html.pl</command></term>
+      <varlistentry id="mesonintrospect">
+		<term><command>mesonintrospect</command></term>
         <listitem>
-          <para>Converts Meson documentation to HypterText Markup Language
-          (HTML)</para>
-          <indexterm zone="ch-system-meson meson2html.pl">
-            <primary sortas="b-meson2html.pl">meson2html.pl</primary>
+          <para>A tool to extract information about a Meson build</para>
+          <indexterm zone="ch-system-meson mesonintrospect">
+            <primary sortas="b-mesonintrospect">mesonintrospect</primary>
           </indexterm>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="mesondiff">
-        <term><command>mesondiff</command></term>
+      <varlistentry id="mesontest">
+		<term><command>mesontest</command></term>
         <listitem>
-          <para>Edits two or three versions of a file with <command>meson</command>
-          and show differences</para>
-          <indexterm zone="ch-system-meson mesondiff">
-            <primary sortas="b-mesondiff">mesondiff</primary>
+          <para>Test tool for the Meson build system</para>
+          <indexterm zone="ch-system-meson mesontest">
+            <primary sortas="b-mesontest">mesontest</primary>
           </indexterm>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="mesonm">
-        <term><command>mesonm</command></term>
+      <varlistentry id="wraptool">
+		<term><command>wraptool</command></term>
         <listitem>
-          <para>Enables the DEC locator input model on a remote terminal</para>
-          <indexterm zone="ch-system-meson mesonm">
-            <primary sortas="b-mesonm">mesonm</primary>
+          <para>Source dependency downloader</para>
+          <indexterm zone="ch-system-meson wraptool">
+            <primary sortas="b-wraptool">wraptool</primary>
           </indexterm>
         </listitem>
       </varlistentry>
-
-      <varlistentry id="mesonspell.sh">
-        <term><command>mesonspell.sh</command></term>
-        <listitem>
-          <para>Spell checks a file and generates the syntax statements
-          necessary to highlight in <command>meson</command>. This script
-          requires the old Unix <command>spell</command> command, which
-          is provided neither in CLFS nor in CBLFS</para>
-          <indexterm zone="ch-system-meson mesonspell.sh">
-            <primary sortas="b-mesonspell.sh">mesonspell.sh</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="mesontutor">
-        <term><command>mesontutor</command></term>
-        <listitem>
-          <para>Teaches the basic keys and commands of
-          <command>meson</command></para>
-          <indexterm zone="ch-system-meson mesontutor">
-            <primary sortas="b-mesontutor">mesontutor</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry id="xxd">
-        <term><command>xxd</command></term>
-        <listitem>
-          <para>Creates a hex dump of the given file; it can
-          also do the reverse, so it can be used for binary patching</para>
-          <indexterm zone="ch-system-meson xxd">
-            <primary sortas="b-xxd">xxd</primary>
-          </indexterm>
-        </listitem>
-      </varlistentry>
-
     </variablelist>
 
   </sect2>
 
 </sect1>
+
