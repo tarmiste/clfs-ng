@@ -27,7 +27,7 @@
     xpointer="xpointer(//*[@os='a'])"/>
 
 <screen os="b"><userinput>CC="gcc ${BUILDN32}" ./configure \
-    --libdir=/lib32 \
+    --libdir=/usr/lib32 \
             --enable-shared     \
             --with-system-expat \
             --with-system-ffi   \
@@ -54,8 +54,8 @@
     xpointer="xpointer(//*[@os='g'])"/>
 
 <screen os="h"><userinput remap="install">make install
-chmod -v 755 /usr/lib/libpython&python-minor;m.so
-chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
+chmod -v 755 /usr/lib32/libpython&python-minor;m.so
+chmod -v 755 /usr/lib32/libpython3.so</userinput></screen>
 
   </sect2>
 
