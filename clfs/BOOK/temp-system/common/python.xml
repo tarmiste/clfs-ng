@@ -59,9 +59,7 @@ EOF
     href="../../final-system/common/python.xml"
     xpointer="xpointer(//*[@os='g'])"/>
 
-<screen os="h"><userinput remap="install">make install
-chmod -v 755 /usr/lib/libpython&python-minor;m.so
-chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
+<screen os="h"><userinput remap="install">make install </userinput></screen>
 
   </sect2>
 
