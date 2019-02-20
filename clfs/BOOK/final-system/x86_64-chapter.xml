@@ -117,6 +117,10 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/eudev-64bit.xml"/>
 <!--  end of sysvinit
 -->
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libffi.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/libffi-64bit.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/python.xml"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/python-64bit.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/ninja.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/meson.xml"/>
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="multilib/systemd.xml"/>

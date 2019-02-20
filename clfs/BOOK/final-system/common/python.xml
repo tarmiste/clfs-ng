@@ -8,11 +8,6 @@
 <sect1 id="ch-system-Python" role="wrap">
   <?dbhtml filename="Python.html"?>
 
-  <sect1info condition="script">
-    <productname>Python</productname>
-    <productnumber>&python-version;</productnumber>
-    <address>&python-url;</address>
-  </sect1info>
 
   <title>Python-&python-version;</title>
 
@@ -27,20 +22,22 @@
     is useful for object-oriented programming, writing scripts, prototyping
     large programs or developing entire applications.</para>
 
+
   </sect2>
 
   <sect2 role="installation">
-    <title>Installation of Python 3</title>
+    <title>Installation of Python</title>
 
-    <para>Prepare Python for compilation:</para>
+    <para os="a">Prepare Python for compilation:</para>
 
-<screen><userinput remap="configure">./configure --prefix=/usr       \
+<screen os="b"><userinput remap="configure">./configure --prefix=/usr       \
             --enable-shared     \
             --with-system-expat \
             --with-system-ffi   \
             --with-ensurepip=yes</userinput></screen>
 
-    <variablelist>
+
+    <variablelist os="c">
       <title>The meaning of the configure options:</title>
 
     <varlistentry>
@@ -69,56 +66,21 @@
 
     </variablelist>
 
-    <para>Compile the package:</para>
+    <para os="d">Compile the package:</para>
 
-<screen><userinput remap="make">make</userinput></screen>
+<screen os="e"><userinput>make</userinput></screen>
 
-    <para>The test suite requires TK and and X Windows session and cannot
-    be run until Python 3 is reinstalled in BLFS.</para>
+    <para os="f">To test the results, issue:</para>
 
-    <para>Install the package:</para>
+<screen os="f2"><userinput remap="test">#chown -Rv nobody . &amp;&amp;
+su nobody -s /bin/bash -c "PATH=$PATH make -k check"</userinput></screen>
 
-<screen><userinput remap="install">make install
+    <para os="g">Install the package:</para>
+
+<screen os="h"><userinput remap="install">make install
 chmod -v 755 /usr/lib/libpython&python-minor;m.so
 chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
 
-    <variablelist>
-      <title>The meaning of the install commands:</title>
-<!-- ======  Change 7m if Python minor version changes ======= -->
-    <varlistentry>
-      <term><command>chmod -v 755 /usr/lib/libpython3.{7m.,}so</command></term>
-      <listitem>
-        <para>Fix permissions for libraries to be consistent with other
-        libraries.</para>
-      </listitem>
-    </varlistentry>
-
-    </variablelist>
-
-    <para>If desired, install the preformatted documentation:</para>
-
-<screen><userinput remap="install">install -v -dm755 /usr/share/doc/python-&python-version;/html 
-
-tar --strip-components=1  \
-    --no-same-owner       \
-    --no-same-permissions \
-    -C /usr/share/doc/python-&python-version;/html \
-    -xvf ../python-&python-version;-docs-html.tar.bz2</userinput></screen>
-
-    <variablelist>
-      <title>The meaning of the documentation install commands:</title>
-
-    <varlistentry>
-      <term><option>--no-same-owner</option> and --no-same-permissions</term>
-      <listitem>
-        <para>Ensure the installed files have the correct ownership and 
-        permissions.  Without these options, using <application>tar</application>
-        will install the package files with the upstream creator's values. 
-        </para>
-      </listitem>
-    </varlistentry>
-
-    </variablelist>
 
   </sect2>
 
