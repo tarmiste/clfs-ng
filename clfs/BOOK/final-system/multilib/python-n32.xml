@@ -5,12 +5,12 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-python-n32" role="wrap">
+<sect1 id="ch-system-Python-n32" role="wrap">
   <?dbhtml filename="python-n32.html"?>
 
   <title>Python-&python-version; N32 Libraries</title>
 
-  <indexterm zone="ch-system-python-n32">
+  <indexterm zone="ch-system-Python-n32">
     <primary sortas="a-Python">Python</primary>
     <secondary>N32</secondary>
   </indexterm>

@@ -5,13 +5,13 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-python" role="wrap">
+<sect1 id="ch-system-Python" role="wrap">
   <?dbhtml filename="Python.html"?>
 
 
   <title>Python-&python-version;</title>
 
-  <indexterm zone="ch-system-python">
+  <indexterm zone="ch-system-Python">
     <primary sortas="a-python">python</primary>
   </indexterm>
 
@@ -120,7 +120,7 @@ chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
             series of fixes to transform it into valid
             <application>Python 3.x</application> code.
           </para>
-          <indexterm zone="ch-system-python">
+          <indexterm zone="ch-system-Python">
             <primary sortas="b-2to3">2to3</primary>
           </indexterm>
         </listitem>
@@ -135,7 +135,7 @@ chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
             <application>Tk</application> before Python so that the Tkinter
             Python module is built.
           </para>
-          <indexterm zone="ch-system-python">
+          <indexterm zone="ch-system-Python">
             <primary sortas="b-idle3">idle3</primary>
           </indexterm>
         </listitem>
@@ -147,7 +147,7 @@ chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
           <para>
             is the <application>Python</application> documentation tool.
           </para>
-          <indexterm zone="ch-system-python">
+          <indexterm zone="ch-system-Python">
             <primary sortas="b-pydoc3">pydoc3</primary>
           </indexterm>
         </listitem>
@@ -160,7 +160,7 @@ chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
             is an interpreted, interactive, object-oriented programming
             language.
           </para>
-          <indexterm zone="ch-system-python">
+          <indexterm zone="ch-system-Python">
             <primary sortas="b-python3">python3</primary>
           </indexterm>
         </listitem>
@@ -173,7 +173,7 @@ chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
             creates virtual <application>Python</application> environments in
             one or more target directories.
           </para>
-          <indexterm zone="ch-system-python">
+          <indexterm zone="ch-system-Python">
             <primary sortas="b-pyvenv">pyvenv</primary>
           </indexterm>
         </listitem>

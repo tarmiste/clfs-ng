@@ -5,12 +5,12 @@
   %general-entities;
 ]>
 
-<sect1 id="ch-system-python-32" role="wrap">
+<sect1 id="ch-system-Python-32" role="wrap">
   <?dbhtml filename="python.html"?>
 
   <title>Python-&python-version; 32 Bit</title>
 
-  <indexterm zone="ch-system-python-32">
+  <indexterm zone="ch-system-Python-32">
     <primary sortas="a-Python">Python 32 Bit Libraries</primary>
     <secondary>32 Bit</secondary>
   </indexterm>
