@@ -27,6 +27,7 @@
     xpointer="xpointer(//*[@os='a'])"/>
 
 <screen os="b"><userinput>CC="gcc ${BUILDN32}" ./configure \
+    --prefix=/usr \
     --libdir=/usr/lib32 \
             --enable-shared     \
             --with-system-expat \
