@@ -30,7 +30,7 @@
 
     <para os="a">Prepare Python for compilation:</para>
 
-<screen os="b"><userinput remap="configure">./configure --prefix=/usr       \
+    <screen os="b"><userinput remap="configure">./configure --prefix=/usr     \
             --enable-shared     \
             --with-system-expat \
             --with-system-ffi   \
@@ -70,10 +70,8 @@
 
 <screen os="e"><userinput>make</userinput></screen>
 
-    <para os="f">To test the results, issue:</para>
-
-<screen os="f2"><userinput remap="test">#chown -Rv nobody . &amp;&amp;
-su nobody -s /bin/bash -c "PATH=$PATH make -k check"</userinput></screen>
+    <para os="f">The test suite requires TK and and X Windows session 
+    and thus cannot be run at this time.</para>
 
     <para os="g">Install the package:</para>
 

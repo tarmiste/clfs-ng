@@ -26,16 +26,11 @@
     xpointer="xpointer(//*[@os='a'])"/>
 
 <screen os="b"><userinput>CC="gcc ${BUILD64}" ./configure \
-    ADJTIME_PATH=/var/lib/hwclock/adjtime \
     --libdir=/lib64 \
-    --enable-write \
-    --disable-chfn-chsh \
-    --disable-login \
-    --disable-nologin \
-    --disable-su \
-    --disable-setpriv \
-    --disable-runuser \
-    --docdir=/usr/share/doc/python-&python-version;</userinput></screen>
+            --enable-shared     \
+            --with-system-expat \
+            --with-system-ffi   \
+            --with-ensurepip=yes</userinput></screen>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/python.xml"
@@ -55,15 +50,12 @@
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
     href="../common/python.xml"
-    xpointer="xpointer(//*[@os='f2'])"/>
-
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/python.xml"
     xpointer="xpointer(//*[@os='g'])"/>
 
-    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-    href="../common/python.xml"
-    xpointer="xpointer(//*[@os='h'])"/>
+<screen os="h"><userinput remap="install">make install
+chmod -v 755 /usr/lib/libpython&python-minor;m.so
+chmod -v 755 /usr/lib/libpython3.so</userinput></screen>
+
 
   </sect2>
 
