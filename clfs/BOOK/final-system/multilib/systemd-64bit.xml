@@ -116,11 +116,17 @@ rm -f /run/nologin
 EOF
 chmod 755 /lib/systemd/systemd-user-sessions</userinput></screen>
 
-
   </sect2>
 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="../common/systemd.xml"
-  xpointer="xpointer(id('contents-systemd'))"/>
+  <sect2 role="content">
+    <title/>
+
+    <para>TBA </para>
+<!--
+    <para>Details on this package are located in <xref
+    linkend="contents-systemd" role="."/></para>
+-->
+
+  </sect2>
 
 </sect1>
