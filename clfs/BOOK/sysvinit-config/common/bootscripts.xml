@@ -6,7 +6,7 @@
 ]>
 
 <sect1 id="ch-config-bootscripts" role="wrap">
-  <?dbhtml filename="bootscripts.html"?>
+  <?dbhtml filename="boot-scripts.html"?>
 
   <title>Bootscripts for CLFS &boot-scripts-clfs-version;</title>
 
