@@ -55,9 +55,9 @@
 
     <para os="i">To test the results, issue:</para>
 
-<screen os="i2"><userinput remap="test">python3 configure.py
-./ninja ninja_test
-./ninja_test --gtest_filter=-SubprocessTest.SetWithLots</userinput></screen>
+<screen os="i2"><userinput remap="test">#python3 configure.py
+#./ninja ninja_test
+#./ninja_test --gtest_filter=-SubprocessTest.SetWithLots</userinput></screen>
 
     <para os="j">Install the package:</para>
 
